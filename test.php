@@ -1,4 +1,4 @@
 <?php
-kklkl
+echo "hello";
 
 ?>

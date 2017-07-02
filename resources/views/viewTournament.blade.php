@@ -5,9 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
 	 <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/stylesheet.css" rel="stylesheet">
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">  
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/stylesheet.css" rel="stylesheet">
+    <link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet">  
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-inverse" role="navigation">
@@ -60,7 +60,7 @@
 				<li>
 					<div class="">
 							<div class="col-md-12">
-								<center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="images/img1.jpg">
+								<center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="../images/img1.jpg">
 								<h4 style="margin-top:10px;">ATIF TASKEEN</h4>
 								<p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
 								
@@ -77,52 +77,22 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-		<h1 style="text-align: center;">TOURNAMENTS SHEDULE</h1>
-		<table id="eg_table" class="table">
-		     <thead>
-            <tr>
-                <th>Event Date</th>
-                <th>Event Title</th>
-                <th>Registered</th>
-                <th>Action</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach ($tournaments as $tournament )
-            <tr>
-                <td>{{ $tournament->tournament_date }}</td>
-                <td>{{ $tournament->tournament_name }}</td>
-                <td>% of team accept</td>
-               
-                <td>
-                <a href="editTournament/{{ $tournament->tournament_id }}">
-                <img class="edit" src="images/pencil.png" title="edit" alt="edit">
-                </a>
-                <a href="deleteTournament/{{ $tournament->tournament_id }}">
-                <img class="delete" src="images/cancel.png" title="delete" alt="delete">
-                </a>
-                </td>
 
-                 <td>
-                 <a href="ViewTournament/{{ $tournament->tournament_id }}">
-                View
-                </a>
-                </td>
-            </tr>
-                @endforeach
-           
-         
-        </tbody>
+<!--proper data formatting here-->
+<?php
 
-  		</table>
-        <a href="addNewTournament">Add New Tournament</a>
+echo json_encode($tournaments);
+
+?>
+
+
+
 	</div>
 	<footer>
 	</footer>	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/custom.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 <script>

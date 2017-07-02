@@ -31,3 +31,16 @@ Route::get('/team-rep', "teamrepcontroller@viewDash");
 Route::get('/director', "directorcontroller@viewDash");
 
 Route::get('/signout', "signoutController@logout");
+
+Route::get('/editTournament/{id}', "admincontroller@editTournament");
+Route::get('/deleteTournament/{id}', "admincontroller@deleteTournament");
+Route::get('/ViewTournament/{id}', "admincontroller@viewTournament");
+Route::get('/addNewTournament', "admincontroller@addNewTournament");
+Route::get('/editCurrentUser', "admincontroller@editCurrentUser");
+
+
+
+Route::post('editTournament/editTournamentInfo',"admincontroller@editTournamentInfo");
+Route::post('/addNewTournamentWithPost', "admincontroller@addNewTournamentWithPost");
+Route::post('/editAccountInfo', "admincontroller@editAccountDetails");
+

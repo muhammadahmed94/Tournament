@@ -77,46 +77,31 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-		<h1 style="text-align: center;">TOURNAMENTS SHEDULE</h1>
-		<table id="eg_table" class="table">
-		     <thead>
-            <tr>
-                <th>Event Date</th>
-                <th>Event Title</th>
-                <th>Registered</th>
-                <th>Action</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach ($tournaments as $tournament )
-            <tr>
-                <td>{{ $tournament->tournament_date }}</td>
-                <td>{{ $tournament->tournament_name }}</td>
-                <td>% of team accept</td>
-               
-                <td>
-                <a href="editTournament/{{ $tournament->tournament_id }}">
-                <img class="edit" src="images/pencil.png" title="edit" alt="edit">
-                </a>
-                <a href="deleteTournament/{{ $tournament->tournament_id }}">
-                <img class="delete" src="images/cancel.png" title="delete" alt="delete">
-                </a>
-                </td>
+		<h1 style="text-align: center;">Add Tournament</h1>
 
-                 <td>
-                 <a href="ViewTournament/{{ $tournament->tournament_id }}">
-                View
-                </a>
-                </td>
-            </tr>
-                @endforeach
-           
-         
-        </tbody>
+  <form class="form-horizontal" action="addNewTournamentWithPost" method="post">
+  {{ csrf_field() }}
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Tournament Name:</label>
+      <div class="col-sm-10">
+        <input type="text" name="tournament_name" class="form-control" id="email" placeholder="Name" >
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Tournament Date:</label>
+      <div class="col-sm-10">          
+        <input type="text"  name="tournament_date" class="form-control" id="pwd" placeholder="Date">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
 
-  		</table>
-        <a href="addNewTournament">Add New Tournament</a>
+
+
 	</div>
 	<footer>
 	</footer>	

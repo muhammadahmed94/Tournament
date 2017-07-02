@@ -1,0 +1,117 @@
+.user-img img{
+	width: 25px;
+	border-radius: 100px;
+}
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+    color: #fff;
+    background-color: transparent;
+    border-top: 3px solid #FF8333;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+    border-top: 3px solid transparent;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    border-top: 3px solid #FF8333;
+    background-color: transparent;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    color: #fff;
+    background-color: transparent;
+    border-top: 3px solid #FF8333;
+}
+.navbar-nav>li>.dropdown-menu {
+	background-color: #333;
+}
+.dropdown-menu>li>a {
+	color: white;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #333;
+    border-left: 3px solid #FF8333;
+}
+.dropdown-menu>li>a{
+	border-left: 3px solid transparent;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+#login-dp .help-block{
+    font-size:12px    
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+.btn-fb:hover{
+    color: #fff;
+    background-color:#496ebc 
+}
+.btn-tw{
+    color: #fff;
+    background-color:#55acee;
+}
+.btn-tw:hover{
+    color: #fff;
+    background-color:#59b5fa;
+}
+
+#eg_table_filter label{
+	float: right;
+}
+.edit{
+	width: 25px;
+	margin-right: 10px;
+}
+.delete{
+	width: 25px;
+	
+}
+.signout-btn{
+	background-color: #FF8333 !important;
+	border-color: #FF8333 !important;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #FF8333;
+    border-color: #FF8333;
+}
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+    #eg_table_filter label{
+	float: left;
+}
+}

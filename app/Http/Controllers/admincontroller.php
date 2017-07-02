@@ -106,9 +106,12 @@ class admincontroller extends Controller
        public function editAccountDetails(){
 
          $data = Input::all();
+         echo json_encode($data);
+         
         $accountId=$data["accountId"];
         $name=$data["name"];
         $email=$data["email"];
+        
         if(Input::hasFile('userImage')){
             $file = Input::file('userImage');
             $file->move('uploads',$file->getClientOriginalName());
@@ -123,10 +126,10 @@ class admincontroller extends Controller
             ->where('id', $accountId)
             ->update(['name' => $name , 'email' => $email]);
             }
-           
             $viewObject= array();
          $viewObject["user"]=$this->getSessionData();
-        return view("editCurrentUser",$viewObject);
+         return redirect('admin')->withInput();  
+        // return view("editCurrentUser",$viewObject);
 
     }
    

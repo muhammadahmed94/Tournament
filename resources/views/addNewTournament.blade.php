@@ -130,7 +130,7 @@
 <div class="input-group padder">
 <span class="input-group-addon"></span><input type="text" class="form-control" aria-label="...">
 </div>
-<button type="button" class="btn btn-primary form-control">Primary</button>
+<button type="Submit" class="btn btn-primary form-control">Enter</button>
 </div>
 </div>
  

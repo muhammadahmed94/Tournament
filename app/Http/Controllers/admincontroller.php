@@ -88,9 +88,12 @@ class admincontroller extends Controller
 
        public function addNewTournamentWithPost(Request $request){
        $updatedInfo = Input::all();
-       $name=$updatedInfo["tournament_name"];     
+       $title=$updatedInfo["title"];
+       $description=$updatedInfo["long_description"];
+            
        DB::table('tournaments')->insert([
-      'tournament_name' => $name
+      'tournament_name' => $title,
+      'tournament_longdescription' => $description
       ]);
        return redirect('admin')->withInput();   
      }

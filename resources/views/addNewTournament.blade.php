@@ -86,40 +86,26 @@
 
   <form class="form-horizontal" action="addNewTournamentWithPost" method="post">
   {{ csrf_field() }}
-    <!--<div class="form-group">
-      <label class="control-label col-sm-6" for="email">Tournament Name:</label>
-      <div class="col-sm-6">
-        <input type="text" name="tournament_name" class="form-control" id="email" placeholder="Name" >
-      </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-sm-6" for="pwd">Tournament Date:</label>
-        <div class="col-sm-6">          
-            <input type="text"  name="tournament_date" class="form-control" id="pwd" placeholder="Date">
-        </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>-->
+    
         <div class="row">
   <div class="col-lg-6">
     <div class="input-group padder">
       <span class="input-group-addon">
         <input type="checkbox" aria-label="...">
       </span>
-      <input type="text" class="form-control" aria-label="...">
+      <input type="text" class="form-control" aria-label="..."  name="title" id="title" placeholder="Enter Title">
     </div><!-- /input-group -->
     <div class="input-group padder">
       <span class="input-group-addon">
         <input type="checkbox" aria-label="...">
       </span>
-      <input type="text" class="form-control" aria-label="...">
+      <input type="text" class="form-control" aria-label="..."  name="description" id="description" placeholder="Enter Description" >
     </div><!-- /input-group -->
     <div class="input-group padder">
       <span class="input-group-addon">
         <input type="checkbox" aria-label="...">
       </span>
-      <input type="text" class="form-control" aria-label="...">
+      <input type="text" class="form-control" aria-label="..." name="location" id="location" placeholder="Enter Location/City/State">
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 
@@ -130,15 +116,24 @@
       <span class="input-group-addon">
         <input type="radio" aria-label="...">
       </span>
-      <textarea  class="form-control" style="height:79px" aria-label="...">
+      <textarea  class="form-control" style="height:79px"  name="long_description" id="long_description" placeholder="Describe yourself here...">
       </textarea>
     </div><!-- /input-group -->
 
     <div class="row">
-<div class="col-md-6 col-lg-6 padder"><input type="text" class="form-control" aria-label="..."></div>
-<div class="col-md-6 col-lg-6 padder"><input type="text" class="form-control" aria-label="..."></div>
+<div class="col-md-6 col-lg-6 padder">
+<div class="input-group padder">
+<span class="input-group-addon"></span><input type="text" class="form-control" aria-label="...">
 </div>
-
+</div>
+<div class="col-md-6 col-lg-6 padder">
+<div class="input-group padder">
+<span class="input-group-addon"></span><input type="text" class="form-control" aria-label="...">
+</div>
+<button type="button" class="btn btn-primary form-control">Primary</button>
+</div>
+</div>
+ 
 
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->

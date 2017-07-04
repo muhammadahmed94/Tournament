@@ -16,7 +16,7 @@
  <input name="accountId" type ="hidden" value="{{$user->id}}"> 
  Name :<input name="name" value="{{$user->name}}"> <br>
  Email : <input name="email" value="{{$user->email}}"><br>
- Last Updated at : <?php echo $user->updated_at;?>
+ Last Updated at : <?php echo $user->updated_at;?> 
  </div>
      {{ csrf_field() }}
   <div class="form-group">

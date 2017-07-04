@@ -58,11 +58,12 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b>Admin</b> <span class="caret"></span></a>
 			<ul id="login-dp" class="dropdown-menu">
 				<li>
+
 					<div class="">
 							<div class="col-md-12">
-								<center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="images/img1.jpg">
-								<h4 style="margin-top:10px;">ATIF TASKEEN</h4>
-								<p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
+								<center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="<?= $user["imagepath"]?>">
+								<h4 style="margin-top:10px;"><?=$user["name"]?></h4>
+								<p style="margin-top:-5px;" ><?=$user["email"]?></p></center>
 								
 							<div class="form-group">
 								 <a href="{{ url('/signout') }}" class="btn btn-primary btn-block signout-btn">Sign Out</a>
@@ -77,7 +78,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-		<h1 style="text-align: center;">TOURNAMENTS SHEDULE</h1>
+		<h1 style="text-align: center;">TOURNAMENTS SCHEDULE</h1>
 		<table id="eg_table" class="table">
 		     <thead>
             <tr>

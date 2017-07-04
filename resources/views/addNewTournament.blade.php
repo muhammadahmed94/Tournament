@@ -3,11 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	 <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/stylesheet.css" rel="stylesheet">
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">  
+    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+
     <style>
     .padder{
         margin-bottom:10px;
@@ -84,26 +88,27 @@
 <div class="container">
 		<h1  style="text-align: center;margin-bottom:30px">Add Tournament</h1>
 
-  <form class="form-horizontal" action="addNewTournamentWithPost" method="post">
+  <form class="form-horizontal well" action="addNewTournamentWithPost" method="post">
   {{ csrf_field() }}
     
         <div class="row">
   <div class="col-lg-6">
     <div class="input-group padder">
       <span class="input-group-addon">
-        <input type="checkbox" aria-label="...">
+         <span class="glyphicon glyphicon-user"></span>
       </span>
       <input type="text" class="form-control" aria-label="..."  name="title" id="title" placeholder="Enter Title">
+       
     </div><!-- /input-group -->
     <div class="input-group padder">
       <span class="input-group-addon">
-        <input type="checkbox" aria-label="...">
+        <span class="glyphicon glyphicon-addon">Text</span>
       </span>
       <input type="text" class="form-control" aria-label="..."  name="description" id="description" placeholder="Enter Description" >
     </div><!-- /input-group -->
     <div class="input-group padder">
       <span class="input-group-addon">
-        <input type="checkbox" aria-label="...">
+        <span class="glyphicon glyphicon-globe"></span>
       </span>
       <input type="text" class="form-control" aria-label="..." name="location" id="location" placeholder="Enter Location/City/State">
     </div><!-- /input-group -->
@@ -122,20 +127,26 @@
 
     <div class="row">
 <div class="col-md-6 col-lg-6 padder">
-<div class="input-group padder">
-<span class="input-group-addon"></span><input type="text" class="form-control" aria-label="...">
+<div class="input-group padder " >
+<span class="input-group-addon" >
+  <span class="glyphicon glyphicon-calendar"></span>
+</span>
+<input type="text" class="form-control" aria-label="..." id="date" name="date" placeholder="Enter date">
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker').datetimepicker();
+            });
+ </script>
 </div>
 </div>
 <div class="col-md-6 col-lg-6 padder">
-<div class="input-group padder">
-<span class="input-group-addon"></span><input type="text" class="form-control" aria-label="...">
+<div class="input-group padder datepicker">
+<span class="input-group-addon">
+  <span class="glyphicon glyphicon-calendar"></span>
+</span><input type="text" class="form-control" aria-label="..." id="dateend" name="dateend" placeholder="Enter date">
 </div>
-<button type="Submit" class="btn btn-primary form-control">Enter</button>
-</div>
-</div>
- 
-
-  </div><!-- /.col-lg-6 -->
+ <div class="col-sm-5"><button type="Submit" class="btn btn-primary form-control" >Submit</button></div>
+</div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 
       </div>

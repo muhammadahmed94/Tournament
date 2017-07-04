@@ -59,10 +59,12 @@
 			<ul id="login-dp" class="dropdown-menu">
 				<li>
 					<div class="">
+
 							<div class="col-md-12">
-								<center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="../images/img1.jpg">
-								<h4 style="margin-top:10px;">ATIF TASKEEN</h4>
-								<p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
+								<center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="{{$user->imagepath}}">
+								<h4 style="margin-top:10px;">{{$user->name}}</h4>
+								<p style="margin-top:-5px;" >{{$user->email}}</p>
+                </center>
 								
 							<div class="form-group">
 								 <a href="{{ url('/signout') }}" class="btn btn-primary btn-block signout-btn">Sign Out</a>
@@ -79,10 +81,11 @@
 <div class="container">
 		<h1 style="text-align: center;">Add Tournament</h1>
 
-  <form class="form-horizontal" action="editTournamentInfo" method="post">
+  <form class="form-horizontal " action="editTournamentInfo" method="post">
   {{ csrf_field() }}
-  <input type="hidden" name="tournament_id" value="{{$tournamentId}}">
-    <div class="form-group">
+  <input type="hidden"  name="tournament_id" value="{{$tournamentId}}">
+    <div class="form-group well">
+    <div class="form-group ">
       <label class="control-label col-sm-2" for="email">Tournament Name:</label>
       <div class="col-sm-10">
         <input type="text" name="tournament_name" class="form-control" id="email" placeholder="Name" value="{{$tournamentData->tournament_name}}">
@@ -94,11 +97,38 @@
         <input type="text"  name="tournament_date" class="form-control" id="pwd" placeholder="Date" value="{{$tournamentData->tournament_date}}">
       </div>
     </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"> Description:</label>
+      <div class="col-sm-10">          
+        <input type="text"  name="tournament_description" class="form-control" id="pwd" placeholder="Date" value="{{$tournamentData->tournament_description}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"> End Date:</label>
+      <div class="col-sm-10">          
+        <input type="text"  name="tournament_enddate" class="form-control" id="pwd" placeholder="Date" value="{{$tournamentData->tournament_dateend}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"> Long Description:</label>
+      <div class="col-sm-10">          
+      <textarea type="text"  name="tournament_longdescription" class="form-control" id="pwd"  value="{{$tournamentData->tournament_longdescription}}"></textarea> 
+      </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd"> Location:</label>
+      <div class="col-sm-10">          
+        <input type="text"  name="tournament_location" class="form-control" id="pwd" placeholder="Date" value="{{$tournamentData->tournament_location}}">
+      </div>
+    </div>
+    </div>
+    
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
     </div>
+    
   </form>
 
 

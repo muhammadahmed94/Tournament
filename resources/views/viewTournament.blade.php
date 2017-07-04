@@ -148,42 +148,20 @@ ul.breadcrumb li a {color: #FF8333;}
       <th style="color: white; background-color: #DADE78;">COACH</th>
       <th style="color: white; background-color: #DADE78;">EMAIL</th>
     </tr>
+    @foreach($tournaments as $tournament)
     <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
+      <td>{{$tournament->team_id}}</td>
+      <td>{{$tournament->team_name}}</td>
       <td>$1400</td>
       <td>$400 CC</td>
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
       <td><a href="#"><img class="edit" src="img/green.png"></a></td>
-      <td>DOE JOE</td>
+      <td>{{$tournament->team_rep}}</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/red.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/red.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
+   @endforeach
   </table>
 
   <h3>Wait List</h3>
@@ -435,5 +413,6 @@ ul.breadcrumb li a {color: #FF8333;}
     });
 } );
 	</script>
+
 </body>
 </html>

@@ -38,6 +38,7 @@ Route::get('/ViewTournament/{id}', "admincontroller@viewTournament");
 Route::get('/addNewTournament', "admincontroller@addNewTournament");
 Route::get('/editCurrentUser', "admincontroller@editCurrentUser");
 
+Route::get('/SendEmail', "admincontroller@sendEmail");
 
 
 Route::post('editTournament/editTournamentInfo',"admincontroller@editTournamentInfo");

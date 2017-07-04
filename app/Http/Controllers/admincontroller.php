@@ -9,7 +9,8 @@ use App\tournaments;
 use DB;
 use Input;
 use Validator;
-
+use Mail;
+use App\Mail\Reminder;
 class admincontroller extends Controller
 {
       public function __construct(){
@@ -82,15 +83,20 @@ class admincontroller extends Controller
      }
      
     public function viewTournament(Request $request, $id){
-      $tournamentData=DB::table('tournaments')->where('tournament_id', '=', $id)->get()->first();
+      
+      $tournamentData = DB::table('tournament_teams')
+            ->join('teams', 'tournament_team_id', '=', 'teams.team_id')
+            ->where('tournament_ids', '=', $id)
+            ->select('team_name','team_id','team_rep')
+            ->get();
       $viewObject= array();
       $viewObject["tournaments"]=$tournamentData;
-
+      echo json_encode($tournamentData);
       if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
     return view("viewTournament",$viewObject);
       
     }else{
-    // return view("editTournament",$requestData);
+     return view("editTournament",$requestData);
     // no record found view
       
     }
@@ -129,6 +135,15 @@ class admincontroller extends Controller
         return view("editCurrentUser",$viewObject);
       }
 
+     public function sendEmail(){
+        $mail = "rao.noman786@outlook.com";
+        $subject = "hey";
+        $message = "jsdfs";
+       
+        mail($mail, $subject, $message);
+        dd('done send');
+
+     } 
 
        public function editAccountDetails(){
 

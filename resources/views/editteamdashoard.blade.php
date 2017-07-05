@@ -30,6 +30,7 @@
     </style>
 </head>
 <body>
+ 
     <nav class="navbar navbar-default navbar-inverse" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -62,7 +63,7 @@
         <li>
           <div class="">
               <div class="col-md-12" style="padding-bottom:8px!important;margin-bottom:8px!important">
-                <a href="editrepteam/{{$user->id}}">Edit Account</a>
+                <a href="">Edit Account</a>
 
 </div>
          </div>
@@ -91,32 +92,35 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-    <div class="container">
+    
+  <div class="container">
         <div class="col-md-2">
             
         </div>
         <div class="col-md-8">
 
            <h1 style="text-align: center;">Team Representative Information</h1> 
+         
+           <div class="form-group">
            <div class="input-box-items">
                <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">Team Rep. Name</label>
-                      <input class="form-control" id="Rep_name" value="" ="Rep_name"></input>
+                      <input class="form-control" id="Rep_name" value="{{$user->name}}" ="Rep_name"></input>
                     </div>
                </div>  
                <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">Team Rep. Phone#1</label>
                       <input class="form-control" id="Phone#1"
-                 name="Phone#1"     value="">
+                 name="Phone#1"     value="{{$user->name}}">
                        </input>
                     </div>
                </div>   
                <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">Team Rep. Email</label>
-                      <input class="form-control" id="Email" name="Email" value = "">
+                      <input class="form-control" id="Email" name="Email" value = {{$user->email}}>
                       </input>
                     </div>
                </div>     
@@ -124,25 +128,26 @@
                    <div class="form-group">
                       <label for="sel1">Team Rep. Phone#2</label>
                       <input  class="form-control" id="Phone#2
-                      " name="Phone#2" value = "">
+                      " name="Phone#2" value = "{{$user->phone2}}">
                   </input>
                     </div>
                </div>        
            </div>
            <h3 style="float: left; margin-top: 50px;">Organization Info</h3>
            <div class="input-box-item">
-
+              @foreach ($userdata as $user)
                <div class="col-md-6">
+               <form action="/editrepinfo" method="post" enctype="multipart/form-data">
                    <div class="form-group">
                       <label for="sel1">Organization Name</label>
-                      <input class="form-control" id="Organization_name" name="Organization_name" value="">
+                      <input class="form-control" id="Organization_name" name="Organization_name" value="{{$user->OrganizationName}}">
                      </input>
                     </div>
                </div>  
                <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">Billing Address</label>
-                      <input class="form-control" id="Billing_Address">
+                      <input class="form-control" id="Billing_Address"  name="Billing_Address" value="{{$user->BillingAddress}}">
                       
                       </input>
                     </div>
@@ -150,14 +155,14 @@
                <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">Website URL</label>
-                      <input class="form-control" id="Website_URL">
+                      <input class="form-control" id="Website_URL" name="Website_URL" value="{{$user->WebsiteURL}}">
                       </input>
                     </div>
                </div>     
                <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">City</label>
-                      <input class="form-control" id="City">
+                      <input class="form-control" id="City" name="City" value="{{$user->City}}">
                         </input>
                     </div>
                </div>       
@@ -204,22 +209,29 @@
                     
                       </input>
                     </div>
-               </div> 
-               <center>
-                   <button style="margin-bottom: 20px; width: 80%;" type="button" class="btn btn-primary">UPDATE</button>  
-               </center>
-                 
+               </div>
+               @endforeach
+               
            </div>
+          
+           <center>
+                   <button style="margin-bottom: 20px; width: 80%;" type="button" class="btn btn-primary" >UPDATE</button>  
+               </center>
+               </form>
+              </div> 
+           
         </div>
-
-        <div class="col-md-2">
-            
+        {{ csrf_field() }}
+        <div class="col-md-2">    
         </div>
     </div>
+  
 
     <footer>
     </footer>   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    
+
 </body>
 </html>

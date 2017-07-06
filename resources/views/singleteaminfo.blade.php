@@ -77,8 +77,8 @@
                     <div class="">
                             <div class="col-md-12">
                                 <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="img/img1.jpg">
-                                <h4 style="margin-top:10px;">{{$user->imagepath}}</h4>
-                                <p style="margin-top:-5px;" >{{$user->email}}</p></center>
+                                <h4 style="margin-top:10px;"></h4>
+                                <p style="margin-top:-5px;" ></p></center>
                                 
                             <div class="form-group">
                                  <a href="{{ url('/signout') }}" class="btn btn-primary btn-block signout-btn">Sign Out</a>
@@ -99,125 +99,73 @@
         </div>
         <div class="col-md-8">
 
-           <h1 style="text-align: center;">Team Representative Information</h1> 
+           <h1 style="text-align: center;"></h1> 
          
            <div class="form-group">
            <div class="input-box-items">
+           <div class="col-md-12 box-shadow">
+               <label for="sel1" style="text-align: center;"><h3 >Team Info</h3></label>
+                   
+               </div>  
                <div class="col-md-6">
+
                    <div class="form-group">
-                      <label for="sel1">Team Rep. Name</label>
-                      <input class="form-control" id="Rep_name" value="{{$user->name}}" ="Rep_name"></input>
+                      <label for="sel1">Birth Year</label>
+                      <input class="form-control" id="Rep_name" value="" ="Rep_name"></input>
                     </div>
                </div>  
                <div class="col-md-6">
                    <div class="form-group">
-                      <label for="sel1">Team Rep. Phone#1</label>
+                      <label for="sel1">Head Coach Name</label>
                       <input class="form-control" id="Phone#1"
-                 name="Phone#1"     value="{{$user->name}}">
+                 name="Phone#1"     value="">
                        </input>
                     </div>
                </div>   
                <div class="col-md-6">
                    <div class="form-group">
-                      <label for="sel1">Team Rep. Email</label>
-                      <input class="form-control" id="Email" name="Email" value = {{$user->email}}>
+                      <label for="sel1">Player Level</label>
+                      <input class="form-control" id="Email" name="Email" value = "" >
                       </input>
                     </div>
                </div>     
                <div class="col-md-6">
                    <div class="form-group">
-                      <label for="sel1">Team Rep. Phone#2</label>
+                      <label for="sel1">Head Coach Email</label>
                       <input  class="form-control" id="Phone#2
-                      " name="Phone#2" value = "{{$user->phone2}}">
+                      " name="Phone#2" value = "">
                   </input>
                     </div>
-               </div>        
-           </div>
-           <h3 style="float: left; margin-top: 50px;">Organization Info</h3>
-           <div class="input-box-item">
-              @foreach ($userdata as $user)
-               <div class="col-md-6">
-               <form action="/editrepinfo" method="post" enctype="multipart/form-data">
-                   <div class="form-group">
-                      <label for="sel1">Organization Name</label>
-                      <input class="form-control" id="Organization_name" name="Organization_name" value="{{$user->OrganizationName}}">
-                     </input>
-                    </div>
-               </div>  
+               </div>
                <div class="col-md-6">
                    <div class="form-group">
-                      <label for="sel1">Billing Address</label>
-                      <input class="form-control" id="Billing_Address"  name="Billing_Address" value="{{$user->BillingAddress}}">
-                      
-                      </input>
+                      <label for="sel1">Head Coach Name</label>
+                      <input class="form-control" id="Phone#1"
+                 name="Phone#1"     value="">
+                       </input>
                     </div>
                </div>   
                <div class="col-md-6">
                    <div class="form-group">
-                      <label for="sel1">Website URL</label>
-                      <input class="form-control" id="Website_URL" name="Website_URL" value="{{$user->WebsiteURL}}">
+                      <label for="sel1">Player Level</label>
+                      <input class="form-control" id="Email" name="Email" value = "" >
                       </input>
                     </div>
                </div>     
                <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">City</label>
-                      <input class="form-control" id="City" name="City" value="{{$user->City}}">
-                        </input>
-                    </div>
-               </div>       
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">State</label>
-                      <input class="form-control" id="State">
-                        </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Zone</label>
-                      <input class="form-control" id="Zone">
-                      </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Country</label>
-                      <input class="form-control" id="Country">
-                      </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Facebbok</label>
-                      <input class="form-control" id="Facebbok">
-                      </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Instagram</label>
-                      <input class="form-control" id="Instagram">
-                        
-                      </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Twitter</label>
-                      <input class="form-control" id="Twitter">
-                    
-                      </input>
-                    </div>
+                   
                </div>
-               @endforeach
-               
+               <div class="col-md-6">
+                   <div class="form-group">
+                      <label for="sel1">Head Coach Phone</label>
+                      <input  class="form-control" id="Phone#2
+                      " name="Phone#2" value = "">
+                  </input>
+                    </div>
+               </div>           
            </div>
           
-           <center>
-                   <button style="margin-bottom: 20px; width: 80%;" type="button" class="btn btn-primary" >UPDATE</button>  
-               </center>
-               </form>
+          
               </div> 
            
         </div>
@@ -225,7 +173,50 @@
         <div class="col-md-2">    
         </div>
     </div>
-  
+   <div class="container">
+        <div class="col-md-2">
+            
+        </div>
+        <div class="col-md-8">
+
+           <h1 style="text-align: center;"></h1> 
+         
+           <div class="form-group">
+           <div class="input-box-items">
+           <div class="col-md-12 box-shadow">
+               <label for="sel1" style="text-align: center;"><h3 >Certfied Roaster</h3></label>
+                   &nbsp;
+               </div>  
+               <div class="col-md-12 box-shadow">&nbsp;</div>
+               <div class="col-md-6">
+                   <div class="form-group">
+                      <div style="position:relative;">
+        <a class='btn btn-primary' href='javascript:;'>
+            Choose File...
+            <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+        </a>
+        &nbsp;
+        <span class='label label-info' id="upload-file-info"></span>
+</div>
+                    </div>
+               </div>     
+              
+
+               <div class="col-md-6">
+                   <div class="form-group">
+                      
+                      <input  class="form-control" id="Phone#2
+                      " name="Phone#2" value = "" placeholder="Paste URL">
+                  </input>
+                    </div>
+               </div>           
+           </div>
+           
+        </div>
+        {{ csrf_field() }}
+        <div class="col-md-2">    
+        </div>
+    </div>
 
     <footer>
     </footer>   

@@ -92,129 +92,66 @@
   </div><!-- /.container-fluid -->
 </nav>
     <div class="container">
-        <div class="col-md-2">
-            
-        </div>
-        <div class="col-md-8">
+                
+          <div class="container">
+    <h1 style="text-align: center;">TOURNAMENTS SCHEDULE</h1>
+    <table id="eg_table" class="table">
+         <thead>
+            <tr>
+                <th>Event Date</th>
+                <th>Event Title</th>
+                <th>Registered Teams</th>
+                <th>Registered Status</th>
+               <th></th>
+            </tr>
+        </thead>
+        <tbody>
+       
+            <tr>
+                <td><a href="">2017/04/03</a></td>
+                <td><a href="{{ url('/Event') }}">Chicago World Event</a></td>
+                <td><a href="{{ url('/Event') }}">Boys-AAA</a></td>
+                
+                <td>
+                <a href="">Incomplete</a>
+                </td>
 
-           <h1 style="text-align: center;">Team Representative Information</h1> 
-           <div class="input-box-items">
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Team Rep. Name</label>
-                      <input class="form-control" id="Rep_name" value="" ="Rep_name"></input>
-                    </div>
-               </div>  
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Team Rep. Phone#1</label>
-                      <input class="form-control" id="Phone#1"
-                 name="Phone#1"     value="">
-                       </input>
-                    </div>
-               </div>   
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Team Rep. Email</label>
-                      <input class="form-control" id="Email" name="Email" value = "">
-                      </input>
-                    </div>
-               </div>     
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Team Rep. Phone#2</label>
-                      <input  class="form-control" id="Phone#2
-                      " name="Phone#2" value = "">
-                  </input>
-                    </div>
-               </div>        
-           </div>
-           <h3 style="float: left; margin-top: 50px;">Organization Info</h3>
-           <div class="input-box-item">
+                 <td>
+                 <a href="{{ url('/Singleteam')}}">
+                <img class="edit" src="images/RedDot.png" title="edit" alt="edit">
+                </a>
+                <!--<a href="#">
+                <img class="delete" src="images/cancel.png"   title="delete" alt="delete">-->
+                </a>
+                </a>
+                </td>
+            </tr>
+                
+            <tr>
+                <td><a href="">2017/04/03</a></td>
+                <td><a href="{{ url('/Event') }}">Chicago World Event</a></td>
+                <td><a href="{{ url('/Event') }}">Boys-AAA</a></td>
+                
+                <td>
+                <a href="">Done</a>
+                </td>
 
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Organization Name</label>
-                      <input class="form-control" id="Organization_name" name="Organization_name" value="">
-                     </input>
-                    </div>
-               </div>  
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Billing Address</label>
-                      <input class="form-control" id="Billing_Address">
-                      
-                      </input>
-                    </div>
-               </div>   
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Website URL</label>
-                      <input class="form-control" id="Website_URL">
-                      </input>
-                    </div>
-               </div>     
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">City</label>
-                      <input class="form-control" id="City">
-                        </input>
-                    </div>
-               </div>       
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">State</label>
-                      <input class="form-control" id="State">
-                        </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Zone</label>
-                      <input class="form-control" id="Zone">
-                      </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Country</label>
-                      <input class="form-control" id="Country">
-                      </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Facebbok</label>
-                      <input class="form-control" id="Facebbok">
-                      </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Instagram</label>
-                      <input class="form-control" id="Instagram">
-                        
-                      </input>
-                    </div>
-               </div>    
-               <div class="col-md-6">
-                   <div class="form-group">
-                      <label for="sel1">Twitter</label>
-                      <input class="form-control" id="Twitter">
-                    
-                      </input>
-                    </div>
-               </div> 
-               <center>
-                   <button style="margin-bottom: 20px; width: 80%;" type="button" class="btn btn-primary">UPDATE</button>  
-               </center>
-                 
-           </div>
-        </div>
+                 <td>
+                 <a href="{{ url('/Singleteam') }}">
+                <img class="edit" src="images/green.png" title="edit" alt="edit">
+                </a>
+                <!--<a href="#">
+                <img class="delete" src="images/cancel.png"   title="delete" alt="delete">-->
+                </a>
+                </a>
+                </td>
+            </tr>
+         
+        </tbody>
 
-        <div class="col-md-2">
-            
-        </div>
+      </table>
+        
+    </div>
     </div>
 
     <footer>

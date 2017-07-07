@@ -48,7 +48,7 @@
         background-color: #E8C1E4;
         margin-right: 30px;
      }
-     .uplod{
+     .upload{
         margin-top: -15px;
         margin-left: 15px;
         float: right;
@@ -104,7 +104,7 @@ margin-top: 50px;
                                 <p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
                                 
                             <div class="form-group">
-                                 <button type="submit" class="btn btn-primary btn-block signout-btn">Sign Out</button>
+                                  <a href="{{ url('/signout') }}" class="btn btn-primary btn-block signout-btn">Sign Out</a>
                             </div>
                     </div>
                  </div>
@@ -174,7 +174,13 @@ margin-top: 50px;
                     <div class="row">
                         <div class="reg_info_diff">
                             <h3 style="padding: 10px 0px 0px 15px;">Certified Roster</h3>
-                            <p style="padding: 10px 0px 10px 15px;">* Roster info missing <button type="button" class="btn btn-primary uplod">Click here to upload</button></p>
+                            <p style="padding: 10px 0px 10px 15px;">* Roster info missing <label class="btn btn-primary upload" for="my-file-selector">
+    <input id="my-file-selector" type="file" style="display:none" 
+    onchange="$('#upload-file-info').html(this.files[0].name)">
+    Click here to upload
+</label>
+<span class='label label-info' id="upload-file-info"></span></p>
+                            
                         </div>
                     </div>
                 </div>
@@ -182,7 +188,7 @@ margin-top: 50px;
                     <div class="row">
                         <div class="reg_info_diff">
                             <h3 style="padding: 10px 0px 0px 15px;">Payment Status</h3>
-                            <p style="padding: 10px 0px 10px 15px;">* Balance due: $800 <button style="background-color: #9F49AB; border: 1px solid #9F49AB" type="button" class="btn btn-danger uplod">Pay Now</button></p>
+                            <p style="padding: 10px 0px 10px 15px;">* Balance due: $800 <button style="background-color: #9F49AB; border: 1px solid #9F49AB" type="button" class="btn btn-danger upload">Pay Now</button></p>
                         </div>
                     </div>
                 </div>
@@ -206,7 +212,13 @@ margin-top: 50px;
                     <div class="row">
                         <div class="reg_info_diff">
                             <h3 style="padding: 10px 0px 0px 15px;">Program Book Roster</h3>
-                            <p style="padding: 10px 0px 10px 15px;">* Roster info missing <button type="button" class="btn btn-primary uplod">Click here to upload</button></p>
+                            <p style="padding: 10px 0px 10px 15px;">* Roster info missing <label class="btn btn-primary upload" for="my-file-selector">
+    <input id="my-file-selector" type="file" style="display:none" 
+    onchange="$('#upload-file-info').html(this.files[0].name)">
+    Click here to upload
+</label>
+<span class='label label-info' id="upload-file-info"></span></p>
+
                         </div>
                     </div>
                 </div>

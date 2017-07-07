@@ -89,7 +89,8 @@ class admincontroller extends Controller
             ->get();
       $viewObject= array();
       $viewObject["tournaments"]=$tournamentData;
-      echo json_encode($tournamentData);
+      $viewObject["user"]=$this->getSessionData();
+      echo json_encode($viewObject);
       if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
     return view("viewTournament",$viewObject);
       
@@ -101,7 +102,8 @@ class admincontroller extends Controller
        }
 
        public function addNewTournament(){
-         return view("addNewTournament");
+        $viewObject["user"]= $this->getSessionData();
+         return view("addNewTournament",$viewObject);
        }
 
        public function addNewTournamentWithPost(Request $request){

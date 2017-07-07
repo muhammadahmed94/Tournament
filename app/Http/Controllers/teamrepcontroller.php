@@ -65,7 +65,7 @@ class teamrepcontroller extends Controller
     public function Singleteam(){
       $user=$this->getSessionData();
       $viewObject["user"]=$user;
-      return view("Singleteaminfo",$user);
+      return view("Singleteaminfo",$viewObject);
     }
    
 }

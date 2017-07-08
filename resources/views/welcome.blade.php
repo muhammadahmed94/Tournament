@@ -79,8 +79,8 @@
             @endif
 
             <div class="content" style="width:100%">
-
-                
+                <img src="images/tournament.png">
+                <p>Tournaments are events hosted by 200x85 team</p>
             </div>
         </div>
     </body>

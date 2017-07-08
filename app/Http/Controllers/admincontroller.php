@@ -66,15 +66,15 @@ class admincontroller extends Controller
        $updatedInfo = Input::all();
        $tournament_id=$updatedInfo["tournament_id"]; 
        $name=$updatedInfo["tournament_name"]; 
-       $date=$updatedInfo["tournament_date"];
+       $date=date("Y-m-d", strtotime($updatedInfo["tournament_date"]));
        $location=$updatedInfo["tournament_location"];
-       $dateend=$updatedInfo["tournament_enddate"];
+       $dateend=date("Y-m-d", strtotime($updatedInfo["tournament_enddate"]));
        $description=$updatedInfo["tournament_description"];
        $longdescription=$updatedInfo["tournament_longdescription"];        
        DB::table('tournaments')->where('tournament_id', $tournament_id)->update([
       'tournament_name' => $name,
       'tournament_date' => $date,
-      'tournament_dateend' => $dateend,
+      'tournament_enddate' => $dateend,
       'tournament_location' => $location,
       'tournament_longdescription' => $longdescription,
       'tournament_description' => $description

@@ -36,7 +36,7 @@ class teamrepcontroller extends Controller
            $viewObject= array();
            $viewObject["userdata"]=$requestdata;
            $viewObject["user"]=$this->getSessionData();
-           echo json_encode($viewObject["userdata"]);
+           //echo json_encode($viewObject["userdata"]);
             return view("editteamdashoard",$viewObject);
     }
        public function editeamrep(Request $request ,$id){
@@ -56,6 +56,16 @@ class teamrepcontroller extends Controller
          //echo json_encode($data);
         // echo ("sdasdas");
          return view("mail");
+    }
+
+    public function Event(){
+      return view("Eventinfo");
+    }
+
+    public function Singleteam(){
+      $user=$this->getSessionData();
+      $viewObject["user"]=$user;
+      return view("Singleteaminfo",$viewObject);
     }
    
 }

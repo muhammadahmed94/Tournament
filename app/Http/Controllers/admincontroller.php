@@ -39,14 +39,12 @@ class admincontroller extends Controller
     }
 
     public function editTournament(Request $request, $id){
-    // DB::table('users')->where('id', '=', $id)->delete();
-    // return redirect()->back();
       $user=$this->getSessionData();
       echo json_encode($user);
-    $requestData=array();
-    $requestData["tournamentId"]=$id;
-    $requestData["user"]=$user;
-    $requestData["tournamentData"]=DB::table('tournaments')->where('tournament_id', '=', $id)->get()->first();
+      $requestData=array();
+      $requestData["tournamentId"]=$id;
+      $requestData["user"]=$user;
+      $requestData["tournamentData"]=DB::table('tournaments')->where('tournament_id', '=', $id)->get()->first();
     if(!!$requestData["tournamentData"] && !empty($requestData["tournamentData"])){
     return view("editTournament",$requestData);
       
@@ -91,7 +89,8 @@ class admincontroller extends Controller
             ->get();
       $viewObject= array();
       $viewObject["tournaments"]=$tournamentData;
-      echo json_encode($tournamentData);
+      $viewObject["user"]=$this->getSessionData();
+      echo json_encode($viewObject);
       if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
     return view("viewTournament",$viewObject);
       
@@ -103,7 +102,8 @@ class admincontroller extends Controller
        }
 
        public function addNewTournament(){
-         return view("addNewTournament");
+        $viewObject["user"]= $this->getSessionData();
+         return view("addNewTournament",$viewObject);
        }
 
        public function addNewTournamentWithPost(Request $request){

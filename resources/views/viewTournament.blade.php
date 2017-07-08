@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title> Dashboard</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
@@ -97,12 +98,12 @@ ul.breadcrumb li a {color: #FF8333;}
         <li>
           <div class="">
               <div class="col-md-12">
-                <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="img/img1.jpg">
-                <h4 style="margin-top:10px;">ATIF TASKEEN</h4>
-                <p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
+                <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="images/{{$user->imagepath}}">
+                <h4 style="margin-top:10px;">{{$user->name}}</h4>
+                <p style="margin-top:-5px;" >{{$user->email}}</p></center>
                 
               <div class="form-group">
-                 <button type="submit" class="btn btn-primary btn-block signout-btn">Sign Out</button>
+                 <a href="{{ url('/signout') }}" class="btn btn-primary btn-block signout-btn">Sign Out</a>
               </div>
           </div>
          </div>
@@ -157,7 +158,7 @@ ul.breadcrumb li a {color: #FF8333;}
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/green.png"></a></td>
+      <td><a href="#"><img class="edit" src="images/green.png"></a></td>
       <td>{{$tournament->team_rep}}</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
@@ -200,7 +201,7 @@ ul.breadcrumb li a {color: #FF8333;}
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/green.png"></a></td>
+      <td><a href="#"><img class="edit" src="images/green.png"></a></td>
       <td>DOE JOE</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
@@ -212,7 +213,7 @@ ul.breadcrumb li a {color: #FF8333;}
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/red.png"></a></td>
+      <td><a href="#"><img class="edit" src="images/red.png"></a></td>
       <td>DOE JOE</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
@@ -224,7 +225,7 @@ ul.breadcrumb li a {color: #FF8333;}
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/red.png"></a></td>
+      <td><a href="#"><img class="edit" src="images/red.png"></a></td>
       <td>DOE JOE</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
@@ -264,7 +265,7 @@ ul.breadcrumb li a {color: #FF8333;}
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/green.png"></a></td>
+      <td><a href="#"><img class="edit" src="images/green.png"></a></td>
       <td>DOE JOE</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
@@ -276,7 +277,7 @@ ul.breadcrumb li a {color: #FF8333;}
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/red.png"></a></td>
+      <td><a href="#"><img class="edit" src=".../images/green.png"></a></td>
       <td>DOE JOE</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
@@ -288,7 +289,7 @@ ul.breadcrumb li a {color: #FF8333;}
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/red.png"></a></td>
+      <td><a href="#"><img class="edit" src="images/red.png"></a></td>
       <td>DOE JOE</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
@@ -367,36 +368,7 @@ ul.breadcrumb li a {color: #FF8333;}
 
             
               <tbody>
-               <tr>
-                <th  colspan="2"></th>
-                <th  colspan="4"> <center> Payment Status </center> </th>
-                <th  colspan="2"><center> Registration Status </center> </th>
-                <th  colspan="2"> <center>  Contact Info </center></th>
-              </tr>
-              <tr calss ="subhead">  
-                  <th>ID</th>
-                <th><center>Team</center></th>
-                <th colspan="4"><center>BAL</center></th>
-              
-                <th><center>Accept</center></th>
-                <th><center>Information</center></th>
-                <th><center>Coach</center></th>
-                <th><center>Email</center></th>
-              </tr>
-              <tr class="gradeX">
-                <td><center>&nbsp;</center></td>
-                <td><center>&nbsp;;</center></td>
-                <td colspan="4"><center>&nbsp;</center></td>
-                
-                <td><center>&nbsp;</center></td>
-                <td><center>&nbsp;</center></td>
-                <td><center>&nbsp;&nbsp;</center></td>
-                <td><center><a href="">View</a></center></td>
-              </tr>
-                
-              
-            </tbody>
-            </table>
+                </table>
 	</div>
 	<footer>
 	</footer>	
@@ -405,14 +377,7 @@ ul.breadcrumb li a {color: #FF8333;}
     <script src="../js/custom.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script>
-		$(document).ready(function() {
-    $('#eg_table').DataTable({
 
-    	"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
-    });
-} );
-	</script>
 
 </body>
 </html>

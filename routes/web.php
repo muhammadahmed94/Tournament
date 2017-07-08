@@ -28,16 +28,19 @@ Route::get('/deleteuser/{id}', "adduserinfo@deleteUser");
 
 Route::get('/admin', "admincontroller@viewDash");
 Route::get('/team-rep', "teamrepcontroller@viewDash");
+
 Route::get('/director', "directorcontroller@viewDash");
 
 Route::get('/signout', "signoutController@logout");
 
 Route::get('/editTournament/{id}', "admincontroller@editTournament");
+
 Route::get('/deleteTournament/{id}', "admincontroller@deleteTournament");
 
 Route::get('/ViewTournament/{id}', "admincontroller@viewTournament");
 
 Route::get('/addNewTournament', "admincontroller@addNewTournament");
+
 Route::get('/editCurrentUser', "admincontroller@editCurrentUser");
 
 Route::get('/SendEmail', "admincontroller@sendEmail");
@@ -49,7 +52,11 @@ Route::post('/addNewTournamentWithPost', "admincontroller@addNewTournamentWithPo
 
 Route::post('/editAccountInfo', "admincontroller@editAccountDetails");
 
+
 Route::get('/editrepteam/{id}', "teamrepcontroller@editeamrepdata");
 
 Route::post('/editrepinfo',"teamrepcontroller@editeamrepinfo");
 
+Route::get('/Event',"teamrepcontroller@Event");
+
+Route::get('/Singleteam',"teamrepcontroller@Singleteam");

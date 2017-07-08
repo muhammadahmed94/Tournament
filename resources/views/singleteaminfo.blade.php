@@ -6,9 +6,8 @@
   <title></title>
    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="css/stylesheet.css" rel="stylesheet">
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">   
+    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">  
     <style>
         label{
             margin-top: 15px;
@@ -202,29 +201,47 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+      <li><a href="{{ url('/home') }}">Home</a></li>
         <li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tournaments<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Add New Tournament</a></li>
-            <li><a href="#">Chi Town Shuffle</a></li>
+            <li><a href="addNewTournament">Add New Tournament</a></li>
           </ul>
         </li>
         <li><a href="#">Development</a></li>
         <li><a href="#">Clinics</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+        <!--<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>-->
+
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <b>Settings</b> <span class="caret"></span></a>
+      <ul id="login-dp" class="dropdown-menu">
+        <li>
+          <div class="">
+              <div class="col-md-12" style="padding-bottom:8px!important;margin-bottom:8px!important">
+                <a href="editCurrentUser">Edit Account</a>
+
+
+      
+          </div>
+         </div>
+        </li>
+      </ul>
+        </li>
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b>Admin</b> <span class="caret"></span></a>
       <ul id="login-dp" class="dropdown-menu">
         <li>
+
           <div class="">
               <div class="col-md-12">
-                <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="img/img1.jpg">
-                <h4 style="margin-top:10px;">ATIF TASKEEN</h4>
-                <p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
+                <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="<?= $user["imagepath"]?>">
+                <h4 style="margin-top:10px;">{{$user->name}}</h4>
+                <p style="margin-top:-5px;" >{{$user->email}}</p></center>
                 
               <div class="form-group">
-                 <button type="submit" class="btn btn-primary btn-block signout-btn">Sign Out</button>
+                 <a href="{{ url('/signout') }}" class="btn btn-primary btn-block signout-btn">Sign Out</a>
               </div>
           </div>
          </div>
@@ -237,8 +254,7 @@
 </nav>
 <nav style="margin-top: 55px;" class="navbar navbar-inverse sidebar" role="navigation">
 
-
-    <div class="container-fluid">
+ <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
@@ -252,12 +268,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav nav2">
-        <li><a href="#">Active Events<span style="font-size:16px;"><img style="float: right;" class="edit" src="img/calendar.png"></span></a></li>
-        <li ><a href="#">My Teams<span style="font-size:16px;"><img style="float: right;" class="edit" src="img/group.png"></span></a></li>
+        <li><a href="#">Active Events<span style="font-size:16px;"><img style="float: right;" class="edit" src="images/calendar.png"></span></a></li>
+        <li ><a href="#">My Teams<span style="font-size:16px;"><img style="float: right;" class="edit" src="images/group.png"></span></a></li>
       </ul>
     </div>
     </div>
-    </nav>
+</nav>
     <div class="container">
         <div class="col-md-2">
             

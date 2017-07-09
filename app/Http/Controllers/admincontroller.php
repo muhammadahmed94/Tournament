@@ -11,6 +11,7 @@ use Input;
 use Validator;
 use Mail;
 use App\Mail\Reminder;
+
 class admincontroller extends Controller
 {
       public function __construct(){
@@ -131,7 +132,11 @@ class admincontroller extends Controller
 
       public function editCurrentUser(){
          $viewObject= array();
+
          $viewObject["user"]=$this->getSessionData();
+            $userData=DB::table('users')
+            ->where('id',$viewObject["user"]->id)->get()->first();
+        $viewObject["user"]=$userData;
         return view("editCurrentUser",$viewObject);
       }
 
@@ -148,7 +153,6 @@ class admincontroller extends Controller
        public function editAccountDetails(){
 
          $data = Input::all();
-         echo json_encode($data);
          
         $accountId=$data["accountId"];
         $name=$data["name"];

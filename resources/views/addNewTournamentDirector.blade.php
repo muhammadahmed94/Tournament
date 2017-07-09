@@ -3,11 +3,20 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	 <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/stylesheet.css" rel="stylesheet">
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">  
+    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+
+    <style>
+    .padder{
+        margin-bottom:10px;
+    }
+    </style>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-inverse" role="navigation">
@@ -29,7 +38,7 @@
       <li><a href="{{ url('/home') }}">Home</a></li>
         <li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tournaments<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="addNewTournamentDirector">Add New Tournament</a></li>
+            <li><a href="addNewTournament">Add New Tournament</a></li>
           </ul>
         </li>
         <li><a href="#">Development</a></li>
@@ -58,12 +67,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b>Admin</b> <span class="caret"></span></a>
 			<ul id="login-dp" class="dropdown-menu">
 				<li>
-
 					<div class="">
 							<div class="col-md-12">
-								<center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="<?= $user["imagepath"]?>">
-								<h4 style="margin-top:10px;"><?=$user["name"]?></h4>
-								<p style="margin-top:-5px;" ><?=$user["email"]?></p></center>
+								<center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="{{$user->imagepath}}">
+								<h4 style="margin-top:10px;">{{$user->name}}</h4>
+								<p style="margin-top:-5px;" >{{$user->email}}</p></center>
 								
 							<div class="form-group">
 								 <a href="{{ url('/signout') }}" class="btn btn-primary btn-block signout-btn">Sign Out</a>
@@ -78,46 +86,75 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-		<h1 style="text-align: center;">TOURNAMENTS SCHEDULE</h1>
-		<table id="eg_table" class="table">
-		     <thead>
-            <tr>
-                <th>Event Date</th>
-                <th>Event Title</th>
-                <th>Registered</th>
-                <th>Action</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach ($tournaments as $tournament )
-            <tr>
-                <td>{{ $tournament->tournament_date }}</td>
-                <td>{{ $tournament->tournament_name }}</td>
-                <td>% of team accept</td>
-               
-                <td>
-                <a href="editTournament/{{ $tournament->tournament_id }}">
-                <img class="edit" src="images/pencil.png" title="edit" alt="edit">
-                </a>
-                <a href="deleteTournament/{{ $tournament->tournament_id }}">
-                <img class="delete" src="images/cancel.png" title="delete" alt="delete">
-                </a>
-                </td>
+		<h1  style="text-align: center;margin-bottom:30px">Add Tournament</h1>
 
-                 <td>
-                 <a href="ViewTournament/{{ $tournament->tournament_id }}">
-                View
-                </a>
-                </td>
-            </tr>
-                @endforeach
-           
-         
-        </tbody>
+  <form class="form-horizontal well" action="addNewTournamentWithPostDirector" method="post">
+  {{ csrf_field() }}
+    
+        <div class="row">
+  <div class="col-lg-6">
+    <div class="input-group padder">
+      <span class="input-group-addon">
+         <span class="glyphicon glyphicon-user"></span>
+      </span>
+      <input type="text" class="form-control" aria-label="..."  name="title" id="title" placeholder="Enter Title">
+       
+    </div><!-- /input-group -->
+    <div class="input-group padder">
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-addon">Text</span>
+      </span>
+      <input type="text" class="form-control" aria-label="..."  name="description" id="description" placeholder="Enter Description" >
+    </div><!-- /input-group -->
+    <div class="input-group padder">
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-globe"></span>
+      </span>
+      <input type="text" class="form-control" aria-label="..." name="location" id="location" placeholder="Enter Location/City/State">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
 
-  		</table>
-        <a href="addNewTournamentDirector">Create New Event</a>
+
+  <div class="col-lg-6">
+  
+    <div class="input-group padder">
+      <span class="input-group-addon">
+        <input type="radio" aria-label="...">
+      </span>
+      <textarea  class="form-control" style="height:79px"  name="long_description" id="long_description" placeholder="Describe yourself here...">
+      </textarea>
+    </div><!-- /input-group -->
+
+    <div class="row">
+<div class="col-md-6 col-lg-6 padder">
+<div class="input-group padder " >
+<span class="input-group-addon" >
+  <span class="glyphicon glyphicon-calendar"></span>
+</span>
+<input type="text" class="form-control" aria-label="..." id="date" name="date" placeholder="Enter date">
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker').datetimepicker();
+            });
+ </script>
+</div>
+</div>
+<div class="col-md-6 col-lg-6 padder">
+<div class="input-group padder datepicker">
+<span class="input-group-addon">
+  <span class="glyphicon glyphicon-calendar"></span>
+</span><input type="text" class="form-control" aria-label="..." id="dateend" name="dateend" placeholder="Enter date">
+</div>
+ <div class="col-sm-5"><button type="Submit" class="btn btn-primary form-control" >Submit</button></div>
+</div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+      </div>
+    </div>
+  </form>
+
+
+
 	</div>
 	<footer>
 	</footer>	

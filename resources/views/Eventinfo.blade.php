@@ -82,6 +82,7 @@ margin-top: 50px;
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <li><a href="{{ url('/home') }}">Home</a></li>
         <li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tournaments<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Add New Tournament</a></li>
@@ -99,7 +100,7 @@ margin-top: 50px;
                 <li>
                     <div class="">
                             <div class="col-md-12">
-                                <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="img/img1.jpg">
+                                <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="images/img1.jpg">
                                 <h4 style="margin-top:10px;">ATIF TASKEEN</h4>
                                 <p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
                                 
@@ -150,13 +151,13 @@ margin-top: 50px;
             </thead>
             <tbody>
               <tr>
-                <td><img class="edit" src="img/green.png"></td>
-                <td><img class="edit" src="img/red.png"></td>
+                <td><img class="edit" src="images/green.png"></td>
+                <td><img class="edit" src="images/red.png"></td>
                 <td> N/A </td>
-                <td><img class="edit" src="img/green.png"></td>
-                <td><img class="edit" src="img/red.png"></td>
-                <td><img class="edit" src="img/green.png"></td>
-                <td><img class="edit" src="img/red.png"></td>
+                <td><img class="edit" src="images/green.png"></td>
+                <td><img class="edit" src="images/red.png"></td>
+                <td><img class="edit" src="images/green.png"></td>
+                <td><img class="edit" src="images/red.png"></td>
               </tr>
             </tbody>
           </table>

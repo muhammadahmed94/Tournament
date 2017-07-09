@@ -14,7 +14,6 @@ class directorcontroller extends Controller
   public function __construct(){
     $this->middleware('auth');
        $user=$this->getSessionData();
-       echo json_encode($user);
        if(!($user->user_role==HomeController::$directorRoleId)){
        Redirect::to('/')->send();
      }
@@ -34,7 +33,6 @@ class directorcontroller extends Controller
 
     public function editTournament(Request $request, $id){
       $user=$this->getSessionData();
-      echo json_encode($user);
       $requestData=array();
       $requestData["tournamentId"]=$id;
       $requestData["user"]=$user;
@@ -137,5 +135,25 @@ class directorcontroller extends Controller
        return redirect('director')->withInput();
        }   
      }
+
+     public function viewTournament(Request $request, $id){
+      
+      $tournamentData = DB::table('tournament_teams')
+            ->join('teams', 'tournament_team_id', '=', 'teams.team_id')
+            ->where('tournament_id', '=', $id)
+            ->select('team_name','team_id','team_rep')
+            ->get();
+      $viewObject= array();
+      $viewObject["tournaments"]=$tournamentData;
+      $viewObject["user"]=$this->getSessionData();
+      if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
+    return view("viewTournament",$viewObject);
+      
+    }else{
+     return view("editTournament",$requestData);
+    // no record found view
+      
+    }
+       }
     
 }

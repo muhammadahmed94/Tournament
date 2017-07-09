@@ -53,6 +53,9 @@ Route::get('/editCurrentUserTeam', "teamrepcontroller@editCurrentUser");
 
 Route::get('/editCurrentUserDirector', "directorcontroller@editCurrentUser");
 
+Route::get('/ViewTournamentDirector/{id}', "directorcontroller@viewTournament");
+
+
 Route::get('/SendEmail', "admincontroller@sendEmail");
 
 

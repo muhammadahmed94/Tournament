@@ -56,7 +56,7 @@
         </li>
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b>Account</b> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b>Admin</b> <span class="caret"></span></a>
 			<ul id="login-dp" class="dropdown-menu">
 				<li>
 					<div class="">
@@ -81,7 +81,7 @@
 </nav>
 <div class="container">
 		<h1 style="text-align: center;">Edit Tournament</h1>
-  <form class="form-horizontal " action="editTournamentInfo" method="post">
+  <form class="form-horizontal " action="editTournamentInfoDirector" method="post">
   {{ csrf_field() }}
   <input type="hidden"  name="tournament_id" value="{{$tournamentId}}">
     <div class="form-group well">

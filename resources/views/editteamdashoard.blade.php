@@ -220,11 +220,11 @@
           <div class="">
               <div class="col-md-12">
                 <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="img/img1.jpg">
-                <h4 style="margin-top:10px;">ATIF TASKEEN</h4>
+                <h4 style="margin-top:10px;">{{user->name}}</h4>
                 <p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
                 
               <div class="form-group">
-                 <button type="submit" class="btn btn-primary btn-block signout-btn">Sign Out</button>
+                <a href="{{ url('/signout') }}" class="btn btn-primary btn-block signout-btn">Sign Out</a>
               </div>
           </div>
          </div>

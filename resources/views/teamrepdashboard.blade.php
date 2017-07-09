@@ -63,7 +63,7 @@
         <li>
           <div class="">
               <div class="col-md-12" style="padding-bottom:8px!important;margin-bottom:8px!important">
-                <a href="editrepteam/{{$user->id}}">Edit Account</a>
+                <a href="editCurrentUserTeam">Edit Account</a>
 
 </div>
          </div>

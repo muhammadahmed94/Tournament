@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
 Route::get('/users', "adduserinfo@listUser");
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,29 +29,44 @@ Route::get('/deleteuser/{id}', "adduserinfo@deleteUser");
 
 Route::get('/admin', "admincontroller@viewDash");
 Route::get('/team-rep', "teamrepcontroller@viewDash");
-
 Route::get('/director', "directorcontroller@viewDash");
 
 Route::get('/signout', "signoutController@logout");
 
 Route::get('/editTournament/{id}', "admincontroller@editTournament");
 
+Route::get('/editTournamentDirector/{id}', "directorcontroller@editTournament");
+
 Route::get('/deleteTournament/{id}', "admincontroller@deleteTournament");
+Route::get('/deleteTournamentDirector/{id}', "directorcontroller@deleteTournament");
+Route::get('/deleteTournamentDirector/{id}', "admincontroller@deleteTournament");
 
 Route::get('/ViewTournament/{id}', "admincontroller@viewTournament");
 
 Route::get('/addNewTournament', "admincontroller@addNewTournament");
 
+Route::get('/addNewTournamentDirector', "directorcontroller@addNewTournament");
+
 Route::get('/editCurrentUser', "admincontroller@editCurrentUser");
+
+Route::get('/editCurrentUserTeam', "teamrepcontroller@editCurrentUser");
+
+Route::get('/editCurrentUserDirector', "directorcontroller@editCurrentUser");
 
 Route::get('/SendEmail', "admincontroller@sendEmail");
 
 
 Route::post('editTournament/editTournamentInfo',"admincontroller@editTournamentInfo");
 
+Route::post('editTournamentDirector/editTournamentInfoDirector',"directorcontroller@editTournamentInfoDirector");
+
 Route::post('/addNewTournamentWithPost', "admincontroller@addNewTournamentWithPost");
 
+Route::post('/addNewTournamentWithPostDirector', "directorcontroller@addNewTournamentWithPost");
+
 Route::post('/editAccountInfo', "admincontroller@editAccountDetails");
+
+Route::post('/editAccountInfoTeam', "teamrepcontroller@editAccountDetails");
 
 
 Route::get('/editrepteam/{id}', "teamrepcontroller@editeamrepdata");

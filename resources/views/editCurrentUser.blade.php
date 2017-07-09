@@ -246,7 +246,7 @@
     </div><!-- /.navbar-collapse -->
     </nav>
 
-      <form action="/editAccountInfo" method="post" enctype="multipart/form-data">
+      <form action="editAccountInfo" method="post" enctype="multipart/form-data">
         <input name="accountId" type ="hidden" value="{{$user->id}}">
       <div class="col-md-6" style=" margin-top: 100px;  ">
         <div class="col-md-12"><label>Name :</label>

@@ -65,7 +65,7 @@ class directorcontroller extends Controller
        DB::table('tournaments')->where('tournament_id', $tournament_id)->update([
       'tournament_name' => $name,
       'tournament_date' => $date,
-      'tournament_dateend' => $dateend,
+      'tournament_enddate' => $dateend,
       'tournament_location' => $location,
       'tournament_longdescription' => $longdescription,
       'tournament_description' => $description
@@ -120,15 +120,15 @@ class directorcontroller extends Controller
        $description=$updatedInfo["description"];
        $longdescription=$updatedInfo["long_description"];
        $location=$updatedInfo["location"];
-       $date=$updatedInfo["date"];
-       $dateend=$updatedInfo["dateend"];
+       $date=date("Y-m-d", strtotime($updatedInfo["date"]));;
+       $dateend=date("Y-m-d", strtotime($updatedInfo["dateend"]));;
        //add mandatory field in if check..
        if($title){
        DB::table('tournaments')->insert([
       'tournament_name' => $title,
       'tournament_longdescription' => $longdescription,
       'tournament_date' => $date,
-      'tournament_dateend' => $dateend,
+      'tournament_enddate' => $dateend,
       'tournament_description' => $description,
       'tournament_location' => $location
       ]);

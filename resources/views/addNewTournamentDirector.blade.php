@@ -131,7 +131,7 @@
 <span class="input-group-addon" >
   <span class="glyphicon glyphicon-calendar"></span>
 </span>
-<input type="text" class="form-control" aria-label="..." id="date" name="date" placeholder="Enter date">
+<input type="text" class="form-control" aria-label="..." id="DtournamentDate" name="date" placeholder="Enter date">
 <script type="text/javascript">
             $(function () {
                 $('#datetimepicker').datetimepicker();
@@ -143,7 +143,7 @@
 <div class="input-group padder datepicker">
 <span class="input-group-addon">
   <span class="glyphicon glyphicon-calendar"></span>
-</span><input type="text" class="form-control" aria-label="..." id="dateend" name="dateend" placeholder="Enter date">
+</span><input type="text" class="form-control" aria-label="..." id="DtournamentDateEnd" name="dateend" placeholder="Enter date">
 </div>
  <div class="col-sm-5"><button type="Submit" class="btn btn-primary form-control" >Submit</button></div>
 </div><!-- /.col-lg-6 -->
@@ -163,6 +163,19 @@
     <script src="js/custom.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#DtournamentDate" ).datepicker();
+    $( "#DtournamentDateEnd" ).datepicker();
+    
+  } );
+  </script>
+
 <script>
 		$(document).ready(function() {
     $('#eg_table').DataTable({

@@ -76,3 +76,7 @@ Route::post('/editrepinfo',"teamrepcontroller@editeamrepinfo");
 Route::get('/Event',"teamrepcontroller@Event");
 
 Route::get('/Singleteam',"teamrepcontroller@Singleteam");
+
+Route::get('/Singleteam/{id}',"admincontroller@Singleteam");
+
+// viewTeam

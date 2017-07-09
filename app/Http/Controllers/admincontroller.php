@@ -41,7 +41,6 @@ class admincontroller extends Controller
 
     public function editTournament(Request $request, $id){
       $user=$this->getSessionData();
-      echo json_encode($user);
       $requestData=array();
       $requestData["tournamentId"]=$id;
       $requestData["user"]=$user;
@@ -85,13 +84,12 @@ class admincontroller extends Controller
       
       $tournamentData = DB::table('tournament_teams')
             ->join('teams', 'tournament_team_id', '=', 'teams.team_id')
-            ->where('tournament_ids', '=', $id)
+            ->where('tournament_id', '=', $id)
             ->select('team_name','team_id','team_rep')
             ->get();
       $viewObject= array();
       $viewObject["tournaments"]=$tournamentData;
       $viewObject["user"]=$this->getSessionData();
-      echo json_encode($viewObject);
       if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
     return view("viewTournament",$viewObject);
       
@@ -113,15 +111,15 @@ class admincontroller extends Controller
        $description=$updatedInfo["description"];
        $longdescription=$updatedInfo["long_description"];
        $location=$updatedInfo["location"];
-       $date=$updatedInfo["date"];
-       $dateend=$updatedInfo["dateend"];
+       $date=date("Y-m-d", strtotime($updatedInfo["date"]));
+       $dateend=date("Y-m-d", strtotime($updatedInfo["dateend"]));;
        //add mandatory field in if check..
        if($title){
        DB::table('tournaments')->insert([
       'tournament_name' => $title,
       'tournament_longdescription' => $longdescription,
       'tournament_date' => $date,
-      'tournament_dateend' => $dateend,
+      'tournament_enddate' => $dateend,
       'tournament_description' => $description,
       'tournament_location' => $location
       ]);
@@ -176,6 +174,12 @@ class admincontroller extends Controller
          return redirect('admin')->withInput();  
         // return view("editCurrentUser",$viewObject);
 
+    }
+
+    public function Singleteam(){
+      $user=$this->getSessionData();
+      $viewObject["user"]=$user;
+      return view("Singleteaminfo",$viewObject);
     }
    
 }

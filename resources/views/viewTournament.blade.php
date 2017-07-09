@@ -152,13 +152,13 @@ ul.breadcrumb li a {color: #FF8333;}
     @foreach($tournaments as $tournament)
     <tr>
       <td>{{$tournament->team_id}}</td>
-      <td>{{$tournament->team_name}}</td>
+      <td><a href="../Singleteam/{{$tournament->team_id}}">{{$tournament->team_name}}</a></td>
       <td>$1400</td>
       <td>$400 CC</td>
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
-      <td><a href="#"><img class="edit" src="images/green.png"></a></td>
+      <td><a href="#"><img class="edit" src="../images/green.png"></a></td>
       <td>{{$tournament->team_rep}}</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
@@ -195,170 +195,18 @@ ul.breadcrumb li a {color: #FF8333;}
     </tr>
     <tr>
       <td>12</td>
-      <td>RED WINGS</td>
+      <td><a href="#">RED WINGS</a></td>
       <td>$1400</td>
       <td>$400 CC</td>
-      <td>$1000 CC</td>
+      <td>$1000 CC </td>
       <td>852</td>
       <td>3/20</td>
-      <td><a href="#"><img class="edit" src="images/green.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src="images/red.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src="images/red.png"></a></td>
+      <td><a href="#"><img class="edit" src="../images/green.png"></a></td>
       <td>DOE JOE</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
   </table>
-  <div class="head hidden-sm hidden-xs">
-    <ul class="head-title"> 
-      <li>2009 AAA</li>
-      <li>OPEn 14/20</li>
-      <li>WAITLIST 0</li>
-      <li>DROPPED3</li>
-    </ul>
-  </div>
-  <table border="1" >
-    <tr>
-      <th colspan="2"></th>
-      <th colspan="4" style="color: white; background-color: #9FD1B2;">PAYMENT STATUS</th>
-      <th colspan="2" style="color: white; background-color: #81BCC7;">REGISTRATION STATUS</th>
-      <th colspan="2" style="color: white; background-color: #DADE78;">CONTACT INFO</th>
-    </tr>
-    <tr>
-      <th>ID</th>
-      <th>TEAM</th>
-      <th style="color: white; background-color: #9FD1B2;">BAL</th>
-      <th style="color: white; background-color: #9FD1B2;">DEP</th>
-      <th style="color: white; background-color: #9FD1B2;">FULL</th>
-      <th style="color: white; background-color: #9FD1B2;">INS.</th>
-      <th style="color: white; background-color: #81BCC7;">ACCEPT</th>
-      <th style="color: white; background-color: #81BCC7;">INFORMATION</th>
-      <th style="color: white; background-color: #DADE78;">COACH</th>
-      <th style="color: white; background-color: #DADE78;">EMAIL</th>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src="images/green.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src=".../images/green.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src="images/red.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
-  </table>
-  <h3>Wait List</h3>
-  <div class="head hidden-sm hidden-xs">
-    <ul class="head-title"> 
-      <li>2009 AAA</li>
-      <li>OPEn 14/20</li>
-      <li>WAITLIST 0</li>
-      <li>DROPPED3</li>
-    </ul>
-  </div>
-  <table border="1" style="margin-bottom: 30px;">
-    <tr>
-      <th colspan="2"></th>
-      <th colspan="4" style="color: white; background-color: #9FD1B2;">PAYMENT STATUS</th>
-      <th colspan="2" style="color: white; background-color: #81BCC7;">REGISTRATION STATUS</th>
-      <th colspan="2" style="color: white; background-color: #DADE78;">CONTACT INFO</th>
-    </tr>
-    <tr>
-      <th>ID</th>
-      <th>TEAM</th>
-      <th style="color: white; background-color: #9FD1B2;">BAL</th>
-      <th style="color: white; background-color: #9FD1B2;">DEP</th>
-      <th style="color: white; background-color: #9FD1B2;">FULL</th>
-      <th style="color: white; background-color: #9FD1B2;">INS.</th>
-      <th style="color: white; background-color: #81BCC7;">ACCEPT</th>
-      <th style="color: white; background-color: #81BCC7;">INFORMATION</th>
-      <th style="color: white; background-color: #DADE78;">COACH</th>
-      <th style="color: white; background-color: #DADE78;">EMAIL</th>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/green.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/red.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>RED WINGS</td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC</td>
-      <td>852</td>
-      <td>3/20</td>
-      <td><a href="#"><img class="edit" src="img/red.png"></a></td>
-      <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
-    </tr>
-  </table>
+  
 </div>
 
 
@@ -379,5 +227,3 @@ ul.breadcrumb li a {color: #FF8333;}
 <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 
 
-</body>
-</html>

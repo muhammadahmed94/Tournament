@@ -23,6 +23,7 @@
 }
 .navbar-nav>li>.dropdown-menu {
 	background-color: #333;
+    z-index: 9999;
 }
 .dropdown-menu>li>a {
 	color: white;
@@ -102,6 +103,7 @@
     background-color: #FF8333;
     border-color: #FF8333;
 }
+
 @media(max-width:768px){
     #login-dp{
         background-color: inherit;

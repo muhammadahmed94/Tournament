@@ -138,15 +138,7 @@ class admincontroller extends Controller
         return view("editCurrentUser",$viewObject);
       }
 
-     public function sendEmail(){
-        $mail = "rao.noman786@outlook.com";
-        $subject = "hey";
-        $message = "jsdfs";
-       
-        mail($mail, $subject, $message);
-        dd('done send');
-
-     } 
+    
 
        public function editAccountDetails(){
 
@@ -180,6 +172,9 @@ class admincontroller extends Controller
       $user=$this->getSessionData();
       $viewObject["user"]=$user;
       return view("Singleteaminfo",$viewObject);
+    }
+    public function adminsingleteam(){
+      return view("adminteamsuccess");
     }
    
 }

@@ -50,7 +50,7 @@
       <li><a href="{{ url('/home') }}">Home</a></li>
         <li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tournaments<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Add New Tournament</a></li>
+            <li><a href="{{ url('/addNewTeamScreen') }}"">Create New Team</a></li>
             <li><a href="#">Chi Town Shuffle</a></li>
           </ul>
         </li>
@@ -72,14 +72,14 @@
       </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b>Admin</b> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b>Account</b> <span class="caret"></span></a>
             <ul id="login-dp" class="dropdown-menu">
                 <li>
                     <div class="">
                             <div class="col-md-12">
                                 <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="img/img1.jpg">
-                                <h4 style="margin-top:10px;">ATIF TASKEEN</h4>
-                                <p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
+                                <h4 style="margin-top:10px;">Team</h4>
+                                <p style="margin-top:-5px;" >Team@hotmail.com</p></center>
                                 
                             <div class="form-group">
                                  <a href="{{ url('/signout') }}" class="btn btn-primary btn-block signout-btn">Sign Out</a>

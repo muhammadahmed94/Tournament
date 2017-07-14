@@ -95,9 +95,19 @@ class teamrepcontroller extends Controller
         // return view("editCurrentUser",$viewObject);
 
     }
-
-    public function Event(){
-      return view("team-rep/Eventinfo");
+     public function Event(){
+       
+      return view("team-rep/Tournamentinfo");
+    }
+    public function teamStatus(Request $request, $teamid){
+       $tournamentData = DB::table('teams')
+            ->join('team_registration', 'team_id', '=', 'teams_team_id')
+            ->where('team_id', '=', $teamid)
+            ->select('Deposit')
+            ->get();
+        $viewObject['teamdata']=$tournamentData;
+      echo $tournamentData;
+      return view("team-rep/Eventinfo", $viewObject);
     }
 
     public function Singleteam(){
@@ -178,7 +188,7 @@ $user=$this->getSessionData();
      $viewObject["tournaments"]=$tournaments;
      $viewObject["teams"]=DB::table('teams')
             ->where('user_id', $user['id'])->get();
-            //echo $viewObject["teams"];
+            echo $viewObject["teams"];
      return view("team-rep/myteams",$viewObject);
    }
 }

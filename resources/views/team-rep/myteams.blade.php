@@ -55,7 +55,7 @@
        	@foreach ($teams as $team )
             <tr>
                 
-                <td><a href="Event/{{$team->team_id}}">Chicago World Event </a></td>
+                <td><a href="Event/{{$team->team_id}}/{{$team->tournament_id}}">Chicago World Event </a></td>
                 <td><a href="{{ url('/Event $user->team_id') }}">{{$team->team_name}}</a></td>
                 <td><a href="">Incomplete</a></td>
 			      </tr>

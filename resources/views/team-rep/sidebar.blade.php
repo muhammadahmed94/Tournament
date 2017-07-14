@@ -195,8 +195,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav nav2">
-        <li><a href="#">Active Events<span style="font-size:16px;"><img style="float: right;" class="edit" src="images/calendar.png"></span></a></li>
-        <li ><a href="/myteams">My Teams<span style="font-size:16px;"><img style="float: right;" class="edit" src="images/group.png"></span></a></li>
+        <li><a href="#">Active Events<span style="font-size:16px;"><img style="float: right;" class="edit" src="/images/calendar.png"></span></a></li>
+        <li ><a href="/myteams">My Teams<span style="font-size:16px;"><img style="float: right;" class="edit" src="/images/group.png"></span></a></li>
       </ul>
     </div>
     </div>

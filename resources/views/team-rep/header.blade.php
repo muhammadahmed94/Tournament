@@ -2,6 +2,15 @@
 <html>
 <head>
 	<title></title>
+  <style type="text/css">
+    
+    .navbar{
+      margin-bottom: 0px;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    }
+  </style>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-inverse" role="navigation">
@@ -51,7 +60,7 @@
                     <div class="">
                             <div class="col-md-12">
                                 <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="img/img1.jpg">
-                                <h4 style="margin-top:10px;">Team</h4>
+                                <h4 style="margin-top:10px;">{{$user->name}}</h4>
                                 <p style="margin-top:-5px;" >Team@hotmail.com</p></center>
                                 
                             <div class="form-group">

@@ -93,4 +93,5 @@ Route::post('/addNewTeamInfo', "teamrepcontroller@addNewTeamInfo");
 
 Route::get('/myteams', "teamrepcontroller@myteams");
 
-Route::get('/Event/{id}',"teamrepcontroller@teamStatus");
+Route::get('/Event/{id}/{tid}',"teamrepcontroller@teamStatus");
+Route::get('/Addteamdata',"teamrepcontroller@adddata");

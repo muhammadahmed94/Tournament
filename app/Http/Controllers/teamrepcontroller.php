@@ -40,21 +40,11 @@ class teamrepcontroller extends Controller
             return view("editteamdashoard",$viewObject);
     }
        public function editeamrep(Request $request ,$id){
-        /*$requestdata = DB::table('organisation_info')
-            ->join('users', 'user_id', '=', 'users.id')
-            ->where('user_id', '=', $id)
-            ->get()->all();
-          //echo json_encode($requestdata);
-            $user=$this->getSessionData();
-            $viewObject["requestdata"]=$requestdata;
-            $viewObject["user"]=$user;
-            echo json_encode($viewObject);*/
+        
            return view("teamrepdashboard");
     }
     public function editeamrepinfo(){
-       // $data = Input::all();
-         //echo json_encode($data);
-        // echo ("sdasdas");
+       
          return view("mail");
     }
 
@@ -96,20 +86,48 @@ class teamrepcontroller extends Controller
 
     }
      public function Event(){
-       
+       $viewObject= array();
+            $user=$this->getSessionData();
+            $viewObject["user"]=$user;
       return view("team-rep/Tournamentinfo");
     }
-    public function teamStatus(Request $request, $teamid){
-       $tournamentData = DB::table('teams')
+    public function teamStatus(Request $request=null, $teamid=id , $tournament_id=tid){
+      $viewObject= array();
+            $user=$this->getSessionData();
+            $viewObject["user"]=$user;
+        $userdata = DB::table('teams')->get();
+        $tournament =  $teamData = DB::table('tournaments')
+            ->where('tournament_id', '=', $tournament_id)
+            ->get();
+        $teamData = DB::table('teams')
             ->join('team_registration', 'team_id', '=', 'teams_team_id')
             ->where('team_id', '=', $teamid)
             ->select('Deposit')
             ->get();
-        $viewObject['teamdata']=$tournamentData;
-      echo $tournamentData;
+        $viewObject['teamdata']=$teamData;
+        $viewObject['tournaments']=$tournament;
+     // echo $tournament;
       return view("team-rep/Eventinfo", $viewObject);
     }
+    
+    public function adddata(){
+        
+      if(Input::hasFile('certified_roster')){
+            $file = Input::file('certified_roster');
+            $file->move('uploads',$file->getClientOriginalName());
+            $userFileName="uploads/".$file->getClientOriginalName();
+            $user=Session::get('user');
 
+            DB::table('team_registration')
+            ->where('id', $user->$teamid)
+            ->update(['imagepath' => $userFileName]);
+            return redirect()->route('myteams', ['message' => "image uploaded sucessfully"]);
+    }
+    else{
+        echo "Image not uploaded";
+        //return redirect()->route('home', ['message' => "image not found"]);
+    }
+    }
     public function Singleteam(){
       $user=$this->getSessionData();
 
@@ -149,7 +167,7 @@ class teamrepcontroller extends Controller
 
 
 
-    echo $user['id'];
+    //echo $user['id'];
      DB::table('teams')->insert([
       'tournament_id' => $tournament_id,
       'team_name' => $TeamName,
@@ -180,15 +198,12 @@ class teamrepcontroller extends Controller
      return view("team-rep/myteams",$viewObject);
    }
    public function myteams(){
-    
-    $viewObject=array();
-$user=$this->getSessionData();
-    $viewObject["user"]=$user;
-      $tournaments=array();
-     $viewObject["tournaments"]=$tournaments;
-     $viewObject["teams"]=DB::table('teams')
+            $viewObject= array();
+            $user=$this->getSessionData();
+            $viewObject["user"]=$user;
+    $viewObject["teams"]=DB::table('teams')
             ->where('user_id', $user['id'])->get();
-            echo $viewObject["teams"];
+            echo $user;
      return view("team-rep/myteams",$viewObject);
    }
 }

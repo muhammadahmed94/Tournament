@@ -36,6 +36,9 @@
      td{
         text-align: center;
      }
+     .img{
+        height: 25px;
+     }
      .reginfo_top{
         float: left;
         width: 100%;
@@ -72,14 +75,16 @@ margin-top: 50px;
 </head>
 <body>
    @include('team-rep/header')
-   @include('team-rep/sidebar')
+    @include('team-rep/sidebar')
+
+   @foreach ($tournaments as $tournament )
     <div class="container">
         <h3>Name of the Event & Registered Team</h3>
         <div class="team_reg">
             <div class="col-md-8">
                 <center>
                     <p style="margin: 0px; font-size: 20px; padding-top: 6px;">Event description and general information</p>
-                    <a href="#">CCM WORLD INVITE - CHICAGO</a>
+                    <a href="#"> {{ $tournament->tournament_name}} - CHICAGO</a>
                 </center>
             </div>
             <div class="col-md-4">
@@ -93,7 +98,7 @@ margin-top: 50px;
                 </div>
             </div>
         </div>
-        @foreach ($teamdata as $team )
+        @endforeach
         <h3 style="margin-top: 50px; float: left;">Team Registration check list</h3>
          <table class="table table-bordered">
             <thead>
@@ -110,13 +115,13 @@ margin-top: 50px;
           
             <tbody>
               <tr>
-                <td><img class="edit" src="images/green.png"></td>
-                <td><img class="edit" src="images/red.png"></td>
+                <td><img class="edit" src="/images/green.png"></td>
+                <td><img class="edit" src="/images/red.png"></td>
                 <td> N/A </td>
-                <td><img class="edit" src="images/green.png"></td>
-                <td><img class="edit" src="images/red.png"></td>
-                <td><img class="edit" src="images/green.png"></td>
-                <td><img class="edit" src="images/red.png"></td>
+                <td><img class="edit" src="/images/green.png"></td>
+                <td><img class="edit" src="/images/red.png"></td>
+                <td><img class="edit" src="/images/green.png"></td>
+                <td><img class="edit" src="/images/red.png"></td>
               </tr>
             </tbody>
 
@@ -126,8 +131,7 @@ margin-top: 50px;
                 <div class="col-md-6">
                     <div class="row">
                         <div class="reg_info">
-                            <h3 style="padding: 10px 0px 0px 15px;">Deposit made</h3>
-                            <p style="padding: 10px 0px 10px 15px;">${{ $team->Deposit }} Deposite made on 1/7/2017</p>
+                            <h3 style="padding: 10px 0px 0px 15px;">Deposit made</h3>chic Deposite made on 1/7/2017</p>
                         </div>
                     </div>
                 </div>
@@ -135,7 +139,7 @@ margin-top: 50px;
                     <div class="row">
                         <div class="reg_info_diff">
                             <h3 style="padding: 10px 0px 0px 15px;">Certified Roster</h3>
-                            <p style="padding: 10px 0px 10px 15px;">* Roster info missing <label class="btn btn-primary upload" for="my-file-selector">
+                            <p style="padding: 10px 0px 10px 15px;" name="certified_roster">* Roster info missing <label class="btn btn-primary upload" for="my-file-selector">
     <input id="my-file-selector" type="file" style="display:none" 
     onchange="$('#upload-file-info').html(this.files[0].name)">
     Click here to upload
@@ -194,7 +198,7 @@ margin-top: 50px;
 
                 
           </div>
-          @endforeach
+          
           <div class="col-md-2">
                   
                 </div>
@@ -203,10 +207,13 @@ margin-top: 50px;
                   <h3 style="padding: 10px 0px 0px 15px;">Overall Payment Information</h3>
                   <p style="padding: 10px 0px 10px 15px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                 </div>
+
                 </div>
+                 
                 <div class="col-md-2">
                   
                 </div>
+
     </div>
     <footer>
     </footer>   

@@ -1,84 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="css/stylesheet.css" rel="stylesheet">
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
-    <style>
-    .team_reg{
-    float: left;
-    width: 100%;
-    background-color: #eee; 
-    margin-top: 20px;
-}
-.reg_status{
-    background-color: #E8C1E4;
-    float: left;
-    width: 100%;
-}
-     table{
-        width: 100%;
-        float: left;
-        background-color: #eee;
-        margin-top: 20px;
-     }  
-     thead{
-        border-bottom: 2px solid black;
-     } 
-     th{
-        text-align: center;
-     }
-     td{
-        text-align: center;
-     }
-     .img{
-        height: 25px;
-     }
-     .reginfo_top{
-        float: left;
-        width: 100%;
-     }
-     .reg_info{
-        background-color: #9ACC8B;
-        margin-right: 30px;
-     }
-     .reg_info_diff{
-        background-color: #E8C1E4;
-        margin-right: 30px;
-     }
-     .upload{
-        margin-top: -15px;
-        margin-left: 15px;
-        float: right;
-        margin-right: 15px;
-        width: 200px;
-     }
-     .payment_info{
-      float: left;
-      width: 100%;
-      border: 2px solid gray;
-box-shadow: 10px 10px 5px  #888888;
-margin-bottom: 50px;
-margin-top: 50px;
-     }
-     .container {
-    /* width: 1170px; */
-    padding-left: 100px;
-    padding-top: 75px;
-}
-    </style> 
-</head>
-<body>
-   @include('team-rep/header')
+@include('team-rep/header')
     @include('team-rep/sidebar')
-
    @foreach ($tournaments as $tournament )
-    <div class="container">
+    <div class="container eventInfoClass">
         <h3>Name of the Event & Registered Team</h3>
         <div class="team_reg">
             <div class="col-md-8">
@@ -100,7 +23,7 @@ margin-top: 50px;
         </div>
         @endforeach
         <h3 style="margin-top: 50px; float: left;">Team Registration check list</h3>
-         <table class="table table-bordered">
+         <table class="table table-bordered tableClass">
             <thead>
                 <tr>
                     <th>Deposite<br>Made</th>

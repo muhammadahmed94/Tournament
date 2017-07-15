@@ -25,7 +25,14 @@ class teamrepcontroller extends Controller
 
        public function viewDash(){
            $viewObject= array();
-           $viewObject["user"]=$this->getSessionData();
+           $user = $this->getSessionData();
+           $viewObject["user"]=$user;
+           $requestdata = DB::table('teams')
+            ->join('tournaments', 'teams.tournament_id', '=', 'tournaments.tournament_id')
+            ->where('user_id', '=', $user['id'])
+            ->get()->all();
+            $viewObject["tournaments"]=$requestdata;
+           //echo json_encode($requestdata);
            return view("team-rep/teamrepdashboard",$viewObject);
     }
        public function editeamrepdata(Request $request ,$id){
@@ -50,7 +57,6 @@ class teamrepcontroller extends Controller
 
     public function editCurrentUser(){
          $viewObject= array();
-
          $viewObject["user"]=$this->getSessionData();
             $userData=DB::table('users')
             ->where('id',$viewObject["user"]->id)->get()->first();
@@ -89,7 +95,7 @@ class teamrepcontroller extends Controller
        $viewObject= array();
             $user=$this->getSessionData();
             $viewObject["user"]=$user;
-      return view("team-rep/Tournamentinfo");
+      return view("team-rep/Tournamentinfo", $viewObject);
     }
     public function teamStatus(Request $request=null, $teamid=id , $tournament_id=tid){
       $viewObject= array();
@@ -197,13 +203,41 @@ class teamrepcontroller extends Controller
             //echo $viewObject["teams"];
      return view("team-rep/myteams",$viewObject);
    }
+
    public function myteams(){
             $viewObject= array();
             $user=$this->getSessionData();
             $viewObject["user"]=$user;
-    $viewObject["teams"]=DB::table('teams')
+            $viewObject["teams"]=DB::table('teams')
             ->where('user_id', $user['id'])->get();
-            echo $user;
+            //echo $viewObject["teams"];
      return view("team-rep/myteams",$viewObject);
+   }
+
+   public function viewteamdashboard(Request $request ,$id){
+     $viewObject= array();
+            $user=$this->getSessionData();
+            $viewObject["user"]=$user;
+            $viewObject["teams"]=DB::table('teams')
+            ->where('team_id', $id)->get()->first();
+            //echo json_encode($viewObject);
+    return view('team-rep/single_team_info',$viewObject);
+   }
+   public function Editteamdashboard(){
+    // myfile
+
+         $data = Input::all();
+         echo Input::hasFile('myfile');
+        if(Input::hasFile('myfile')){
+            $file = Input::file('myfile');
+            echo json_encode($file);
+            $file->move('uploads',$file->getClientOriginalName());
+            $userFileName="uploads/".$file->getClientOriginalName();
+            
+            }else{
+             
+            }
+         $viewObject= array();
+
    }
 }

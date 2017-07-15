@@ -95,3 +95,8 @@ Route::get('/myteams', "teamrepcontroller@myteams");
 
 Route::get('/Event/{id}/{tid}',"teamrepcontroller@teamStatus");
 Route::get('/Addteamdata',"teamrepcontroller@adddata");
+
+Route::get('/viewteamdashboard/{tid}',"teamrepcontroller@viewteamdashboard");
+
+Route::post('/editteamdashboard',"teamrepcontroller@Editteamdashboard");
+//Editteamdashboard

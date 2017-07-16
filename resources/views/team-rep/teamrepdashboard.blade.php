@@ -28,7 +28,7 @@
 
                  <td>
                  <a href="{{ url('/Singleteam')}}">
-                <img class="edit teamstatusclass" src="images/RedDot.png" title="edit" alt="edit">
+                <img class="edit teamstatusclass" src='{{ URL::asset("images/RedDot.png") }}' title="edit" alt="edit">
                 </a>
                 <!--<a href="#">
                 <img class="delete" src="images/cancel.png"   title="delete" alt="delete">-->

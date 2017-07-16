@@ -269,6 +269,7 @@ margin-top: 50px;
   .accountdropdownclass{
     background-color: #F8F8F8!important;
   }
+  
   </style>
 </head>
 <body>
@@ -300,17 +301,17 @@ margin-top: 50px;
       </ul>
       <ul class="nav navbar-nav navbar-right">
                <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <b>Settings</b> <span class="caret"></span></a>
-      <ul id="login-dp" class="dropdown-menu">
+          <li><a href="{{ url('editAccountDetails')}}">Edit Account</a></li>
+      <!--<ul id="login-dp" class="dropdown-menu">
         <li>
           <div class="">
               <div class="col-md-12" style="padding-bottom:8px!important;margin-bottom:8px!important">
-                <a href="editCurrentUserTeam">Edit Account</a>
+                <a href="{{ url('editAccountDetails')}}"></a>
 
 </div>
          </div>
         </li>
-      </ul>
+      </ul>-->
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b>Account</b> <span class="caret"></span></a>
@@ -318,7 +319,7 @@ margin-top: 50px;
                 <li>
                     <div class="">
                             <div class="col-md-12">
-                                <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="images/img1.jpg">
+                                <center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src=""{{ URL::asset("images/img1.jpg") }}>
                                 <h4 style="margin-top:10px;">{{$user->name}}</h4>
                                 <p style="margin-top:-5px;" >{{$user->email}}</p></center>
                                 

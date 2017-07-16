@@ -209,18 +209,27 @@
     color: #fff;
    background-color: #337ab7 !important; 
   border-color: #337ab7 !important;
-  
+
+}
+.buttondiv{
+  padding-bottom: : 100px !important;
+}
+.classformcontrol{
+  padding-left: 100px;
 }
 </style>
 
+    
 	
   <div class="container eventInfoClass">
-  <div class="col-lg-10 col-md-9 col-sm-9 ">
+    <h1> {{$message or ''}}</h1>
+  
+  <div class="col-lg-11 col-md-11 col-sm-11 classformcontrol">
   <div class="row">
   <div class="">
     <h2 style="margin-top: 70px;">Team Profile</h2>
     <div class="team_profile">
-   <form class="form-horizontal " action="/editteamdashboard" method="post" enctype="multipart/form-data">
+   <form class="form-horizontal " action="{{ url('/editteamdashboard') }}" method="post" enctype="multipart/form-data">
 
        {{ csrf_field() }}
       <div class="team_profile_title">
@@ -228,12 +237,14 @@
       </div>
       <div class="col-md-2">
       </div>
+     
       <div class="col-md-4">
         <div class="form-group">
           <label for="sel1">Birth Year</label>
           <input type="text" name="ah" value="{{ $teams->birth_year }}" class="form-control" id="sel1">
-
           </input>
+
+          <input type="hidden" name="team_id" value="{{$teams->team_id}}"/>
         </div>
       </div>
       <div class="col-md-4">
@@ -288,7 +299,7 @@
     </div>
     <div style="margin-top: 40px;" class="team_profile">
       <div class="team_profile_title">
-        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit teamstatusclass" src="images/red.png">Certified Roster</h3>
+        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit teamstatusclass" src="{{ URL::asset('images/red.png') }}">Certified Roster</h3>
       </div>
       <div style="margin: 30px 0px 30px 0px; float: left; width: 100%;">
         <div class="col-md-3">
@@ -298,8 +309,8 @@
             <input id="my-file-selector" name="myfile" type="file" style="display:none" > -->
 
             <label style="margin-top: 0px; " class="btn btn-primary upload" for="my-file-selector">
-              <span><img class="edit teamstatusclass" src="images/upload.png">
-              <input id="my-file-selector" name="myfile" type="file" style="display:none" >
+              <span><img class="edit teamstatusclass" src="{{ URL::asset('images/upload.png') }}">
+              <input id="my-file-selector" name="certified_roster" type="file" style="display:none" >
               Upload PDF
             </label>
           </div>
@@ -320,14 +331,14 @@
     
     <div style="margin-top: 40px;" class="team_profile">
       <div class="team_profile_title">
-        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit teamstatusclass" src="images/red.png">Travel Permit</h3>
+        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit teamstatusclass" src="{{ URL::asset('images/red.png') }}">Travel Permit</h3>
       </div>
       <div style="margin: 30px 0px 30px 0px; float: left; width: 100%;">
         <div class="col-md-3">
           <center>
             <div style="margin-top: 10px;" class="upload-btn-wrapper btn-primary">
             <label style="margin-top: 0px; " class="btn btn-primary upload" for="my-file-selector">
-              <span><img class="edit teamstatusclass" src="images/upload.png">
+              <span><img class="edit teamstatusclass" src="{{ URL::asset('images/upload.png') }}">
               <input id="my-file-selector" name="myfile1" type="file" style="display:none" >
               Upload PDF
             </label>
@@ -348,7 +359,7 @@
     </div>
     <div style="margin-top: 40px; margin-bottom: 40px;" class="team_profile">
       <div class="team_profile_title">
-        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit teamstatusclass" src="images/green.png">Program Book Roster</h3>
+        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit teamstatusclass" src="{{ URL::asset('images/green.png') }}">Program Book Roster</h3>
       </div>
       <table class="table table-striped">
     <thead>
@@ -377,10 +388,16 @@
     </tbody>
   </table>
     </div>
+     
+  </div>
+  <div class="form-group buttondiv 
+    padding-bottom: 100px;
+">
+  <input class="btn btn-large form-control submit"  type="submit" name="submit">
   </div>
   </div>
   </div>
-  <input type="submit" name="submit">
+ 
   </form>
   </div>
 	<footer>

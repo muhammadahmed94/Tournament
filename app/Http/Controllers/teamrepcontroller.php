@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Validator;
 use Illuminate\Http\Request;
 use Input;
 use Session;
@@ -216,28 +216,91 @@ class teamrepcontroller extends Controller
 
    public function viewteamdashboard(Request $request ,$id){
      $viewObject= array();
+     $inputData=Input::all();
+     echo json_encode($inputData);
             $user=$this->getSessionData();
             $viewObject["user"]=$user;
             $viewObject["teams"]=DB::table('teams')
             ->where('team_id', $id)->get()->first();
-            //echo json_encode($viewObject);
+            
     return view('team-rep/single_team_info',$viewObject);
    }
    public function Editteamdashboard(){
     // myfile
-
+           $viewObject= array();
+            $user=$this->getSessionData();
+            $viewObject["user"]=$user;
          $data = Input::all();
-         echo Input::hasFile('myfile');
-        if(Input::hasFile('myfile')){
-            $file = Input::file('myfile');
-            echo json_encode($file);
+        $team_id=$data["team_id"];
+
+         $viewObject["teams"]=DB::table('teams')
+            ->where('team_id', $team_id)->get()->first();
+
+        if(Input::hasFile('certified_roster')){
+            $file = Input::file('certified_roster');
             $file->move('uploads',$file->getClientOriginalName());
             $userFileName="uploads/".$file->getClientOriginalName();
-            
+            DB::table('teams')
+            ->where('user_id', $user->id)
+            ->update(['certified_roster' => $userFileName]);
+            $viewObject["message"]="data uploaded succesfully";
+            return redirect('viewteamdashboard/'.$team_id)->withInput(['message' => "image uploaded sucessfully"]); 
             }else{
-             
+              $viewObject["message"]="data not uploaded succesfully";
+             return redirect('viewteamdashboard/'.$team_id)->withInput(['message' => "image uploaded sucessfully"]); 
             }
          $viewObject= array();
 
    }
+   public function editaccount(){
+          $viewObject= array();
+            $user=$this->getSessionData();
+            $viewObject["user"]=$user;
+      return view('team-rep/editteamrep',$viewObject);
+   }
+   public function updateeditaccount(){
+     $viewObject= array();
+            $user=$this->getSessionData();
+            $viewObject["user"]=$user;
+            $data = Input::all();
+            $name = ["name"];
+            $phone1 = ["phone1"];
+          $name = $data["name"];
+          $phone1 = $data["phone1"];
+          $email  = $data["email"];
+          $phone2 = $data["phone2"];
+          $org_name = $data["org_name"];
+          $bill_address = $data["bill_address"];
+          $web_url  = $data["web_url"];
+          $city = $data["city"];
+          $state  = $data["state"];
+          $zone = $data["zone"];
+          $country  = $data["country"];
+          $facebook = $data["facebook"];
+          $instagram  = $data["instagram"];
+          $twitter  = $data["twitter"];
+
+          //insert into database
+          DB::table('team_representative')->insert([
+          //'team_name' => $TeamName,
+          'name' => $name,
+          'email' => $email,
+          'phone#1' => $phone1,
+          'phone#2' => $phone2,
+          'organization_name' => $org_name,
+          'billing_address' => $bill_address,
+          'website_url' => $web_url,
+          'city' => $city,
+          'state' => $state,
+          'zone' => $zone,
+          'country' => $country,
+          'facebook' => $facebook,
+          'instagram' => $instagram,
+          'twitter' => $twitter,
+          'user_id' => $user['id']
+
+      ]);
+          return view('team-rep/editteamrep',$viewObject);
+   }
 }
+

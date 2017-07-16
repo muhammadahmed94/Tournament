@@ -99,4 +99,7 @@ Route::get('/Addteamdata',"teamrepcontroller@adddata");
 Route::get('/viewteamdashboard/{tid}',"teamrepcontroller@viewteamdashboard");
 
 Route::post('/editteamdashboard',"teamrepcontroller@Editteamdashboard");
-//Editteamdashboard
+
+Route::get('/editAccountDetails',"teamrepcontroller@editaccount");
+
+Route::post('/updateeditaccount',"teamrepcontroller@updateeditaccount");

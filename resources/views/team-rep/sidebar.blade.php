@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav nav2">
         <li><a href="#">Active Events<span style="font-size:16px;"><img class="faviconClass" style="float: right;" class="edit" src='{{ URL::asset("/images/calendar.png") }}'></span></a></li>
-        <li ><a href="/myteams">My Teams<span style="font-size:16px;"><img class="faviconClass" style="float: right;" class="edit" src='{{ URL::asset("/images/group.png") }}'></span></a></li>
+        <li ><a href="{{ url('/myteams') }}">My Teams<span style="font-size:16px;"><img class="faviconClass" style="float: right;" class="edit" src='{{ URL::asset("/images/group.png") }}'></span></a></li>
       </ul>
     </div>
     </div>

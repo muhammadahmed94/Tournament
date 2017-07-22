@@ -145,7 +145,8 @@
   </nav>
   <div class="container">
     <h3>Tournament Info</h3>
-      <form action="" method="get" accept-charset="utf-8">
+      <form action=" {{ url('/addNewTournamentWithPost') }}" method="Post" accept-charset="utf-8">
+      {{ csrf_field() }}
         <div class="tournament-info">
           <div class="tournament-info-title">
             <h4>Team Info</h4>
@@ -155,27 +156,27 @@
             <div class="col-md-4 col-sm-12">
               <div class="form-group">
                 <label for="usr">Title</label>
-                <input type="text" class="form-control" id="usr">
+                <input type="text" class="form-control" name="Title" id="Title">
               </div>
               <div class="form-group">
                 <label for="usr">Description</label>
-                <input type="text" class="form-control" id="usr">
+                <input type="text" class="form-control" name="Description" id="Description">
               </div>
               <div class="form-group">
                 <label for="usr">Location</label>
-                <input type="text" class="form-control" id="usr">
+                <input type="text" class="form-control" name="Location" id="usr">
               </div>
             </div>
             <div class="col-md-4 col-sm-12">
               <div class="form-group">
                 <label for="comment">Comment:</label>
-                <textarea style="height: 111px;" class="form-control" rows="4" id="comment"></textarea>
+                <textarea style="height: 111px;" class="form-control" rows="4" name="Comment" id="comment"></textarea>
               </div>
                 <div class="col-md-5 col-sm-12">
                   <div class="row">
                           <div class="form-group">
                       <label for="usr">Start Date</label>
-                      <input id="date" type="text" class="form-control" id="usr">
+                      <input id="date" type="text" class="form-control" name="Start_Date" id="usr">
                   </div>
                       </div>
                 </div>
@@ -185,7 +186,7 @@
                   <div class="row">
                           <div class="form-group">
                       <label for="usr">End Date</label>
-                      <input id="date1" type="text" class="form-control" id="usr">
+                      <input id="date1" type="text" class="form-control" name="End_Date" id="usr">
                   </div>
                       </div>
                 </div>
@@ -200,6 +201,7 @@
         <div class="append-form">
           
         </div>
+        <input type="submit" name="submit">
       </form>
       
   </div>
@@ -247,7 +249,7 @@
                 if (x < max_fields) { //max input box allowed
                     x++; //text box increment
 
-                    $(wrapper).append('<div class="after-add'+x+'"><div class="tournament-info"><div class="tournament-info-title"><a href="" class="remove_field"><img style="height: 50px; padding: 10px; float: right;" src="images/cancel.png" alt=""></a></div><div class="col-md-2"></div><div class="col-md-4"><div class="form-group"> <label for="usr">Division Title</label> <input type="text" class="form-control" id="usr"></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Birth Year</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-2"></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Boys/Girls</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Limit / Division</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-2"></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Level</label> <input type="text" class="form-control" id="usr"></div></div></div></div><div class="col-md-4"><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Entry Fee</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-2"></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Deposite</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Early Bid</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-2"></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Early Bid Exp</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Multi Team</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-2"></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Canadian</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Balanace Due</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-2"></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Balanace Due Date</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Balanace Team Disc</label> <input type="text" class="form-control" id="usr"></div></div></div><div class="col-md-2"></div><div class="col-md-5"><div class="row"><div class="form-group"> <label for="usr">Balanace Canada</label> <input type="text" class="form-control" id="usr"></div></div></div></div><div class="col-md-2"></div></div><div style="width: 100%; float: left; margin-bottom: 30px;"><button style="float: left;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent add-div" data-upgraded=",MaterialButton,MaterialRipple"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="images/add.png">Add Division<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button><button type="button" style="float: right;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent clone-btn'+x+'" data-upgraded=",MaterialButton,MaterialRipple"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="images/copy.png">Clone<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button></div></div><div class="clone-data'+x+'"></div>');
+                    $(wrapper).append('<div class="after-add'+x+'"> <div class="tournament-info"> <div class="tournament-info-title"> <a href="" class="remove_field"><img style="height: 50px; padding: 10px; float: right;" src="images/cancel.png" alt=""> </a> </div><div class="col-md-2"></div><div class="col-md-4"> <div class="form-group"> <label for="usr">Division Title</label> <input type="text" class="form-control" name="Division_Title[]"id="usr"> </div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Birth Year</label> <input type="text" class="form-control" name="Birth_Year[]" id="usr"> </div></div></div><div class="col-md-2"></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Boys/Girls</label> <input type="text" class="form-control" name="Boys/Girls[]" id="usr"> </div></div></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Limit / Division</label> <input type="text" class="form-control" name="Limit[]" id="usr"> </div></div></div><div class="col-md-2"></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Level</label> <input type="text" class="form-control" name="Level[]" id="usr"> </div></div></div></div><div class="col-md-4"> <div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Entry Fee</label> <input type="text" class="form-control" name="Entry_Fee" id="usr"> </div></div></div><div class="col-md-2"></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Deposite</label> <input type="text" class="form-control" name="Deposite[]" id="usr"> </div></div></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Early Bid</label> <input type="text" class="form-control" name="Early_Bid[]" id="usr"> </div></div></div><div class="col-md-2"></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Early Bid Exp</label> <input type="text" class="form-control" name="Early_Bid_Exp[]" id="usr"> </div></div></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Multi Team</label> <input type="text" class="form-control" name="Multi_Team" id="usr"> </div></div></div><div class="col-md-2"></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Canadian</label> <input type="text" class="form-control" name="Canadian[]" id="usr"> </div></div></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Balanace Due</label> <input type="text" class="form-control" name="Balanace_Due[]" id="usr"> </div></div></div><div class="col-md-2"></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Balanace Due Date</label> <input type="text" class="form-control" name="Balanace_Due_Date[]" id="usr"> </div></div></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Balanace Team Disc</label> <input type="text" class="form-control" name="Balanace_Team_Disc[]" id="usr"> </div></div></div><div class="col-md-2"></div><div class="col-md-5"> <div class="row"> <div class="form-group"> <label for="usr">Balanace Canada</label> <input type="text" class="form-control" name="Balanace_Canada[]" id="usr"> </div></div></div></div><div class="col-md-2"></div></div><div style="width: 100%; float: left; margin-bottom: 30px;"> <button style="float: left;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent add-div" data-upgraded=",MaterialButton,MaterialRipple"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="images/add.png">Add Division<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span> </button> <button type="button" style="float: right;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent clone-btn'+x+'" data-upgraded=",MaterialButton,MaterialRipple"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="images/copy.png">Clone<span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span> </button></div></div><div class="clone-data'+x+'"></div>');
                     componentHandler.upgradeDom();
 
                }

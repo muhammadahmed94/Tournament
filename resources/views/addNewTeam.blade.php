@@ -190,9 +190,9 @@
         </div>
       
        {{ csrf_field() }}
-        <div class="col-md-8">
+        <div class="col-md-10">
 
-           <h1 style="text-align: center; margin-top: 70px;">Team Representative Information</h1> 
+           <h1 style="text-align: center; margin-top: 70px;">n</h1> 
 
            <div class="input-box-items">
                <div class="col-md-6">
@@ -226,7 +226,7 @@
                 <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">Tournament Name</label>
-                      <select class="form-control" id="Tournament_Name" name ="Tournament_Name">
+                      <select class="form-control" id="Tournament_Name" name ="Tournament_Name" required>
                         @foreach ($tournaments as $tournament )
                         <option value="{{ $tournament->tournament_id }}">{{ $tournament->tournament_name }}</option>
                         @endforeach
@@ -241,7 +241,7 @@
                     </div>
                </div>        
            </div>
-           <h3 style="float: left; margin-top: 50px;">Team Representative Information</h3>
+           <h3 style="float: left; margin-top: 50px;"></h3>
            <div class="input-box-item">
 
                <div class="col-md-6">

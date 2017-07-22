@@ -147,7 +147,7 @@ class teamrepcontroller extends Controller
             $viewObject["user"]=$user;
             $viewObject["tournaments"]=$tournaments;
             //echo $viewObject['tournaments'];
-      return view("addNewTeam",$viewObject);
+      return view("team-rep/addNewTeam",$viewObject);
     }
    public function addNewTeamInfo(){
     $user=$this->getSessionData();
@@ -217,7 +217,7 @@ class teamrepcontroller extends Controller
    public function viewteamdashboard(Request $request ,$id){
      $viewObject= array();
      $inputData=Input::all();
-     echo json_encode($inputData);
+     //echo json_encode($inputData);
             $user=$this->getSessionData();
             $viewObject["user"]=$user;
             $viewObject["teams"]=DB::table('teams')
@@ -256,7 +256,7 @@ class teamrepcontroller extends Controller
           $viewObject= array();
             $user=$this->getSessionData();
             $viewObject["user"]=$user;
-      return view('team-rep/editteamrep',$viewObject);
+      return View('team-rep/editTeamrep',$viewObject);
    }
    public function updateeditaccount(){
      $viewObject= array();
@@ -300,7 +300,8 @@ class teamrepcontroller extends Controller
           'user_id' => $user['id']
 
       ]);
-          return view('team-rep/editteamrep',$viewObject);
+          echo "Update succesfully";
+          return view('team-rep/editTeamrep',$viewObject);
    }
 }
 

@@ -36,7 +36,7 @@ class admincontroller extends Controller
             $viewObject= array();
             $viewObject["tournaments"]=$tournaments;
             $viewObject["user"]=$this->getSessionData();
-            return view("admindashboard",$viewObject);
+            return view("admin/admindashboard",$viewObject);
     }
 
     public function editTournament(Request $request, $id){
@@ -46,7 +46,7 @@ class admincontroller extends Controller
       $requestData["user"]=$user;
       $requestData["tournamentData"]=DB::table('tournaments')->where('tournament_id', '=', $id)->get()->first();
     if(!!$requestData["tournamentData"] && !empty($requestData["tournamentData"])){
-    return view("editTournament",$requestData);
+    return view("admin/editTournament",$requestData);
       
     }else{
     // return view("editTournament",$requestData);
@@ -91,10 +91,10 @@ class admincontroller extends Controller
       $viewObject["tournaments"]=$tournamentData;
       $viewObject["user"]=$this->getSessionData();
       if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
-    return view("viewTournament",$viewObject);
+    return view("admin/viewTournament",$viewObject);
       
     }else{
-     return view("editTournament",$requestData);
+     return view("admin/editTournament",$requestData);
     // no record found view
       
     }
@@ -102,7 +102,7 @@ class admincontroller extends Controller
 
        public function addNewTournament(){
         $viewObject["user"]= $this->getSessionData();
-         return view("addNewTournament",$viewObject);
+         return view("admin/addNewTournament",$viewObject);
        }
 
        public function addNewTournamentWithPost(Request $request){

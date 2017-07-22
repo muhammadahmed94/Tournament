@@ -7,9 +7,9 @@
         </div>
       
        {{ csrf_field() }}
-        <div class="col-md-8">
+        <div class="col-md-10">
 
-           <h1 style="text-align: center; margin-top: 70px;">Team Representative Information</h1> 
+           <h1 style="text-align: center; margin-top: 70px;">New Team </h1> 
 
            <div class="input-box-items">
                <div class="col-md-6">
@@ -29,7 +29,7 @@
                <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">Team Rep. Email</label>
-                     <input class="form-control" id="Team_Email" name="Team_Email">
+                     <input class="form-control" id="Team_Email" name="Team_Email" required>
                       </input>
                     </div>
                </div>     
@@ -53,12 +53,12 @@
                <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">Team Name</label>
-                      <input class="form-control" id="Team_Name" name="Team_Name">
+                      <input class="form-control" id="Team_Name" name="Team_Name" required>
                       </input>
                     </div>
                </div>        
            </div>
-           <h3 style="float: left; margin-top: 50px;">Team Representative Information</h3>
+          
            <div class="input-box-item">
 
                <div class="col-md-6">

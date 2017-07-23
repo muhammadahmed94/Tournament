@@ -71,12 +71,12 @@ class admincontroller extends Controller
        $description=$updatedInfo["tournament_description"];
        $longdescription=$updatedInfo["tournament_longdescription"];        
        DB::table('tournaments')->where('tournament_id', $tournament_id)->update([
-      'tournament_name' => $name,
-      'tournament_date' => $date,
-      'tournament_enddate' => $dateend,
-      'tournament_location' => $location,
-      'tournament_longdescription' => $longdescription,
-      'tournament_description' => $description
+      'title' => $name,
+      'date_start' => $date,
+      'date_end' => $dateend,
+      'location' => $location,
+      'comment' => $longdescription,
+      'description' => $description
       ]);
        return redirect('admin')->withInput();   
      }
@@ -92,7 +92,7 @@ class admincontroller extends Controller
       $viewObject["tournaments"]=$tournamentData;
       $viewObject["user"]=$this->getSessionData();
       if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
-    return view("admin/viewTournament",$viewObject);
+    return view("admin/viewtournament",$viewObject);
       
     }else{
      return view("admin/editTournament",$requestData);
@@ -117,13 +117,9 @@ class admincontroller extends Controller
         
         if(!empty($updatedInfo["Deposite"])&&count($updatedInfo["Deposite"])>0){
        for($i=0;$i<count($updatedInfo["Deposite"]);$i++){
-<<<<<<< HEAD
-         $parsedResponseData=array();
-         $parsedResponseData["title"]=$updatedInfo["Title"];
-=======
+
           $parsedResponseData=array();
           $parsedResponseData["title"]=$updatedInfo["Title"];
->>>>>>> 111a5c15f032d34af209094a2ab67e520f65e693
          $parsedResponseData["Description"]=$updatedInfo["Description"];
          $parsedResponseData["Location"]=$updatedInfo["Location"];
          $parsedResponseData["Comment"]=$updatedInfo["Comment"];
@@ -138,19 +134,12 @@ class admincontroller extends Controller
          $parsedResponseData["Deposite"]=$updatedInfo["Deposite"][$i];
          $parsedResponseData["Early_Bid"]=$updatedInfo["Early_Bid"][$i];
          $parsedResponseData["Early_Bid_Exp"]=$updatedInfo["Early_Bid_Exp"][$i];
-<<<<<<< HEAD
-         $parsedResponseData["Multi_Team"]=$updatedInfo["Multi_Team"][$i];
-         $parsedResponseData["Canadian"]=$updatedInfo["Canadian"][$i];
-         $parsedResponseData["Balanace_Due"]=$updatedInfo["Balanace_Due"][$i];
-         $parsedResponseData["Balanace_Due_Date"]=$updatedInfo["Balanace_Due_Date"][$i];
-         $parsedResponseData["Balanace_Team_Disc"]=$updatedInfo["Balanace_Team_Disc"][$i];
-=======
+
         $parsedResponseData["Multi_Team"]=$updatedInfo["Multi_Team"][$i];
         $parsedResponseData["Canadian"]=$updatedInfo["Canadian"][$i];
          $parsedResponseData["Balanace_Due"]=$updatedInfo["Balanace_Due"][$i];
         $parsedResponseData["Balanace_Due_Date"]=$updatedInfo["Balanace_Due_Date"][$i];
           $parsedResponseData["Balanace_Team_Disc"]=$updatedInfo["Balanace_Team_Disc"][$i];
->>>>>>> 111a5c15f032d34af209094a2ab67e520f65e693
          $parsedResponseData["Balanace_Canada"]=$updatedInfo["Balanace_Canada"][$i];
        
         array_push($parsedResponsedDataArray,$parsedResponseData);
@@ -161,13 +150,9 @@ class admincontroller extends Controller
        
         }
         else{
-<<<<<<< HEAD
-         $parsedResponseData=array();
-         $parsedResponseData["title"]=$updatedInfo["Title"];
-=======
+
            $parsedResponseData=array();
           $parsedResponseData["title"]=$updatedInfo["Title"];
->>>>>>> 111a5c15f032d34af209094a2ab67e520f65e693
          $parsedResponseData["Description"]=$updatedInfo["Description"];
          $parsedResponseData["Location"]=$updatedInfo["Location"];
          $parsedResponseData["Comment"]=$updatedInfo["Comment"];
@@ -186,13 +171,9 @@ class admincontroller extends Controller
          $parsedResponseData["Early_Bid_Exp"]="";
          $parsedResponseData["Multi_Team"]="";
          $parsedResponseData["Canadian"]="";
-<<<<<<< HEAD
-         $parsedResponseData["Balanace_Due_Date"]="";
-         $parsedResponseData["Balanace_Team_Disc"]="";
-=======
+
           $parsedResponseData["Balanace_Due_Date"]="";
           $parsedResponseData["Balanace_Team_Disc"]="";
->>>>>>> 111a5c15f032d34af209094a2ab67e520f65e693
          $parsedResponseData["Balanace_Canada"]="";
          
          array_push($parsedResponsedDataArray,$parsedResponseData);
@@ -212,15 +193,7 @@ class admincontroller extends Controller
        //add mandatory field in if check..
        for($i=0;$i<count($recieveDataArray);$i++){
         DB::table('tournaments')->insert([
-<<<<<<< HEAD
-       'title' => $recieveDataArray[$i]['title'],
-       'division_title'=>$recieveDataArray[$i]['Division_Title'],
-       'birth_year'=>$recieveDataArray[$i]['Birth_Year'],
-       'boys/girls'=>$recieveDataArray[$i]['Boys/Girls'],
-       'limit_division'=>$recieveDataArray[$i]['Division_Title'], 
-       'level'=>$recieveDataArray[$i]['Level'],
-       'entry_fee'=>$recieveDataArray[$i]['Entry_Fee'],
-=======
+
       'title' => $recieveDataArray[$i]['title'],
       'division_title'=>$recieveDataArray[$i]['Division_Title'],
       'birth_year'=>$recieveDataArray[$i]['Birth_Year'],
@@ -228,7 +201,6 @@ class admincontroller extends Controller
       'limit_division'=>$recieveDataArray[$i]['Division_Title'], 
       'level'=>$recieveDataArray[$i]['Level'],
       'entry_fee'=>$recieveDataArray[$i]['Entry_Fee'],
->>>>>>> 111a5c15f032d34af209094a2ab67e520f65e693
        'early_bid' =>$recieveDataArray[$i]['Early_Bid'],
        'mutli_team' =>$recieveDataArray[$i]['Multi_Team'],
        'balance_due' =>$recieveDataArray[$i]['Balanace_Due'],

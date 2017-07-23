@@ -88,13 +88,13 @@
     <div class="form-group ">
       <label class="control-label col-sm-2" for="email">Tournament Name:</label>
       <div class="col-sm-10">
-        <input type="text" name="tournament_name" class="form-control" id="email" placeholder="Name" value="{{$tournamentData->tournament_name}}">
+        <input type="text" name="tournament_name" class="form-control" id="email" placeholder="Name" value="{{$tournamentData->tournament_name or null}}">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Tournament Date:</label>
       <div class="col-sm-10">          
-        <input type="text"  name="tournament_date" class="form-control" id="tournamentDate" placeholder="Date" value="{{$tournamentData->tournament_date}}">
+        <input type="text"  name="tournament_date" class="form-control" id="tournamentDate" placeholder="Date" value="{{$tournamentData->tournament_date or null}}">
       </div>
     </div>
     <div class="form-group">

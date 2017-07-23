@@ -225,7 +225,7 @@ class admincontroller extends Controller
             $userData=DB::table('users')
             ->where('id',$viewObject["user"]->id)->get()->first();
         $viewObject["user"]=$userData;
-        return view("editCurrentUser",$viewObject);
+        return view("admin/editCurrentAccountAdmin",$viewObject);
       }
 
     

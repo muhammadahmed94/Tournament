@@ -1,4 +1,4 @@
-@extends('layouts.mainFrameAdmin')
+@extends('admin.adminHeader')
 
 @section('bodyContentAdmin')
 <style>

@@ -45,7 +45,7 @@
                       <label for="sel1">Tournament Name</label>
                       <select class="form-control" id="Tournament_Name" name ="Tournament_Name">
                         @foreach ($tournaments as $tournament )
-                        <option value="{{ $tournament->tournament_id }}">{{ $tournament->tournament_name }}</option>
+                        <option value="{{ $tournament->tournament_id }}">{{ $tournament->title }}</option>
                         @endforeach
                       </select>
                     </div>

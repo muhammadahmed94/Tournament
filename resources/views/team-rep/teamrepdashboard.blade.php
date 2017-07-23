@@ -18,13 +18,14 @@
         <tbody>
        @foreach($tournaments as $tournament)
             <tr>
-                <td><a href="">{{$tournament->tournament_date}}</a></td>
-                <td><a href="{{ url('/Event') }}">{{$tournament->tournament_name}}</a></td>
+                <td><a href="">{{$tournament->date_start}}</a></td>
+                <td><a href="{{ url('/Event') }}">{{$tournament->title}}</a></td>
                 <td><a href="{{ url('/Event') }}">{{$tournament->team_name}}</a></td>
                 
-                <td>
-                <a href="">Incomplete</a>
+                 <td>
+                 <a href="">Incomplete</a>
                 </td>
+               
 
                  <td>
                  <a href="{{ url('/Singleteam')}}">

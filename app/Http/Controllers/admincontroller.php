@@ -36,6 +36,7 @@ class admincontroller extends Controller
             $viewObject= array();
             $viewObject["tournaments"]=$tournaments;
             $viewObject["user"]=$this->getSessionData();
+            
             return view("admin/admindashboard",$viewObject);
     }
 
@@ -104,27 +105,111 @@ class admincontroller extends Controller
         $viewObject["user"]= $this->getSessionData();
          return view("admin/addNewTournament",$viewObject);
        }
+      public function parsedata($updatedInfo){
+        // {"_token":"UAPulJ7s7HhrO6EMGACkrbVU8Ajcu2bgaAViREwn","Title":"asdasd",
+        // "Description":"asdsad","Location":"asdad","Comment":"asdad",
+        // "Start_Date":"2017-07-14","End_Date":"2017-07-13","Division_Title":["asdasd"],
+        // "Birth_Year":["asdas"],"Boys\/Girls":["asd"],"Limit":["asdas"],"Level":["asd"],
+        // "Entry_Fee":"asda","Deposite":["asda"],"Early_Bid":["asdad"],"Early_Bid_Exp":["asdad"],
+        // "Multi_Team":"asdsad","Canadian":["asdad"],"Balanace_Due":["asdsa"],"Balanace_Due_Date":["asdas"],
+        // "Balanace_Team_Disc":["asdad"],"Balanace_Canada":["asda"],"submit":"Submit"}
+        $parsedResponsedDataArray=array();
+        
+        if(!empty($updatedInfo["Deposite"])&&count($updatedInfo["Deposite"])>0){
+       for($i=0;$i<count($updatedInfo["Deposite"]);$i++){
+         $parsedResponseData=array();
+         $parsedResponseData["title"]=$updatedInfo["Title"];
+         $parsedResponseData["Description"]=$updatedInfo["Description"];
+         $parsedResponseData["Location"]=$updatedInfo["Location"];
+         $parsedResponseData["Comment"]=$updatedInfo["Comment"];
+         $parsedResponseData["Start_Date"]=$updatedInfo["Start_Date"];
+         $parsedResponseData["End_Date"]=$updatedInfo["End_Date"];
+         $parsedResponseData["Division_Title"]=$updatedInfo["Division_Title"][$i];
+         $parsedResponseData["Birth_Year"]=$updatedInfo["Birth_Year"][$i];
+         $parsedResponseData["Boys/Girls"]=$updatedInfo["Boys/Girls"][$i];
+         $parsedResponseData["Limit"]=$updatedInfo["Limit"][$i];
+         $parsedResponseData["Level"]=$updatedInfo["Level"][$i];
+         $parsedResponseData["Entry_Fee"]=$updatedInfo["Entry_Fee"][$i];
+         $parsedResponseData["Deposite"]=$updatedInfo["Deposite"][$i];
+         $parsedResponseData["Early_Bid"]=$updatedInfo["Early_Bid"][$i];
+         $parsedResponseData["Early_Bid_Exp"]=$updatedInfo["Early_Bid_Exp"][$i];
+         $parsedResponseData["Multi_Team"]=$updatedInfo["Multi_Team"][$i];
+         $parsedResponseData["Canadian"]=$updatedInfo["Canadian"][$i];
+         $parsedResponseData["Balanace_Due"]=$updatedInfo["Balanace_Due"][$i];
+         $parsedResponseData["Balanace_Due_Date"]=$updatedInfo["Balanace_Due_Date"][$i];
+         $parsedResponseData["Balanace_Team_Disc"]=$updatedInfo["Balanace_Team_Disc"][$i];
+         $parsedResponseData["Balanace_Canada"]=$updatedInfo["Balanace_Canada"][$i];
+       
+        array_push($parsedResponsedDataArray,$parsedResponseData);
+
+        }
+
+        
+       
+        }
+        else{
+         $parsedResponseData=array();
+         $parsedResponseData["title"]=$updatedInfo["Title"];
+         $parsedResponseData["Description"]=$updatedInfo["Description"];
+         $parsedResponseData["Location"]=$updatedInfo["Location"];
+         $parsedResponseData["Comment"]=$updatedInfo["Comment"];
+         $parsedResponseData["Start_Date"]=$updatedInfo["Start_Date"];
+         $parsedResponseData["End_Date"]=$updatedInfo["End_Date"];
+
+         $parsedResponseData["Division_Title"]="";
+         $parsedResponseData["Birth_Year"]="";
+         $parsedResponseData["Boys/Girls"]="";
+         $parsedResponseData["Limit"]="";
+         $parsedResponseData["Level"]="";
+         $parsedResponseData["Entry_Fee"]="";
+         $parsedResponseData["Deposite"]="";
+         $parsedResponseData["Balanace_Due"]="";
+         $parsedResponseData["Early_Bid"]="";
+         $parsedResponseData["Early_Bid_Exp"]="";
+         $parsedResponseData["Multi_Team"]="";
+         $parsedResponseData["Canadian"]="";
+         $parsedResponseData["Balanace_Due_Date"]="";
+         $parsedResponseData["Balanace_Team_Disc"]="";
+         $parsedResponseData["Balanace_Canada"]="";
+         
+         array_push($parsedResponsedDataArray,$parsedResponseData);
+        }
+        
+         return $parsedResponsedDataArray;
+      }
 
        public function addNewTournamentWithPost(Request $request){
        $updatedInfo = Input::all();
-       $title=$updatedInfo["title"];
-       $description=$updatedInfo["description"];
-       $longdescription=$updatedInfo["long_description"];
-       $location=$updatedInfo["location"];
-       $date=date("Y-m-d", strtotime($updatedInfo["date"]));
-       $dateend=date("Y-m-d", strtotime($updatedInfo["dateend"]));;
+       //$this->parsedata($updatedInfo);
+       $recieveDataArray=array();
+       $recieveDataArray = $this->parsedata($updatedInfo);
+       //echo json_encode($recieveDataArray);
+      //print_r($recieveDataArray);
+         //echo json_encode($updatedInfo);
        //add mandatory field in if check..
-       if($title){
-       DB::table('tournaments')->insert([
-      'tournament_name' => $title,
-      'tournament_longdescription' => $longdescription,
-      'tournament_date' => $date,
-      'tournament_enddate' => $dateend,
-      'tournament_description' => $description,
-      'tournament_location' => $location
+       for($i=0;$i<count($recieveDataArray);$i++){
+        DB::table('tournaments')->insert([
+       'title' => $recieveDataArray[$i]['title'],
+       'division_title'=>$recieveDataArray[$i]['Division_Title'],
+       'birth_year'=>$recieveDataArray[$i]['Birth_Year'],
+       'boys/girls'=>$recieveDataArray[$i]['Boys/Girls'],
+       'limit_division'=>$recieveDataArray[$i]['Division_Title'], 
+       'level'=>$recieveDataArray[$i]['Level'],
+       'entry_fee'=>$recieveDataArray[$i]['Entry_Fee'],
+       'early_bid' =>$recieveDataArray[$i]['Early_Bid'],
+       'mutli_team' =>$recieveDataArray[$i]['Multi_Team'],
+       'balance_due' =>$recieveDataArray[$i]['Balanace_Due'],
+       'balance_team_disc'=>$recieveDataArray[$i]['Balanace_Team_Disc'],
       ]);
-       return redirect('admin')->withInput();
-       }   
+      $tournaments = tournaments::getalltournament();
+            $viewObject= array();
+            $viewObject["tournaments"]=$tournaments;
+            $viewObject["user"]=$this->getSessionData();
+            
+            return view("admin/admindashboard",$viewObject);
+       }
+      // return redirect('admin')->withInput();
+        
      }
 
 

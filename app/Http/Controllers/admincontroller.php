@@ -11,6 +11,7 @@ use Input;
 use Validator;
 use Mail;
 use App\Mail\Reminder;
+use Underscore\Types\Arrays;
 
 class admincontroller extends Controller
 {
@@ -85,18 +86,27 @@ class admincontroller extends Controller
       $user = $this->getSessionData();
       //echo $user['id'];
       $tournamentData = DB::table('tournaments')
-            ->join('users', 'user_id', '=', 'users.id')
-            ->where('user_id', '=', $user['id'])
-            ->get();
+            ->join('users','tournaments.user_id', '=', 'users.id')
+            ->join('tournament_teams','tournament_teams.tournament_id' , '=' , 'tournaments.tournament_id')
+            ->join('teams','tournaments.tournament_id','=','teams.tournament_id')
+            ->where('tournaments.user_id', '=', $user['id'])
+             ->get();
 
-      echo $tournamentData;
+     // echo $tournamentData;
 
       $viewObject= array();
       $viewObject["tournaments"]=$tournamentData;
       $viewObject["user"]=$this->getSessionData();
 
-      echo json_encode($viewObject);
+     //echo json_encode($viewObject["tournaments"]);die();
       if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
+      $dataGroupedByTournament=$this->groupByKey($viewObject["tournaments"],"tournament_id");
+     // echo json_encode($dataGroupedByTournament);
+// "tournament_id"
+// echo json_encode($dataGrouped);
+     die();
+     
+      
     return view("admin/viewTournament",$viewObject);
       
     }
@@ -105,6 +115,33 @@ class admincontroller extends Controller
     // no record found view
       
     }
+       }
+
+       public function groupByKey($data,$keyLog){
+      $returnData=array();
+         foreach($data as $key=>$val){
+             $returnDataInner=array();
+           
+           foreach($data as $keyInner=>$valInner){
+             if($valInner==$val){
+              
+ 
+               $arrayKey="'".(String)$val->{$keyLog}."'";
+               $returnDataInner[$arrayKey]=array();
+               
+              array_push($returnDataInner[$arrayKey],$val);
+              
+             }
+              array_push($returnData[$val->{$keyLog}],$returnDataInner[$arrayKey]);
+              echo json_encode($returnDataInner);
+              
+              //  
+              
+             
+           }
+         }
+         echo json_encode($returnData);die();
+         return $returnData;
        }
 
        public function addNewTournament(){

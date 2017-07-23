@@ -88,7 +88,7 @@
             <div class="col-md-4 col-sm-12">
               <div class="form-group">
                 <label for="usr">Title</label>
-                <input type="text" class="form-control" name="Title" id="Title">
+                <input type="text" class="form-control" name="Title" id="Title" required>
               </div>
               <div class="form-group">
                 <label for="usr">Description</label>

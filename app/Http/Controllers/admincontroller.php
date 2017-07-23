@@ -134,7 +134,12 @@ class admincontroller extends Controller
          $parsedResponseData["Early_Bid"]=$updatedInfo["Early_Bid"][$i];
          $parsedResponseData["Early_Bid_Exp"]=$updatedInfo["Early_Bid_Exp"][$i];
         $parsedResponseData["Multi_Team"]=$updatedInfo["Multi_Team"][$i];
-
+        $parsedResponseData["Canadian"]=$updatedInfo["Canadian"][$i];
+         $parsedResponseData["Balanace_Due"]=$updatedInfo["Balanace_Due"][$i];
+        $parsedResponseData["Balanace_Due_Date"]=$updatedInfo["Balanace_Due_Date"][$i];
+          $parsedResponseData["Balanace_Team_Disc"]=$updatedInfo["Balanace_Team_Disc"][$i];
+         $parsedResponseData["Balanace_Canada"]=$updatedInfo["Balanace_Canada"][$i];
+       
         array_push($parsedResponsedDataArray,$parsedResponseData);
 
         }
@@ -158,9 +163,15 @@ class admincontroller extends Controller
          $parsedResponseData["Level"]="";
          $parsedResponseData["Entry_Fee"]="";
          $parsedResponseData["Deposite"]="";
+         $parsedResponseData["Balanace_Due"]="";
          $parsedResponseData["Early_Bid"]="";
          $parsedResponseData["Early_Bid_Exp"]="";
-        $parsedResponseData["Multi_Team"]="";
+         $parsedResponseData["Multi_Team"]="";
+         $parsedResponseData["Canadian"]="";
+          $parsedResponseData["Balanace_Due_Date"]="";
+          $parsedResponseData["Balanace_Team_Disc"]="";
+         $parsedResponseData["Balanace_Canada"]="";
+         
          array_push($parsedResponsedDataArray,$parsedResponseData);
         }
         
@@ -179,8 +190,16 @@ class admincontroller extends Controller
        for($i=0;$i<count($recieveDataArray);$i++){
         DB::table('tournaments')->insert([
       'title' => $recieveDataArray[$i]['title'],
-      'division_title'=>$recieveDataArray[$i]['Division_Title']
-      
+      'division_title'=>$recieveDataArray[$i]['Division_Title'],
+      'birth_year'=>$recieveDataArray[$i]['Birth_Year'],
+      'boys/girls'=>$recieveDataArray[$i]['Boys/Girls'],
+      'limit_division'=>$recieveDataArray[$i]['Division_Title'], 
+      'level'=>$recieveDataArray[$i]['Level'],
+      'entry_fee'=>$recieveDataArray[$i]['Entry_Fee'],
+       'early_bid' =>$recieveDataArray[$i]['Early_Bid'],
+       'mutli_team' =>$recieveDataArray[$i]['Multi_Team'],
+       'balance_due' =>$recieveDataArray[$i]['Balanace_Due'],
+       'balance_team_disc'=>$recieveDataArray[$i]['Balanace_Team_Disc'],
       ]);
       $tournaments = tournaments::getalltournament();
             $viewObject= array();

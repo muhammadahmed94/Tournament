@@ -82,19 +82,25 @@ class admincontroller extends Controller
      }
      
     public function viewTournament(Request $request, $id){
-      
-      $tournamentData = DB::table('tournament_teams')
-            ->join('teams', 'tournament_team_id', '=', 'teams.team_id')
-            ->where('tournament_id', '=', $id)
-            ->select('team_name','team_id','team_rep')
+      $user = $this->getSessionData();
+      //echo $user['id'];
+      $tournamentData = DB::table('tournaments')
+            ->join('users', 'user_id', '=', 'users.id')
+            ->where('user_id', '=', $user['id'])
             ->get();
+
+      echo $tournamentData;
+
       $viewObject= array();
       $viewObject["tournaments"]=$tournamentData;
       $viewObject["user"]=$this->getSessionData();
+
+      echo json_encode($viewObject);
       if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
     return view("admin/viewTournament",$viewObject);
       
-    }else{
+    }
+    else{
      return view("admin/editTournament",$requestData);
     // no record found view
       

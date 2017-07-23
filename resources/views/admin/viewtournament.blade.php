@@ -152,15 +152,15 @@ ul.breadcrumb li a {color: #FF8333;}
     </tr>
     @foreach($tournaments as $tournament)
     <tr>
-      <td>{{$tournament->team_id}}</td>
-      <td><a href="../Singleteam/{{$tournament->team_id}}">{{$tournament->team_name}}</a></td>
+      <td>{{$tournament->team_id or null}}</td>
+      <td><a href="../Singleteam/{{$tournament->team_id or null}}">team</a></td>
       <td>$1400</td>
       <td>$400 CC</td>
       <td>$1000 CC</td>
       <td>852</td>
       <td>3/20</td>
       <td><a href="#"><img class="edit" src="../images/green.png"></a></td>
-      <td>{{$tournament->team_rep}}</td>
+      <td>{{$tournament->team_rep or null}}</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>
     </tr>
    @endforeach

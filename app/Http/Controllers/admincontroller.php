@@ -132,7 +132,7 @@ class admincontroller extends Controller
               array_push($returnDataInner[$arrayKey],$val);
               
              }
-              array_push($returnData[$val->{$keyLog}],$returnDataInner[$arrayKey]);
+              array_push($returnData,$returnDataInner[$arrayKey]);
               echo json_encode($returnDataInner);
               
               //  

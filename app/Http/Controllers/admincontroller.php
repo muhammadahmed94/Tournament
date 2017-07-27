@@ -25,9 +25,7 @@ class admincontroller extends Controller
         Redirect::to('/')->send();
      }
     }
-
-   
-      private function getSessionData(){
+ private function getSessionData(){
         ;
         return Session::get('user');
     }
@@ -62,7 +60,7 @@ class admincontroller extends Controller
     return redirect()->back();
        }
 
-     public function editTournamentInfo(Request $request){
+    public function editTournamentInfo(Request $request){
        $updatedInfo = Input::all();
        $tournament_id=$updatedInfo["tournament_id"]; 
        $name=$updatedInfo["tournament_name"]; 
@@ -72,42 +70,54 @@ class admincontroller extends Controller
        $description=$updatedInfo["tournament_description"];
        $longdescription=$updatedInfo["tournament_longdescription"];        
        DB::table('tournaments')->where('tournament_id', $tournament_id)->update([
-      'tournament_name' => $name,
-      'tournament_date' => $date,
-      'tournament_enddate' => $dateend,
-      'tournament_location' => $location,
-      'tournament_longdescription' => $longdescription,
-      'tournament_description' => $description
+      'title' => $name,
+      'date_start' => $date,
+      'date_end' => $dateend,
+      'location' => $location,
+      'comment' => $longdescription,
+      'description' => $description
       ]);
        return redirect('admin')->withInput();   
      }
      
     public function viewTournament(Request $request, $id){
       $user = $this->getSessionData();
-      //echo $user['id'];
-      $tournamentData = DB::table('tournaments')
-            ->join('users','tournaments.user_id', '=', 'users.id')
-            ->join('tournament_teams','tournament_teams.tournament_id' , '=' , 'tournaments.tournament_id')
-            ->join('teams','tournaments.tournament_id','=','teams.tournament_id')
-            ->where('tournaments.user_id', '=', $user['id'])
-             ->get();
-
-     // echo $tournamentData;
-
+      
+      $divisions =  $tournamentDataActive = DB::table('tournaments')
+           ->join('tournaments_divisions','tournaments_divisions.tournament_id', '=', 'tournaments.tournament_id')
+            ->where('tournaments_divisions.tournament_id','=',$id)
+            ->get();
+      
+      $tournamentDataActive = DB::table('teams')
+           ->join('tournament_teams','tournament_teams.team_id', '=', 'teams.team_id')
+           ->join('team_registration','team_registration.teams_team_id', '=', 'teams.team_id')
+            ->where([
+            ['teams.tournament_id','=',$id],
+            ['team_registration.status','=',1]
+            ])
+            ->distinct()
+            ->get();
+     //echo $divisions;
+     echo $tournamentDataActive;
+      $tournamentDataUnactive = DB::table('teams')
+           ->join('tournament_teams','tournament_teams.team_id', '=', 'teams.team_id')
+           ->join('team_registration','team_registration.teams_team_id', '=', 'teams.team_id')
+            ->where([
+            ['teams.tournament_id','=',$id],
+            ['team_registration.status','=',0]
+            ])
+            ->distinct()
+            ->get();
+           
+  //echo $tournamentDataUnactive;
       $viewObject= array();
-      $viewObject["tournaments"]=$tournamentData;
+     $viewObject["Divisions"]=$divisions;
+      $viewObject["tournamentDataUnactive"]=$tournamentDataUnactive;
+      $viewObject["tournamentDataActive"]=$tournamentDataActive;
       $viewObject["user"]=$this->getSessionData();
 
-     //echo json_encode($viewObject["tournaments"]);die();
-      if(!!$viewObject["tournaments"] && !empty($viewObject["tournaments"])){
-      $dataGroupedByTournament=$this->groupByKey($viewObject["tournaments"],"tournament_id");
-     // echo json_encode($dataGroupedByTournament);
-// "tournament_id"
-// echo json_encode($dataGrouped);
-     die();
-     
-      
-    return view("admin/viewTournament",$viewObject);
+     if(!!$viewObject["tournamentDataActive"] && !empty($viewObject["tournamentDataActive"])){
+    return view("admin/viewtournament",$viewObject);
       
     }
     else{
@@ -115,10 +125,11 @@ class admincontroller extends Controller
     // no record found view
       
     }
+    //return view("team-rep/test",$user);
        }
 
        public function groupByKey($data,$keyLog){
-      $returnData=array();
+       $returnData=array();
          foreach($data as $key=>$val){
              $returnDataInner=array();
            
@@ -134,13 +145,10 @@ class admincontroller extends Controller
              }
               array_push($returnData,$returnDataInner[$arrayKey]);
               echo json_encode($returnDataInner);
-              
-              //  
-              
-             
+               
            }
          }
-         echo json_encode($returnData);die();
+         echo json_encode($returnData);
          return $returnData;
        }
 
@@ -149,24 +157,14 @@ class admincontroller extends Controller
          return view("admin/addNewTournament",$viewObject);
        }
       public function parsedata($updatedInfo){
-        // {"_token":"UAPulJ7s7HhrO6EMGACkrbVU8Ajcu2bgaAViREwn","Title":"asdasd",
-        // "Description":"asdsad","Location":"asdad","Comment":"asdad",
-        // "Start_Date":"2017-07-14","End_Date":"2017-07-13","Division_Title":["asdasd"],
-        // "Birth_Year":["asdas"],"Boys\/Girls":["asd"],"Limit":["asdas"],"Level":["asd"],
-        // "Entry_Fee":"asda","Deposite":["asda"],"Early_Bid":["asdad"],"Early_Bid_Exp":["asdad"],
-        // "Multi_Team":"asdsad","Canadian":["asdad"],"Balanace_Due":["asdsa"],"Balanace_Due_Date":["asdas"],
-        // "Balanace_Team_Disc":["asdad"],"Balanace_Canada":["asda"],"submit":"Submit"}
+       $user=$this->getSessionData();
         $parsedResponsedDataArray=array();
         
         if(!empty($updatedInfo["Deposite"])&&count($updatedInfo["Deposite"])>0){
        for($i=0;$i<count($updatedInfo["Deposite"]);$i++){
+
           $parsedResponseData=array();
-          $parsedResponseData["title"]=$updatedInfo["Title"];
-         $parsedResponseData["Description"]=$updatedInfo["Description"];
-         $parsedResponseData["Location"]=$updatedInfo["Location"];
-         $parsedResponseData["Comment"]=$updatedInfo["Comment"];
-         $parsedResponseData["Start_Date"]=$updatedInfo["Start_Date"];
-         $parsedResponseData["End_Date"]=$updatedInfo["End_Date"];
+         
          $parsedResponseData["Division_Title"]=$updatedInfo["Division_Title"][$i];
          $parsedResponseData["Birth_Year"]=$updatedInfo["Birth_Year"][$i];
          $parsedResponseData["Boys/Girls"]=$updatedInfo["Boys/Girls"][$i];
@@ -191,13 +189,9 @@ class admincontroller extends Controller
        
         }
         else{
+
            $parsedResponseData=array();
-          $parsedResponseData["title"]=$updatedInfo["Title"];
-         $parsedResponseData["Description"]=$updatedInfo["Description"];
-         $parsedResponseData["Location"]=$updatedInfo["Location"];
-         $parsedResponseData["Comment"]=$updatedInfo["Comment"];
-         $parsedResponseData["Start_Date"]=$updatedInfo["Start_Date"];
-         $parsedResponseData["End_Date"]=$updatedInfo["End_Date"];
+        
 
          $parsedResponseData["Division_Title"]="";
          $parsedResponseData["Birth_Year"]="";
@@ -211,46 +205,68 @@ class admincontroller extends Controller
          $parsedResponseData["Early_Bid_Exp"]="";
          $parsedResponseData["Multi_Team"]="";
          $parsedResponseData["Canadian"]="";
-          $parsedResponseData["Balanace_Due_Date"]="";
-          $parsedResponseData["Balanace_Team_Disc"]="";
+        $parsedResponseData["Balanace_Due_Date"]="";
+        $parsedResponseData["Balanace_Team_Disc"]="";
          $parsedResponseData["Balanace_Canada"]="";
          
          array_push($parsedResponsedDataArray,$parsedResponseData);
         }
+
         
          return $parsedResponsedDataArray;
       }
 
        public function addNewTournamentWithPost(Request $request){
        $updatedInfo = Input::all();
-       //$this->parsedata($updatedInfo);
+        // echo $updatedInfo;
+       $user=$this->getSessionData();
+       //echo json_encode($updatedInfo['Title']);
+
+         DB::table('tournaments')->insert([
+        'title' =>$updatedInfo['Title'],
+        'description'=> $updatedInfo['Description'],
+        'date_start'=> $updatedInfo['Start_Date'],
+        'comment'=>$updatedInfo['Comment'],
+        'location'=>$updatedInfo['Start_Date'],
+        'date_end'=> $updatedInfo['End_Date'],
+        'user_id' => $user['id']
+        ]);
+         
+       
        $recieveDataArray=array();
        $recieveDataArray = $this->parsedata($updatedInfo);
-       //echo json_encode($recieveDataArray);
-      //print_r($recieveDataArray);
-         //echo json_encode($updatedInfo);
-       //add mandatory field in if check..
+      // echo $updatedInfo['Title'];
+     $tournamentData =DB::table('tournaments')
+          ->where('tournaments.title', $updatedInfo['Title'])
+          ->first();
+      //echo $tournamentData->tournament_id;
+     
+            //echo count($recieveDataArray);
+         //echo json_encode($recieveDataArray);
+      //echo json_encode($tournamentData['0']);
        for($i=0;$i<count($recieveDataArray);$i++){
-        DB::table('tournaments')->insert([
-      'title' => $recieveDataArray[$i]['title'],
+         echo $i;
+      DB::table('tournaments_divisions')->insert([
       'division_title'=>$recieveDataArray[$i]['Division_Title'],
       'birth_year'=>$recieveDataArray[$i]['Birth_Year'],
       'boys/girls'=>$recieveDataArray[$i]['Boys/Girls'],
-      'limit_division'=>$recieveDataArray[$i]['Division_Title'], 
+      'limit_division'=>$recieveDataArray[$i]['Limit'], 
       'level'=>$recieveDataArray[$i]['Level'],
       'entry_fee'=>$recieveDataArray[$i]['Entry_Fee'],
        'early_bid' =>$recieveDataArray[$i]['Early_Bid'],
        'mutli_team' =>$recieveDataArray[$i]['Multi_Team'],
        'balance_due' =>$recieveDataArray[$i]['Balanace_Due'],
        'balance_team_disc'=>$recieveDataArray[$i]['Balanace_Team_Disc'],
+       'tournament_id'=>$tournamentData->tournament_id
       ]);
+       }
       $tournaments = tournaments::getalltournament();
             $viewObject= array();
             $viewObject["tournaments"]=$tournaments;
             $viewObject["user"]=$this->getSessionData();
             
             return view("admin/admindashboard",$viewObject);
-       }
+       
       // return redirect('admin')->withInput();
         
      }
@@ -263,7 +279,7 @@ class admincontroller extends Controller
             $userData=DB::table('users')
             ->where('id',$viewObject["user"]->id)->get()->first();
         $viewObject["user"]=$userData;
-        return view("editCurrentUser",$viewObject);
+        return view("admin/editCurrentAccountAdmin",$viewObject);
       }
 
     
@@ -303,6 +319,10 @@ class admincontroller extends Controller
     }
     public function adminsingleteam(){
       return view("adminteamsuccess");
+    }
+
+    public function singletournamentinfo(){
+
     }
    
 }

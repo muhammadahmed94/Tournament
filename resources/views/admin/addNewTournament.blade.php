@@ -1,4 +1,4 @@
-@extends('layouts.mainFrameAdmin')
+@extends('admin/adminHeader')
 
 @section('bodyContentAdmin')
 <style>
@@ -75,6 +75,7 @@
   }
   
     </style>
+  
   <div class="container">
     <h3>Tournament Info</h3>
       <form action=" {{ url('/addNewTournamentWithPost') }}" method="Post" accept-charset="utf-8">

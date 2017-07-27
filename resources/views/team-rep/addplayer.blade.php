@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	 <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/stylesheet.css" rel="stylesheet">
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">  
+
+  @include('team-rep/header')
+  @include('team-rep/sidebar')
     <style>
     @media (min-width: 1200px){
       .col-lg-10 {
@@ -15,7 +8,10 @@
 }
     }
 
-
+a:focus, a:hover {
+    color: #337ab7;
+     text-decoration: none; 
+}
     .navbar{
       margin-bottom: 0px;
     position: fixed;
@@ -218,85 +214,18 @@ a:focus, a:hover {
      text-decoration: none; 
 }
 </style>
-</head>
-<body>
-	<nav class="navbar navbar-default navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <!-- <a class="navbar-brand" href="#">LOGO</a> -->
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown "><a class="dropdown-toggle" data-toggle="dropdown" href="#">Tournaments<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Add New Tournament</a></li>
-            <li><a href="#">Chi Town Shuffle</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Development</a></li>
-        <li><a href="#">Clinics</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <b>Admin</b> <span class="caret"></span></a>
-			<ul id="login-dp" class="dropdown-menu">
-				<li>
-					<div class="">
-							<div class="col-md-12">
-								<center><img class="img-circle" style="width: 100px; border: 2px solid #FF8333;" src="img/img1.jpg">
-								<h4 style="margin-top:10px;">ATIF TASKEEN</h4>
-								<p style="margin-top:-5px;" >atif.taskeen@hotmail.com</p></center>
-								
-							<div class="form-group">
-								 <button type="submit" class="btn btn-primary btn-block signout-btn">Sign Out</button>
-							</div>
-					</div>
-				 </div>
-				</li>
-			</ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  
   <div class="col-lg-2 col-md-3 col-sm-3">
   <div class="row">
-  <nav style="margin-top: 55px;" class="navbar navbar-inverse sidebar" role="navigation">
-    <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <!-- <a class="navbar-brand" href="#">Brand</a> -->
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-      <ul class="nav navbar-nav nav2">
-        <li><a href="#">Active Events<span style="font-size:16px;"><img style="float: right;" class="edit" src="img/calendar.png"></span></a></li>
-        <li ><a href="#">My Teams<span style="font-size:16px;"><img style="float: right;" class="edit" src="img/group.png"></span></a></li>
-      </ul>
-    </div>
-  </div>
-  </nav>
+  
   </div>
   </div>
+  
   <div class="col-lg-10 col-md-9 col-sm-9">
   <div class="row">
   <div class="">
+  <form>  
     <h2 style="margin-top: 70px;">Team Profile</h2>
     <div class="team_profile">
       <div class="team_profile_title">
@@ -459,8 +388,14 @@ a:focus, a:hover {
     </tbody>
   </table>
     </div>
-    <button style="margin-bottom: 30px;     padding: 2px 8px;" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/add.png">Add new player</button>
+    <input type="submit" name="submit">
+    </form>
+    </div></div>
+    <p>dsaka</p>
+    <div class="addbtn">
+    <button style="margin-bottom: 30px;     padding: 2px 8px;" class="btn btn-alert" data-toggle="modal" data-target="#myModal" ><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/add.png">Add new player</button>
         <div style="top: 10%;" id="myModal" class="modal fade" role="dialog">
+         <form class="form-horizontal " action="{{ url('/addplayerdata') }}" method="post" enctype="multipart/form-data">
           <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -494,16 +429,14 @@ a:focus, a:hover {
                 <button type="button" style="margin-top: 20px; width: 100%; font-weight: normal; padding: 2px 8px;" class="btn btn-primary" data-dismiss="modal">Submit</button>
               </div>
             </div>
+    </form>
           </div>
+          
         </div>
-
-
-  </div>
-  </div>
-  </div>
-	<footer>
-	</footer>	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</div>
+  <footer>
+  </footer> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
     <script>
@@ -522,7 +455,7 @@ a:focus, a:hover {
                 if (x < max_fields) { //max input box allowed
                     x++; //text box increment
 
-                    $(wrapper).append('<div class="new-div" style="border-top: 1px solid #e5e5e5;padding-top: 29px; margin-top: 30px;"><a href="#" class="remove"><img style=" height: 15px; margin-top: -5px; margin-right: 7px; float: right;" src="img/cancel (1).png"></a> <div class="form-group"> <label for="sel1">Title</label> <select class="form-control" id="sel1"> <option selected="selected" disabled="">Select title</option> <option>Staff</option> <option>Player</option> </select> <label style="margin-top: 20px;" for="usr">Name:</label> <input type="text" class="form-control" placeholder="enter player name" id="usr"> <label style="margin-top: 20px;" for="usr">Player Positon:</label> <input type="text" class="form-control" style="margin-bottom: 20px;" placeholder="enter player position" id="usr"> <a href="#" class="add-new"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/add1.png">Add new player</a> <a href="#" class="copy" style="float: right;"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/copy-1.png">Clone</a> </div></div> <div clas="clone-data"</div>');
+                    $(wrapper).append('<div class="new-div" style="border-top: 1px solid #e5e5e5;padding-top: 29px; margin-top: 30px;"> <a href="#" class="remove"><img style=" height: 15px; margin-top: -5px; margin-right: 7px; float: right;" src="img/cancel (1).png"> </a> <div class="form-group"> <label for="sel1">Title</label> <select class="form-control" id="sel1"> <option selected="selected" name="selected" disabled="">Select title</option> <option>Staff</option> <option>Player</option> </select> <label style="margin-top: 20px;" for="usr">Name:</label> <input type="text" class="form-control" placeholder="enter player name" id="usr" name="player_name"> <label style="margin-top: 20px;" for="usr">Player Positon:</label> <input type="text" class="form-control" style="margin-bottom: 20px;" placeholder="enter player position" id="usr" name="player_position"> <a href="#" class="add-new"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/add1.png">Add new player</a> <a href="#" class="copy" style="float: right;"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/copy-1.png">Clone</a> </div></div><div clas="clone-data" </div>');
                     
 
                }
@@ -532,15 +465,7 @@ a:focus, a:hover {
                   x--;
                 }); 
 
-            //   $('.clone-btn' + x).click(function(e){
-            // e.preventDefault();
-            // // var abv = $('#clone-btn' + x).data('num'); 
-            // // alert(abv);
-            // // $(".after-add").clone().appendTo(".clone-data");
-            //  $('.after-add' + x).last().clone().appendTo('.clone-data' + x);
             
-            
-            // });
               });
          $(document).on("click", ".copy", function(e) {
           e.preventDefault();
@@ -549,5 +474,5 @@ a:focus, a:hover {
 
          });
     </script>
-</body>
+
 </html>

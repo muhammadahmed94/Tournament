@@ -7,7 +7,7 @@
     padding: 15px;
 }
 </style>
-<form class="form-horizontal " action="{{ url('/updateeditaccount') }}" method="post" enctype="multipart/form-data">
+<form class="form-horizontal " action="{{ url('/addroster') }}" method="post" enctype="multipart/form-data">
 {{ csrf_field() }}
 <div class="col-lg-10 col-md-9 col-sm-9 eventInfoClass">
   <div class="row">

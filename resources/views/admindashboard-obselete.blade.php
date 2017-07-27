@@ -1,4 +1,4 @@
-@extends('layouts.mainFrameAdmin')
+@extends('admin.adminHeader')
 
 @section('bodyContentAdmin')
 
@@ -25,13 +25,14 @@
                 <a href="editTournament/{{ $tournament->tournament_id }}">
                 <img class="edit" src="images/pencil.png" title="edit" alt="edit">
                 </a>
-                <a href="deleteTournament/{{ $tournament->tournament_id }}">
+                <a href='{{ url("deleteTournament/$tournament->tournament_id") }}'>
                 <img class="delete" src="images/cancel.png" title="delete" alt="delete">
                 </a>
                 </td>
 
                  <td>
-                 <a href="ViewTournament/{{ $tournament->tournament_id }}">
+                 <!--<a href="ViewTournament/{{ $tournament->tournament_id }}">-->
+                 <a href='{{ url("ViewTournament/$tournament->tournament_id") }}'>
                 View
                 </a>
                 </td>

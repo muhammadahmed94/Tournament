@@ -8,6 +8,7 @@ use Session;
 use App\tournaments;
 use Redirect;
 use DB;
+
 class teamrepcontroller extends Controller
 {
       public function __construct(){
@@ -29,7 +30,7 @@ class teamrepcontroller extends Controller
            $viewObject["user"]=$user;
            $requestdata = DB::table('teams')
             ->join('tournaments', 'teams.tournament_id', '=', 'tournaments.tournament_id')
-            ->where('user_id', '=', $user['id'])
+            ->where('tournaments.user_id', '=', $user['id'])
             ->get()->all();
             $viewObject["tournaments"]=$requestdata;
            //echo json_encode($requestdata);
@@ -64,11 +65,10 @@ class teamrepcontroller extends Controller
         return view("team-rep/editCurrentUser",$viewObject);
       }
 
-      public function editAccountDetails(){
+    public function editAccountDetails(){
 
          $data = Input::all();
-         
-        $accountId=$data["accountId"];
+         $accountId=$data["accountId"];
         $name=$data["name"];
         $email=$data["email"];
         
@@ -102,17 +102,17 @@ class teamrepcontroller extends Controller
             $user=$this->getSessionData();
             $viewObject["user"]=$user;
         $userdata = DB::table('teams')->get();
-        $tournament =  $teamData = DB::table('tournaments')
+        $tournament= DB::table('tournaments')
             ->where('tournament_id', '=', $tournament_id)
             ->get();
         $teamData = DB::table('teams')
             ->join('team_registration', 'team_id', '=', 'teams_team_id')
             ->where('team_id', '=', $teamid)
-            ->select('Deposit')
+            //->select('Deposit')
             ->get();
         $viewObject['teamdata']=$teamData;
         $viewObject['tournaments']=$tournament;
-     // echo $tournament;
+      echo $teamData;
       return view("team-rep/Eventinfo", $viewObject);
     }
     
@@ -123,16 +123,19 @@ class teamrepcontroller extends Controller
             $file->move('uploads',$file->getClientOriginalName());
             $userFileName="uploads/".$file->getClientOriginalName();
             $user=Session::get('user');
-
+            echo $user;
             DB::table('team_registration')
-            ->where('id', $user->$teamid)
-            ->update(['imagepath' => $userFileName]);
-            return redirect()->route('myteams', ['message' => "image uploaded sucessfully"]);
+            //->where('teams_team_id', $user->$teamid)
+            ->update(['Certified_roster' => $userFileName]);
+           //return redirect()->route('myteams', ['message' => "image uploaded sucessfully"]);
+           
     }
+    
     else{
         echo "Image not uploaded";
         //return redirect()->route('home', ['message' => "image not found"]);
     }
+    echo "abcc"; 
     }
     public function Singleteam(){
       $user=$this->getSessionData();
@@ -303,5 +306,48 @@ class teamrepcontroller extends Controller
           echo "Update succesfully";
           return view('team-rep/editTeamrep',$viewObject);
    }
+   public function addplayer(){
+       $id=20;
+        $viewObject= array();
+     $inputData=Input::all();
+     //echo json_encode($inputData);
+            $user=$this->getSessionData();
+            $viewObject["user"]=$user;
+            $viewObject["teams"]=DB::table('teams')->first();
+            //->where('team_id', $id)->get()->first();
+       return view('team-rep/addplayer',$viewObject);
+   }
+    public function addplayerdata(){
+        $data = Input::all();
+        echo json_encode($data);
+   }
+   public function updateroster(){
+
+      $user = $this->getSessionData();
+      $inputData=Input::all();
+      //echo $user;
+     // echo json_encode($inputData);
+
+     if(Input::hasFile('certified_roster')){
+            $file = Input::file('certified_roster');
+            $file->move('uploads',$file->getClientOriginalName());
+            $userFileName="uploads/".$file->getClientOriginalName();
+            $user=Session::get('user');
+            echo $user;
+            DB::table('team_registration')
+            ->where('teams_team_id', $user->$teamid)
+            ->update(['certified_roster' => $userFileName]);
+           //return redirect()->route('myteams', ['message' => "image uploaded sucessfully"]);
+     }
+    
+    else{
+         $file = Input::file('certified_roster');
+        echo $file;
+        
+       // return redirect()->route('home', ['message' => "image not found"]);
+    }
+    
+    }
+
 }
 

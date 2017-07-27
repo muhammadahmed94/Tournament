@@ -94,6 +94,7 @@ Route::post('/addNewTeamInfo', "teamrepcontroller@addNewTeamInfo");
 Route::get('/myteams', "teamrepcontroller@myteams");
 
 Route::get('/Event/{id}/{tid}',"teamrepcontroller@teamStatus");
+
 Route::get('/Addteamdata',"teamrepcontroller@adddata");
 
 Route::get('/viewteamdashboard/{tid}',"teamrepcontroller@viewteamdashboard");
@@ -103,3 +104,10 @@ Route::post('/editteamdashboard',"teamrepcontroller@Editteamdashboard");
 Route::get('/editAccountDetails',"teamrepcontroller@editaccount");
 
 Route::post('/updateeditaccount',"teamrepcontroller@updateeditaccount");
+
+Route::get('/addplayer',"teamrepcontroller@addplayer");
+
+Route::post('/addplayerdata',"teamrepcontroller@addplayerdata");
+
+Route::post('/addroster',"teamrepcontroller@updateroster");
+

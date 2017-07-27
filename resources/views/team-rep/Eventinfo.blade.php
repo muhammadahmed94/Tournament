@@ -1,5 +1,5 @@
 @include('team-rep/header')
-    @include('team-rep/sidebar')
+@include('team-rep/sidebar')
    @foreach ($tournaments as $tournament )
     <div class="container eventInfoClass">
         <h3>Name of the Event & Registered Team</h3>
@@ -7,7 +7,7 @@
             <div class="col-md-8">
                 <center>
                     <p style="margin: 0px; font-size: 20px; padding-top: 6px;">Event description and general information</p>
-                    <a href="#"> {{ $tournament->tournament_name}} - CHICAGO</a>
+                    <a href="#"> {{ $tournament->title  }} - CHICAGO</a>
                 </center>
             </div>
             <div class="col-md-4">
@@ -37,19 +37,60 @@
             </thead>
           
             <tbody>
+            @foreach ($teamdata as $data )
               <tr>
+              @if($data->Deposit != null){
                 <td><img class="edit" src="/images/green.png"></td>
-                <td><img class="edit" src="/images/red.png"></td>
+                }
+                @else{
+                    <td><img class="edit" src="/images/red.png"></td>
+                }
+            @endif
+
+                @if($data->Payment_status!=null){
+                <td><img class="edit" src="/images/green.png"></td>
+                }
+                @else{
+                    <td><img class="edit" src="/images/red.png"></td>
+                }
+               @endif  
                 <td> N/A </td>
+                 @if ($data->Hotel_selector!=null or N/A){
                 <td><img class="edit" src="/images/green.png"></td>
-                <td><img class="edit" src="/images/red.png"></td>
+                }
+                @else{
+                    <td><img class="edit" src="/images/red.png"></td>
+                }
+               @endif
+                @if ($data->Certified_roster != null ){
                 <td><img class="edit" src="/images/green.png"></td>
-                <td><img class="edit" src="/images/red.png"></td>
+                }
+                @else{
+                    <td><img class="edit" src="/images/red.png"></td>
+                }
+               @endif
+                 @if($data->Travel_permit != null){
+                <td><img class="edit" src="/images/green.png"></td>
+                }
+                @else{
+                    <td><img class="edit" src="/images/red.png"></td>
+                }
+               @endif
+                 @if($data->Program_book_roster != null){
+                <td><img class="edit" src="/images/green.png"></td>
+                }
+                @else{
+                    <td><img class="edit" src="/images/red.png"></td>
+                }
+               @endif
               </tr>
+              @endforeach
             </tbody>
 
           </table>
           <h3 style="margin-top: 20px; float: left; width: 100%;">Registration Information</h3>
+         <form class="form-horizontal " action="{{ url('/addroster') }}" method="Post" enctype="multipart/form-data">
+
           <div class="reginfo_top">
                 <div class="col-md-6">
                     <div class="row">
@@ -106,10 +147,13 @@
     Click here to upload
 </label>
 <span class='label label-info' id="upload-file-info"></span></p>
+{{ csrf_field() }}
 
                         </div>
+                        <input type="submit" text="submit">
                     </div>
                 </div>
+                </form>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="reg_info">
@@ -128,7 +172,7 @@
                 <div class="col-md-8">
                   <div class="payment_info">
                   <h3 style="padding: 10px 0px 0px 15px;">Overall Payment Information</h3>
-                  <p style="padding: 10px 0px 10px 15px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                  <p style="padding: 10px 0px 10px 15px;"></p>
                 </div>
 
                 </div>

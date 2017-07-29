@@ -31,6 +31,10 @@ class admincontroller extends Controller
     }
 
        public function viewDash(){
+         Mail::send('mail', array('key' => 'value'), function($message)
+{
+    $message->to('muhammad_ahmed1994@outlook.com', 'John Smith')->subject('Welcome!');
+});
             $tournaments = tournaments::getalltournament();
             $viewObject= array();
             $viewObject["tournaments"]=$tournaments;

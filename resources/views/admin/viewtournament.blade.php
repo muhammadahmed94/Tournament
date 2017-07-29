@@ -99,7 +99,7 @@ ul.breadcrumb li a {color: #FF8333;}
           <td>{{$tournament->team_id or null}}</td>
           <td><a href="../Singleteam/{{$tournament->team_id or null}}">{{$tournament->team_name or null}}</a></td>
           <td>{{$tournament->entry_fee or null}}</td>
-          <td>{{$tournament->deposit   or null}}</td>
+          <td>{{$tournament->Deposit   or null}}</td>
           <td>{{$tournament->entry_fee or null}}</td>
           <td>852</td>
           <td>3/{{$tournament->entry_fee or null}}</td>
@@ -107,8 +107,8 @@ ul.breadcrumb li a {color: #FF8333;}
           <td>{{$tournament->team_rep or null}}</td>
           <td><button type="button" class="btn btn-primary">Email</button></td>
         </tr>
-  @endif 
-   @endforeach
+   @endif 
+  @endforeach
  
   </table>
 
@@ -137,12 +137,12 @@ ul.breadcrumb li a {color: #FF8333;}
       @if($tournament->division_id == $division->division_id and $tournament->birth_year== $division->birth_year)
     <tr>
       <td>{{$tournament->team_id or null}}</td>
-      <td><a href="../Singleteam/{{$tournament->team_id or null}}">{{$tournament->team_name or null}}</a></td>
-      <td>$1400</td>
-      <td>$400 CC</td>
-      <td>$1000 CC </td>
-      <td>852</td>
-      <td>3/20</td>
+      <td><a href="../Singleteam/{{$tournament->team_id or null}}/{{$tournament->tournament_id or null}}">{{$tournament->team_name or null}}</a></td>
+      <td colspan="4" >
+      <a href="../acceptteam/{{ $tournament->team_id }}/{{ $tournament->tournament_id }}"> <img class="edit" src="../images/pencil.png" title="edit" alt="edit"></a>
+      <a href="../acceptteam/{{ $tournament->team_id }}/{{ $tournament->tournament_id }}"> <img class="edit" src="../images/cancel.png" title="edit" alt="edit"></a>
+      </td>
+       <td>3/20</td>
       <td><a href="#"><img class="edit" src="../images/green.png"></a></td>
       <td>DOE JOE</td>
       <td><button type="button" class="btn btn-primary">Email</button></td>

@@ -97,7 +97,7 @@ class admincontroller extends Controller
             ])
             ->distinct()
             ->get();
-     //echo $divisions;
+     
      echo $tournamentDataActive;
       $tournamentDataUnactive = DB::table('teams')
            ->join('tournament_teams','tournament_teams.team_id', '=', 'teams.team_id')
@@ -312,17 +312,26 @@ class admincontroller extends Controller
 
     }
 
-    public function Singleteam(){
+    public function Singleteam(Request $request, $id , $tid){
       $user=$this->getSessionData();
       $viewObject["user"]=$user;
-      return view("Singleteaminfo",$viewObject);
-    }
-    public function adminsingleteam(){
-      return view("adminteamsuccess");
+      return view("team-rep/Tournamentinfo",$viewObject);
     }
 
-    public function singletournamentinfo(){
 
+   public function singletournamentinfo(){
+
+    }
+
+    public function acceptteam(Request $request, $id , $tid){
+        echo $id.$tid;
+        DB::table('team_registration')
+            ->where(
+             'teams_team_id','=', $id
+              )
+            ->update(['status' => 1]);
+       return redirect()->back();
+            
     }
    
 }

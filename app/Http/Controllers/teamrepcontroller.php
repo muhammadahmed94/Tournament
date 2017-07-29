@@ -91,12 +91,14 @@ class teamrepcontroller extends Controller
         // return view("editCurrentUser",$viewObject);
 
     }
+
      public function Event(){
        $viewObject= array();
             $user=$this->getSessionData();
             $viewObject["user"]=$user;
       return view("team-rep/Tournamentinfo", $viewObject);
     }
+
     public function teamStatus(Request $request=null, $teamid=id , $tournament_id=tid){
       $viewObject= array();
             $user=$this->getSessionData();
@@ -153,6 +155,7 @@ class teamrepcontroller extends Controller
       return view("team-rep/addNewTeam",$viewObject);
     }
    public function addNewTeamInfo(){
+   
     $user=$this->getSessionData();
     $data = Input::all();
 
@@ -196,7 +199,7 @@ class teamrepcontroller extends Controller
       'Twitter' => $Twitter,
       'user_id' => $user['id']
       ]);
-     
+      DB::table('teams')->insert([]);
      $user=$this->getSessionData();
      $tournaments = tournaments::getalltournament();
      $viewObject["user"]=$user;

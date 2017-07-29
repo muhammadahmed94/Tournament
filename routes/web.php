@@ -60,7 +60,7 @@ Route::get('/editCurrentUserDirector', "directorcontroller@editCurrentUser");
 Route::get('/ViewTournamentDirector/{id}', "directorcontroller@viewTournament");
 
 
-Route::get('/SendEmail', "admincontroller@sendEmail");
+Route::get('/SendEmail', "admincontroller@singletournamentinfo");
 
 
 Route::post('editTournament/editTournamentInfo',"admincontroller@editTournamentInfo");
@@ -84,7 +84,7 @@ Route::get('/Event',"teamrepcontroller@Event");
 
 Route::get('/Singleteam',"teamrepcontroller@Singleteam");
 
-Route::get('/Singleteam/{id}/{tid}',"admincontroller@Singleteam");
+Route::get('/Singleteam/{id}',"admincontroller@Singleteam");
 
 // Create New Team by Team Representative And Assign Tournament
 Route::get('/addNewTeamScreen', "teamrepcontroller@addNewTeam");
@@ -112,3 +112,5 @@ Route::post('/addplayerdata',"teamrepcontroller@addplayerdata");
 Route::post('/addroster',"teamrepcontroller@updateroster");
 
 Route::get('/acceptteam/{id}/{tid}', "admincontroller@acceptteam");
+
+Route::get('/rejectteam/{id}/{tid}', "admincontroller@rejecttteam");

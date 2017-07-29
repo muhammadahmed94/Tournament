@@ -10,6 +10,7 @@ use DB;
 use Input;
 use Validator;
 use Mail;
+use SMTP;
 use App\Mail\Reminder;
 use Underscore\Types\Arrays;
 
@@ -312,15 +313,21 @@ class admincontroller extends Controller
 
     }
 
-    public function Singleteam(Request $request, $id , $tid){
+    public function Singleteam(Request $request, $id){
       $user=$this->getSessionData();
       $viewObject["user"]=$user;
-      return view("team-rep/Tournamentinfo",$viewObject);
+      $teamdata=DB::table('team_registration')
+      ->where('teams_team_id', $id)
+      ->get();
+      echo $teamdata;
+      $viewObject["teamdata"]=$teamdata;
+      
+      return view("admin/Tournamentinfo",$viewObject);
     }
 
 
    public function singletournamentinfo(){
-
+  echo "ponka";
     }
 
     public function acceptteam(Request $request, $id , $tid){
@@ -332,6 +339,25 @@ class admincontroller extends Controller
             ->update(['status' => 1]);
        return redirect()->back();
             
+    }
+    public function rejecttteam(Request $request, $id , $tid){
+        echo $id.$tid;
+        DB::table('team_registration')
+            ->where(
+             'teams_team_id','=', $id
+              )
+            ->update(['status' => 2]);
+       return redirect()->back();
+            
+    }
+    public function sendEmail(){
+      echo "dsasdasnasdi bi";
+  /*   Mail::send('emails.welcome', $data, function ($message) {
+    $message->from('atif.taskeen@emmaculate.com', 'ATIF');
+
+    $message->to('rao.noman786@outlook.com')->cc('bar@example.com');
+});*/
+    return redirect()->back();
     }
    
 }

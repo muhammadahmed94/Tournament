@@ -151,8 +151,7 @@ class teamrepcontroller extends Controller
             $user=$this->getSessionData();
             $viewObject["user"]=$user;
             $viewObject["tournaments"]=$tournaments;
-            //echo $viewObject['tournaments'];
-      return view("team-rep/addNewTeam",$viewObject);
+            return view("team-rep/addNewTeam",$viewObject);
     }
    public function addNewTeamInfo(){
    

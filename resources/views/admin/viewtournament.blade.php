@@ -105,7 +105,7 @@ ul.breadcrumb li a {color: #FF8333;}
           <td>3/{{$tournament->entry_fee or null}}</td>
           <td><a href="#"><img class="edit" src="../images/green.png"></a></td>
           <td>{{$tournament->team_rep or null}}</td>
-          <td><button type="button" class="btn btn-primary">Email</button></td>
+          <td><a href="SendEmail"><button type="button" class="btn btn-primary">Email</a></button></td>
         </tr>
    @endif 
   @endforeach
@@ -137,15 +137,15 @@ ul.breadcrumb li a {color: #FF8333;}
       @if($tournament->division_id == $division->division_id and $tournament->birth_year== $division->birth_year)
     <tr>
       <td>{{$tournament->team_id or null}}</td>
-      <td><a href="../Singleteam/{{$tournament->team_id or null}}/{{$tournament->tournament_id or null}}">{{$tournament->team_name or null}}</a></td>
+      <td><a href="../Singleteam/{{$tournament->team_id or null}}">{{$tournament->team_name or null}}</a></td>
       <td colspan="4" >
       <a href="../acceptteam/{{ $tournament->team_id }}/{{ $tournament->tournament_id }}"> <img class="edit" src="../images/pencil.png" title="edit" alt="edit"></a>
-      <a href="../acceptteam/{{ $tournament->team_id }}/{{ $tournament->tournament_id }}"> <img class="edit" src="../images/cancel.png" title="edit" alt="edit"></a>
+      <a href="../rejectteam/{{ $tournament->team_id }}/{{ $tournament->tournament_id }}"> <img class="edit" src="../images/cancel.png" title="edit" alt="edit"></a>
       </td>
        <td>3/20</td>
       <td><a href="#"><img class="edit" src="../images/green.png"></a></td>
       <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary">Email</button></td>
+      <td><button type="button" class="btn btn-primary"><a href="{{ url('../SendEmail') }}">Email</a></button></td>
     </tr>
      @endif
     @endforeach 

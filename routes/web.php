@@ -109,6 +109,8 @@ Route::get('/addplayer',"teamrepcontroller@addplayer");
 
 Route::post('/addplayerdata',"teamrepcontroller@addplayerdata");
 
-Route::post('/addroster',"teamrepcontroller@updateroster");
+Route::post('/updateFile',"teamrepcontroller@updateroster");
 
 Route::get('/acceptteam/{id}/{tid}', "admincontroller@acceptteam");
+
+

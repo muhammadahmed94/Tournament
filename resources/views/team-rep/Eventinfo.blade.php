@@ -89,7 +89,7 @@
 
           </table>
           <h3 style="margin-top: 20px; float: left; width: 100%;">Registration Information</h3>
-         <form class="form-horizontal " action="{{ url('/addroster') }}" method="Post" enctype="multipart/form-data">
+         <!-- <form class="form-horizontal " action="{{ url('/addroster') }}" id="uploadForm" method="Post" enctype="multipart/form-data"> -->
 
           <div class="reginfo_top">
                 <div class="col-md-6">
@@ -99,15 +99,18 @@
                         </div>
                     </div>
                 </div>
+  <form class="form-horizontal" id="uploadRoster" enctype="multipart/form-data">
                 <div class="col-md-6">
                     <div class="row">
                         <div class="reg_info_diff">
                             <h3 style="padding: 10px 0px 0px 15px;">Certified Roster</h3>
                             <p style="padding: 10px 0px 10px 15px;" name="certified_roster">* Roster info missing <label class="btn btn-primary upload" for="my-file-selector">
     <input id="my-file-selector" type="file" style="display:none" 
-    onchange="$('#upload-file-info').html(this.files[0].name)">
+    onchange="uploadFile()">
     Click here to upload
 </label>
+ {{ csrf_field() }} 
+</form>
 <span class='label label-info' id="upload-file-info"></span></p>
                             
                         </div>
@@ -147,13 +150,14 @@
     Click here to upload
 </label>
 <span class='label label-info' id="upload-file-info"></span></p>
-{{ csrf_field() }}
+ {{ csrf_field() }} 
+<!-- <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" /> -->
+
 
                         </div>
                         <input type="submit" text="submit">
                     </div>
                 </div>
-                </form>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="reg_info">
@@ -187,6 +191,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+    function uploadFile(){
+       var formData;
+       formId = document.getElementById('uploadRoster');
+       var formData = new FormData(formId);
+       formData.append('file', $('#my-file-selector')[0].files[0]);
+    //    formData = new FormData(document.querySelector('form'))
+    //    console.log(formData)
+        // $('#upload-file-info').html();
+         $.ajax({
+            type:'POST',
+            url:"{{ url('/updateFile') }}",
+             headers: {
+            'X-CSRF-TOKEN':"{{ csrf_token() }}"},
+            mimeType: "multipart/form-data",
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            async: false,
+            success:function(data){
+                console.log("success");
+                console.log(data);
+            },
+            error: function(data){
+                console.log("error");
+                console.log(data);
+            }
+        });
+
+
+    }
+    </script>
     
 </body>
 </html>

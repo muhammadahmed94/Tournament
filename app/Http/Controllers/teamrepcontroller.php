@@ -8,6 +8,8 @@ use Session;
 use App\tournaments;
 use Redirect;
 use DB;
+use File;
+
 
 class teamrepcontroller extends Controller
 {
@@ -325,32 +327,17 @@ class teamrepcontroller extends Controller
         echo json_encode($data);
    }
    public function updateroster(){
+    //   Request::file("logo");
 
-      $user = $this->getSessionData();
-      $inputData=Input::all();
-      //echo $user;
-     // echo json_encode($inputData);
-
-     if(Input::hasFile('certified_roster')){
-            $file = Input::file('certified_roster');
+       $inputData=Input::all();
+       if(Input::hasFile('file')){
+            $file = Input::file('file');
+             $file->getClientOriginalName();
             $file->move('uploads',$file->getClientOriginalName());
-            $userFileName="uploads/".$file->getClientOriginalName();
-            $user=Session::get('user');
-            echo $user;
-            DB::table('team_registration')
-            ->where('teams_team_id', $user->$teamid)
-            ->update(['certified_roster' => $userFileName]);
-           //return redirect()->route('myteams', ['message' => "image uploaded sucessfully"]);
-     }
-    
-    else{
-         $file = Input::file('certified_roster');
-        echo $file;
-        
-       // return redirect()->route('home', ['message' => "image not found"]);
+            }
     }
-    
-    }
+
+
 
 }
 

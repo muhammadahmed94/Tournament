@@ -16,8 +16,8 @@
         <tbody>
         @foreach ($tournaments as $tournament )
             <tr>
-                <td>{{ $tournament->date_start }}</td>
-                <td>{{ $tournament->title }}</td>
+                <td>{{ $tournament->date_start or null }}</td>
+                <td>{{ $tournament->title or null }}</td>
                 <td>% of team accept</td>
                
                 <td>

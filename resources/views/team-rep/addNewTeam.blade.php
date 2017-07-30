@@ -50,6 +50,16 @@
                       </select>
                     </div>
                </div> 
+                <div class="col-md-6">
+                   <div class="form-group">
+                      <label for="sel1">Divisions Name</label>
+                      <select class="form-control" id="Divisions_Name" name ="Divisions_Name">
+                    
+                        <option> Select</option>
+                    
+                      </select>
+                    </div>
+               </div>
                <div class="col-md-6">
                    <div class="form-group">
                       <label for="sel1">Team Name</label>
@@ -147,5 +157,42 @@
   </footer> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+    $("#Tournament_Name").click(function(){
+        var tournamentId=$("#Tournament_Name").val();
+        var targetUrl="/getDivisions/"+tournamentId;
+        
+       $.ajax({
+            type:'get',
+            url:targetUrl,
+             headers: {
+            'X-CSRF-TOKEN':"{{ csrf_token() }}"},
+            data:{"tournament":tournamentId},
+            cache:false,
+            contentType: false,
+            processData: false,
+            async: false,
+            success:function(data){
+                var dataParsed=JSON.parse(data);
+                var divisions=dataParsed.divisions;
+                console.log(JSON.stringify(divisions))
+                if(!!divisions && divisions.length>0){
+                var htmlString="";                    
+                    divisions.map(function(obj){
+                        htmlString+="<option value="+obj.division_id+">"+obj.division_title+"</option>";
+                    })
+                        $("#Divisions_Name").html(htmlString);
+                    
+                }else{
+                }
+            },
+            error: function(data){
+                console.log("error");
+            }
+        });
+    
+    });
+</script>
+    
 </body>
 </html>

@@ -296,8 +296,7 @@ margin-top: 50px;
             <li><a href="#">Chi Town Shuffle</a></li>
           </ul>
         </li>
-        <li><a href="#">Development</a></li>
-        <li><a href="#">Clinics</a></li>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
                <li class="dropdown">

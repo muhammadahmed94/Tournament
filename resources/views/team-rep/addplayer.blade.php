@@ -407,8 +407,8 @@ a:focus, a:hover {
                 <div class="new-div">
                   <div class="form-group">
                     <label for="sel1">Title</label>
-                    <select class="form-control" id="sel1">
-                      <option selected="selected" disabled="">Select title</option>
+                    <select class="form-control" id="sel1" required>
+                      <option selected="selected" value="-">Select title</option>
                       <option>Staff</option>
                       <option>Player</option>
                     </select>
@@ -455,7 +455,7 @@ a:focus, a:hover {
                 if (x < max_fields) { //max input box allowed
                     x++; //text box increment
 
-                    $(wrapper).append('<div class="new-div" style="border-top: 1px solid #e5e5e5;padding-top: 29px; margin-top: 30px;"> <a href="#" class="remove"><img style=" height: 15px; margin-top: -5px; margin-right: 7px; float: right;" src="img/cancel (1).png"> </a> <div class="form-group"> <label for="sel1">Title</label> <select class="form-control" id="sel1"> <option selected="selected" name="selected" disabled="">Select title</option> <option>Staff</option> <option>Player</option> </select> <label style="margin-top: 20px;" for="usr">Name:</label> <input type="text" class="form-control" placeholder="enter player name" id="usr" name="player_name"> <label style="margin-top: 20px;" for="usr">Player Positon:</label> <input type="text" class="form-control" style="margin-bottom: 20px;" placeholder="enter player position" id="usr" name="player_position"> <a href="#" class="add-new"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/add1.png">Add new player</a> <a href="#" class="copy" style="float: right;"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/copy-1.png">Clone</a> </div></div><div clas="clone-data" </div>');
+                    $(wrapper).append('<div class="new-div" style="border-top: 1px solid #e5e5e5;padding-top: 29px; margin-top: 30px;"> <a href="#" class="remove"><img style=" height: 15px; margin-top: -5px; margin-right: 7px; float: right;" src="img/cancel (1).png"></a> <div class="form-group"> <label for="sel1">Title</label> <select class="form-control" id="sel1" name="title[]" required> <option selected="selected" value="-">Select title</option> <option value="1">Staff</option> <option value="2">Player</option> </select> <label style="margin-top: 20px;" for="usr">Name:</label> <input type="text" class="form-control" name="name[]" placeholder="enter player name" id="usr"> <label style="margin-top: 20px;" for="usr">Player Positon:</label> <input type="text" class="form-control" style="margin-bottom: 20px;" name="position[]" placeholder="enter player position" id="usr"> <a href="#" class="add-new"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/add1.png">Add new player</a> <a href="#" class="copy" style="float: right;"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/copy-1.png">Clone</a> </div></div><div clas="clone-data"</div>');
                     
 
                }

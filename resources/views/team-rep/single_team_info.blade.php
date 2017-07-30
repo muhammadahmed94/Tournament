@@ -223,6 +223,10 @@ a:focus, a:hover {
   <div class="row">
   <div class="">
     <h2 style="margin-top: 70px;">Team Profiless</h2>
+    <!-- <form> -->
+     <form action='{{url("/editteamdashboard")}}' method= "post" enctype="multipart/form-data"> 
+          {{ csrf_field() }} 
+     <input type="hidden" name="team_id" value="{{$teams->team_id}}"/> 
     <div class="team_profile">
       <div class="team_profile_title">
         <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;">Team Info</h3>
@@ -232,23 +236,22 @@ a:focus, a:hover {
       <div class="col-md-4">
         <div class="form-group">
           <label for="sel1">Birth Year</label>
-          <select class="form-control" id="sel1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+          <select class="form-control" id="sel1" name="birth_year">
+            <option >Select</option>
+            <option value="2007">2007</option>
+           <option value="2008">2008</option>
+           <option value="2009">2009</option>
+           <option value="2010">2010</option>
+           <option value="2011">2011</option>
+           <option value="2012">2013</option>
           </select>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label for="sel1">Head Coach Name</label>
-          <select class="form-control" id="sel1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
+          <input type="text" class="form-control" name="coach_name" ></input>
+          
         </div>
       </div>
       <div class="col-md-2">
@@ -259,23 +262,18 @@ a:focus, a:hover {
         <div class="col-md-4">
           <div class="form-group">
             <label for="sel1">Player Level</label>
-            <select class="form-control" id="sel1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+            <select class="form-control" id="sel1" name="player_level">
+              <option >Select</option>
+              <option value="Junior">Junior</option>
+              <option value="Mid">Mid</option>
+              
             </select>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
             <label for="sel1">Head Coach Email</label>
-            <select class="form-control" id="sel1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
+           <input type="text" class="form-control" name="coach_email" ></input>
           </div>
         </div>
         <div class="col-md-2">
@@ -290,12 +288,7 @@ a:focus, a:hover {
         <div class="col-md-4">
           <div class="form-group">
             <label for="sel1">Head Coach Phone</label>
-            <select class="form-control" id="sel1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
+            <<input type="text" class="form-control" name="coach_phone" ></input>
           </div>
         </div>
         <div class="col-md-2">
@@ -310,8 +303,8 @@ a:focus, a:hover {
         <div class="col-md-3">
           <center>
             <div style="margin-top: 10px;" class="upload-btn-wrapper btn-primary">
-            <button  class="btn btn-primary"><span><img class="edit" src="img/upload.png"></span>Upload PDF</button>
-            <input style="width: 100%;" type="file" name="myfile" />
+            <button  class="btn btn-primary" ><span><img class="edit" src="img/upload.png"></span>Upload PDF</button>
+            <input style="width: 100%;" type="file" name="ceritfied_roster_file" />
           </div>
           </center>
         </div>
@@ -322,7 +315,7 @@ a:focus, a:hover {
         </div>
         <div class="col-md-7">
           <div class="form-group">
-            <input style="margin-top: 15px;" type="text" class="form-control" id="usr" placeholder="Paste URL here">
+            <input style="margin-top: 15px;" type="text" class="form-control" id="usr" name="ceritfied_roster_link" placeholder="Paste URL here">
           </div>
         </div>
       </div>
@@ -330,14 +323,14 @@ a:focus, a:hover {
     
     <div style="margin-top: 40px;" class="team_profile">
       <div class="team_profile_title">
-        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit" src="img/red.png">Travel Permit</h3>
+        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit" src="images/red.png">Travel Permit</h3>
       </div>
       <div style="margin: 30px 0px 30px 0px; float: left; width: 100%;">
         <div class="col-md-3">
           <center>
             <div style="margin-top: 10px;" class="upload-btn-wrapper btn-primary">
-            <button  class="btn btn-primary"><span><img class="edit" src="img/upload.png"></span>Upload PDF</button>
-            <input style="width: 100%;" type="file" name="myfile" />
+            <button  class="btn btn-primary"><span><img class="edit" src="images/upload.png"></span>Upload PDF</button>
+            <input style="width: 100%;" type="file" name="travel_permit_file"/>
           </div>
           </center>
         </div>
@@ -348,14 +341,21 @@ a:focus, a:hover {
         </div>
         <div class="col-md-7">
           <div class="form-group">
-            <input style="margin-top: 15px;" type="text" class="form-control" id="usr" placeholder="Paste URL here">
+            <input style="margin-top: 15px;" type="text" class="form-control" id="usr" name="travel_permit_link" placeholder="Paste URL here">
           </div>
         </div>
+        
       </div>
+     
     </div>
+    
+     <div>
+      <button class="btn btn-primary" type="submit"/> Submit  </button>
+      </div>
+    </form>
     <div style="margin-top: 40px; margin-bottom: 40px;" class="team_profile">
       <div class="team_profile_title">
-        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit" src="img/green.png">Certified Roster</h3>
+        <h3 style="padding: 10px 0px 10px 10px; margin-top: 0px;"><img class="edit" src="images/green.png">Program Book Roster</h3>
       </div>
       <table class="table table-striped">
     <thead>
@@ -366,21 +366,13 @@ a:focus, a:hover {
       </tr>
     </thead>
     <tbody>
+      @foreach($teamplayers as $teamplayer)
       <tr>
-        <td>Staff</td>
-        <td>Coach/assit/manager</td>
-        <td>Player Position</td>
+        <td>{{ $teamplayer->title }}</td>
+        <td>{{ $teamplayer->name }} </td>
+        <td>{{ $teamplayer->position }}</td>
       </tr>
-      <tr>
-        <td>Staff</td>
-        <td>Coach/assit/manager</td>
-        <td>Player Position</td>
-      </tr>
-      <tr>
-        <td>Staff</td>
-        <td>Coach/assit/manager</td>
-        <td>Player Position</td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
     </div>
@@ -388,24 +380,31 @@ a:focus, a:hover {
         <div style="top: 10%;" id="myModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
             <!-- Modal content-->
+
             <div class="modal-content">
+
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Add new playerr</h4>
               </div>
+              <!-- <modal boody -->
+     <form action='{{url("/addplayerdata")}}' method= "post" enctype="multipart/form-data"> 
+          {{ csrf_field() }} 
               <div style="border-bottom: 1px solid #e5e5e5;" class="modal-body">
+
                 <div class="new-div">
                   <div class="form-group">
                     <label for="sel1">Title</label>
-                    <select class="form-control" id="sel1">
-                      <option selected="selected" disabled="">Select title</option>
-                      <option>Staff</option>
-                      <option>Player</option>
+                    <select class="form-control" id="sel1" name="title[]">
+                      <option selected="selected" value="-">Select title</option>
+                      <option value="1">Staff</option>
+                      <option value="2">Player</option>
                     </select>
-                    <label style="margin-top: 20px;" for="usr">Name:</label>
-                    <input type="text" class="form-control" placeholder="enter player name" id="usr">
+                    <input type="hidden" name="team_id" value="{{$teams->team_id}}"/>
+                    <label style="margin-top: 20px;"  for="usr">Name:</label>
+                    <input type="text" class="form-control" name="name[]" placeholder="enter player name" id="usr">
                     <label style="margin-top: 20px;" for="usr">Player Positon:</label>
-                    <input type="text" class="form-control" style="margin-bottom: 20px;" placeholder="enter player position" id="usr">
+                    <input type="text" class="form-control" name="position[]" style="margin-bottom: 20px;" placeholder="enter player position" id="usr">
                     <a href="#" class="add-new"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/add1.png">Add new player</a>
                     <a href="#" class="copy" style="float: right; display: none;"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/copy-1.png">Clone</a>
                   </div>
@@ -416,8 +415,9 @@ a:focus, a:hover {
               </div>
               
               <div style="border-bottom: none;" class="modal-footer">
-                <button type="button" style="margin-top: 20px; width: 100%; font-weight: normal; padding: 2px 8px;" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                <button type="submit" style="margin-top: 20px; width: 100%; font-weight: normal; padding: 2px 8px;" class="btn btn-primary" >Submit</button>
               </div>
+              </form>
             </div>
           </div>
         </div>
@@ -429,7 +429,7 @@ a:focus, a:hover {
 	<footer>
 	</footer>	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
     <script>
       
@@ -447,7 +447,7 @@ a:focus, a:hover {
                 if (x < max_fields) { //max input box allowed
                     x++; //text box increment
 
-                    $(wrapper).append('<div class="new-div" style="border-top: 1px solid #e5e5e5;padding-top: 29px; margin-top: 30px;"><a href="#" class="remove"><img style=" height: 15px; margin-top: -5px; margin-right: 7px; float: right;" src="img/cancel (1).png"></a> <div class="form-group"> <label for="sel1">Title</label> <select class="form-control" id="sel1"> <option selected="selected" disabled="">Select title</option> <option>Staff</option> <option>Player</option> </select> <label style="margin-top: 20px;" for="usr">Name:</label> <input type="text" class="form-control" placeholder="enter player name" id="usr"> <label style="margin-top: 20px;" for="usr">Player Positon:</label> <input type="text" class="form-control" style="margin-bottom: 20px;" placeholder="enter player position" id="usr"> <a href="#" class="add-new"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/add1.png">Add new player</a> <a href="#" class="copy" style="float: right;"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/copy-1.png">Clone</a> </div></div> <div clas="clone-data"</div>');
+                    $(wrapper).append('<div class="new-div" style="border-top: 1px solid #e5e5e5;padding-top: 29px; margin-top: 30px;"> <a href="#" class="remove"><img style=" height: 15px; margin-top: -5px; margin-right: 7px; float: right;" src="images/cancel (1).png"></a> <div class="form-group"> <label for="sel1">Title</label> <select class="form-control" id="sel1" name="title[]"> <option selected="selected"  value="-">Select title</option> <option value="1">Staff</option> <option value="2">Player</option> </select> <label style="margin-top: 20px;" for="usr">Name:</label> <input type="text" class="form-control" name="name[]" placeholder="enter player name" id="usr"> <label style="margin-top: 20px;" for="usr">Player Positon:</label> <input type="text" class="form-control" style="margin-bottom: 20px;" name="position[]" placeholder="enter player position" id="usr"> <a href="#" class="add-new"><img style=" height: 18px; margin-top: -5px; margin-right: 7px;" src="img/add1.png">Add new player</a> </div></div><div clas="clone-data"</div>');
                     
 
                }

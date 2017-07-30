@@ -70,7 +70,7 @@ ul.breadcrumb li a {color: #FF8333;}
     <ul class="head-title"> 
       <li>{{ $division->division_title }} </li>
       <li>OPEn 14/20</li>
-      <li>WAITLIST 0</li>
+      <li>WAITLIST {{ count($tournamentDataUnactive) }}</li>
       <li>DROPPED3</li>
     </ul>
   </div>
@@ -98,14 +98,14 @@ ul.breadcrumb li a {color: #FF8333;}
       <tr>
           <td>{{$tournament->team_id or null}}</td>
           <td><a href="../Singleteam/{{$tournament->team_id or null}}">{{$tournament->team_name or null}}</a></td>
-          <td>{{$tournament->entry_fee or null}}</td>
+          <td>{{$tournament->balance_due or null}}</td>
           <td>{{$tournament->Deposit   or null}}</td>
-          <td>{{$tournament->entry_fee or null}}</td>
+          <td><?php echo (((int)($tournament->balance_due)-(int)($tournament->Deposit)))?></td>
           <td>852</td>
-          <td>3/{{$tournament->entry_fee or null}}</td>
+          <td>3/{{ count($tournamentDataActive) or null}}</td>
           <td><a href="#"><img class="edit" src="../images/green.png"></a></td>
           <td>{{$tournament->team_rep or null}}</td>
-          <td><a href="SendEmail"><button type="button" class="btn btn-primary">Email</a></button></td>
+          <td><a href="{{ url('/SendEmail') }}"><button type="button" class="btn btn-primary">Email</a></button></td>
         </tr>
    @endif 
   @endforeach
@@ -145,7 +145,7 @@ ul.breadcrumb li a {color: #FF8333;}
        <td>3/20</td>
       <td><a href="#"><img class="edit" src="../images/green.png"></a></td>
       <td>DOE JOE</td>
-      <td><button type="button" class="btn btn-primary"><a href="{{ url('../SendEmail') }}">Email</a></button></td>
+      <td><button type="button" class="btn btn-primary"><a href="{{ url('/SendEmail') }}">Email</a></button></td>
     </tr>
      @endif
     @endforeach 

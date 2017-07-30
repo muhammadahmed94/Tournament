@@ -32,6 +32,7 @@ class admincontroller extends Controller
     }
 
        public function viewDash(){
+        
             $tournaments = tournaments::getalltournament();
             $viewObject= array();
             $viewObject["tournaments"]=$tournaments;
@@ -92,6 +93,8 @@ class admincontroller extends Controller
       $tournamentDataActive = DB::table('teams')
            ->join('tournament_teams','tournament_teams.team_id', '=', 'teams.team_id')
            ->join('team_registration','team_registration.teams_team_id', '=', 'teams.team_id')
+           ->join('tournaments','tournaments.tournament_id', '=', 'teams.tournament_id')
+           ->join('tournaments_divisions','tournaments_divisions.tournament_id', '=', 'teams.tournament_id')
             ->where([
             ['teams.tournament_id','=',$id],
             ['team_registration.status','=',1]
@@ -99,7 +102,7 @@ class admincontroller extends Controller
             ->distinct()
             ->get();
      
-     echo $tournamentDataActive;
+      $tournamentDataActive;
       $tournamentDataUnactive = DB::table('teams')
            ->join('tournament_teams','tournament_teams.team_id', '=', 'teams.team_id')
            ->join('team_registration','team_registration.teams_team_id', '=', 'teams.team_id')
@@ -145,11 +148,11 @@ class admincontroller extends Controller
               
              }
               array_push($returnData,$returnDataInner[$arrayKey]);
-              echo json_encode($returnDataInner);
+              //echo json_encode($returnDataInner);
                
            }
          }
-         echo json_encode($returnData);
+        // echo json_encode($returnData);
          return $returnData;
        }
 
@@ -236,17 +239,13 @@ class admincontroller extends Controller
        
        $recieveDataArray=array();
        $recieveDataArray = $this->parsedata($updatedInfo);
-      // echo $updatedInfo['Title'];
+    
      $tournamentData =DB::table('tournaments')
           ->where('tournaments.title', $updatedInfo['Title'])
           ->first();
-      //echo $tournamentData->tournament_id;
      
-            //echo count($recieveDataArray);
-         //echo json_encode($recieveDataArray);
-      //echo json_encode($tournamentData['0']);
        for($i=0;$i<count($recieveDataArray);$i++){
-         echo $i;
+         //echo $i;
       DB::table('tournaments_divisions')->insert([
       'division_title'=>$recieveDataArray[$i]['Division_Title'],
       'birth_year'=>$recieveDataArray[$i]['Birth_Year'],
@@ -265,7 +264,7 @@ class admincontroller extends Controller
             $viewObject= array();
             $viewObject["tournaments"]=$tournaments;
             $viewObject["user"]=$this->getSessionData();
-            
+        
             return view("admin/admindashboard",$viewObject);
        
       // return redirect('admin')->withInput();
@@ -319,7 +318,7 @@ class admincontroller extends Controller
       $teamdata=DB::table('team_registration')
       ->where('teams_team_id', $id)
       ->get();
-      echo $teamdata;
+      //echo $teamdata;
       $viewObject["teamdata"]=$teamdata;
       
       return view("admin/Tournamentinfo",$viewObject);
@@ -327,11 +326,10 @@ class admincontroller extends Controller
 
 
    public function singletournamentinfo(){
-  echo "ponka";
     }
 
     public function acceptteam(Request $request, $id , $tid){
-        echo $id.$tid;
+        //echo $id.$tid;
         DB::table('team_registration')
             ->where(
              'teams_team_id','=', $id
@@ -341,7 +339,7 @@ class admincontroller extends Controller
             
     }
     public function rejecttteam(Request $request, $id , $tid){
-        echo $id.$tid;
+       // echo $id.$tid;
         DB::table('team_registration')
             ->where(
              'teams_team_id','=', $id
@@ -351,12 +349,12 @@ class admincontroller extends Controller
             
     }
     public function sendEmail(){
-      echo "dsasdasnasdi bi";
-  /*   Mail::send('emails.welcome', $data, function ($message) {
-    $message->from('atif.taskeen@emmaculate.com', 'ATIF');
-
-    $message->to('rao.noman786@outlook.com')->cc('bar@example.com');
-});*/
+      //echo "dsasdasnasdi bi";
+   Mail::send('mail', array('key' => 'value'), function($message)
+{
+    $message->to('muhammad_ahmed1994@outlook.com', 'John Smith')->subject('Welcome!');
+}
+);
     return redirect()->back();
     }
    

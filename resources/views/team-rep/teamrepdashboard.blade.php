@@ -18,9 +18,9 @@
         <tbody>
        @foreach($tournaments as $tournament)
             <tr>
-                <td><a href="">{{$tournament->date_start}}</a></td>
-                <td><a href="{{ url('/Event') }}">{{$tournament->title}}</a></td>
-                <td><a href="{{ url('/Event') }}">{{$tournament->team_name}}</a></td>
+                <td><a href="">{{$tournament->date_start or null}}</a></td>
+                <td><a href="{{ url('/Event') }}">{{$tournament->title or null}}</a></td>
+                <td><a href="{{ url('/Event') }}">{{$tournament->team_name or null}}</a></td>
                 
                  <td>
                  <a href="">Incomplete</a>

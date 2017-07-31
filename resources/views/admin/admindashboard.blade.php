@@ -18,7 +18,7 @@
             <tr>
                 <td>{{ $tournament->date_start or null }}</td>
                 <td>{{ $tournament->title or null }}</td>
-                <td>% of team accept</td>
+                <td>{{--count($data) --}} % of team accept</td>
                
                 <td>
                 <a href="editTournament/{{ $tournament->tournament_id }}">

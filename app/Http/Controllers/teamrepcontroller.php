@@ -202,8 +202,20 @@ class teamrepcontroller extends Controller
       'Twitter' => $Twitter,
       'user_id' => $user['id']
       ]);
+      
       $team_id = DB::table('teams')->where('team_id', DB::raw("(select max(`team_id`) from teams)"))->get();
       $team_id=$team_id[0]->team_id;
+      //night change code
+      DB::table('team_registration')->insert([
+      'teams_team_id' => $team_id,
+      'tournament_id' => $tournament_id,
+      'status' =>  0
+     ]);
+      DB::table('tournament_teams')->insert([
+      'team_id' => $team_id,
+      'tournament_id' => $tournament_id,
+      'division_id' =>  $divison_id
+     ]);
      $user=$this->getSessionData();
      $tournaments = tournaments::getalltournament();
      $viewObject["user"]=$user;
@@ -214,16 +226,7 @@ class teamrepcontroller extends Controller
             ->where('user_id', $user['id'])->get();
     
             //echo $viewObject["teams"];
-    DB::table('tournament_teams')->insert([
-        'team_id'=>$team_id,
-        'tournament_id'=>$tournament_id,
-        'division_id'=> $divison_id
-    ]);
     
-    DB::table('team_registration')->insert([
-        'teams_team_id'=>$team_id,
-        'tournament_id'=>$tournament_id
-    ]);
      return view("team-rep/myteams",$viewObject);
    }
 

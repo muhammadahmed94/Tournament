@@ -57,19 +57,19 @@ ul.breadcrumb li a {color: #FF8333;}
     </style>   
 
 <div class="container">
-  <ul class="breadcrumb">
+ {{-- <ul class="breadcrumb">
     <li><a href="#">Page1</a></li>
     <li><a href="#">Page2</a></li>
     <li><a href="#">Page3</a></li>
     <li>Page4</li>
-  </ul>
+  </ul> --}}
   
   <h3>Chi Town Shuffle</h3>
     @foreach($Divisions as $division)
   <div class="head hidden-sm hidden-xs">
     <ul class="head-title"> 
       <li>{{ $division->division_title }} </li>
-      <li>OPEn 14/20</li>
+      <li>OPEn {{ count($tournamentDataActive) or null}}/{{ $division->limit_division or null}}</li>
       <li>WAITLIST {{ count($tournamentDataUnactive) }}</li>
       <li>DROPPED3</li>
     </ul>
@@ -94,15 +94,15 @@ ul.breadcrumb li a {color: #FF8333;}
       <th style="color: white; background-color: #DADE78;">EMAIL</th>
     </tr>
    @foreach($tournamentDataActive as $tournament)
-    @if($tournament->division_id == $division->division_id and $tournament->birth_year== $division->birth_year)
+    @if($tournament->division_id == $division->division_id and $tournament->birth_year == $division->birth_year )
       <tr>
           <td>{{$tournament->team_id or null}}</td>
           <td><a href="../Singleteam/{{$tournament->team_id or null}}">{{$tournament->team_name or null}}</a></td>
           <td>{{$tournament->balance_due or null}}</td>
           <td>{{$tournament->Deposit   or null}}</td>
-          <td><?php echo (((int)($tournament->balance_due)-(int)($tournament->Deposit)))?></td>
+          <td>{{$division->entry_fee   or null}}</td>
           <td>852</td>
-          <td>3/{{ count($tournamentDataActive) or null}}</td>
+          <td>{{ count($tournamentDataActive) or null}}/{{ $division->limit_division or null}}</td>
           <td><a href="#"><img class="edit" src="../images/green.png"></a></td>
           <td>{{$tournament->team_rep or null}}</td>
           <td><a href="{{ url('/SendEmail') }}"><button type="button" class="btn btn-primary">Email</a></button></td>
@@ -134,7 +134,7 @@ ul.breadcrumb li a {color: #FF8333;}
     </tr>
     
    @foreach($tournamentDataUnactive as $tournament)
-      @if($tournament->division_id == $division->division_id and $tournament->birth_year== $division->birth_year)
+      @if($tournament->division_id == $division->division_id and $tournament->birth_year == $division->birth_year )
     <tr>
       <td>{{$tournament->team_id or null}}</td>
       <td><a href="../Singleteam/{{$tournament->team_id or null}}">{{$tournament->team_name or null}}</a></td>

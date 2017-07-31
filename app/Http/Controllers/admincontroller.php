@@ -32,12 +32,18 @@ class admincontroller extends Controller
     }
 
        public function viewDash(){
-        
             $tournaments = tournaments::getalltournament();
             $viewObject= array();
             $viewObject["tournaments"]=$tournaments;
             $viewObject["user"]=$this->getSessionData();
-            
+           $data = DB::table('team_registration')
+          //   ->join('tournaments_divisions','tournaments_divisions.tournament_id', '=', 'tournaments.tournament_id')
+           ->join('tournament_teams','tournament_teams.tournament_id', '=', 'team_registration.tournament_id')
+           ->select('team_registration.teams_team_id')
+           ->get();
+           //$data = DB::table('tournament_teams')->groupBy('team_id')->count();
+           $viewObject["data"]=$data;
+           // echo json_encode($tournaments);
             return view("admin/admindashboard",$viewObject);
     }
 
@@ -89,12 +95,12 @@ class admincontroller extends Controller
            ->join('tournaments_divisions','tournaments_divisions.tournament_id', '=', 'tournaments.tournament_id')
             ->where('tournaments_divisions.tournament_id','=',$id)
             ->get();
-      
+     // echo $divisions;
       $tournamentDataActive = DB::table('teams')
            ->join('tournament_teams','tournament_teams.team_id', '=', 'teams.team_id')
            ->join('team_registration','team_registration.teams_team_id', '=', 'teams.team_id')
            ->join('tournaments','tournaments.tournament_id', '=', 'teams.tournament_id')
-           ->join('tournaments_divisions','tournaments_divisions.tournament_id', '=', 'teams.tournament_id')
+          //->join('tournaments_divisions','tournaments_divisions.tournament_id', '=', 'teams.tournament_id')
             ->where([
             ['teams.tournament_id','=',$id],
             ['team_registration.status','=',1]
@@ -102,20 +108,20 @@ class admincontroller extends Controller
             ->distinct()
             ->get();
      
-      $tournamentDataActive;
       $tournamentDataUnactive = DB::table('teams')
            ->join('tournament_teams','tournament_teams.team_id', '=', 'teams.team_id')
            ->join('team_registration','team_registration.teams_team_id', '=', 'teams.team_id')
+           ->join('tournaments','tournaments.tournament_id', '=', 'teams.tournament_id')
             ->where([
             ['teams.tournament_id','=',$id],
             ['team_registration.status','=',0]
             ])
-            ->distinct()
-            ->get();
-           
-  //echo $tournamentDataUnactive;
+      ->get();
+       
+      //  echo  $tournamentDataActive;
+ 
       $viewObject= array();
-     $viewObject["Divisions"]=$divisions;
+      $viewObject["Divisions"]=$divisions;
       $viewObject["tournamentDataUnactive"]=$tournamentDataUnactive;
       $viewObject["tournamentDataActive"]=$tournamentDataActive;
       $viewObject["user"]=$this->getSessionData();
